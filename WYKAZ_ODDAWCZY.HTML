@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wykaz Oddawczy v2.0</title>
+    <style>
+        /* --- STYLE OGÓLNE --- */
+        :root {
+            --print-font: 'Arial', sans-serif;
+            --primary-color: #003366; /* Kolejowy granat */
+            --accent-color: #f0f4f8;
+            --danger-color: #cc0000;
+        }
+        
+        body { margin: 0; padding: 0; font-family: var(--print-font); background: #e9ecef; color: #333; }
+        
+        /* --- UI EDYCJI (EKRAN) --- */
+        .screen-ui {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding-bottom: 50px;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .app-header h2 { 
+            color: var(--primary-color); 
+            margin: 0; 
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .app-header p { color: #666; font-size: 14px; margin-top: 5px; }
+
+        /* KARTY SEKCJI */
+        .section-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Układ pól w sekcji nagłówka */
+        .header-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 6px; color: #444; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .form-group input:focus { border-color: var(--primary-color); outline: none; background: #f9fcff; }
+
+        /* TABELA */
+        table.input-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            border: 2px solid #333; 
+        }
+        table.input-table th { 
+            background: #e0e0e0; 
+            padding: 10px; 
+            font-size: 12px; 
+            border: 1px solid #333; 
+            color: #000;
+        }
+        table.input-table td { 
+            padding: 0; 
+            border: 1px solid #333; 
+        }
+        table.input-table input { 
+            width: 100%; 
+            border: none; 
+            padding: 8px; 
+            margin: 0; 
+            font-size: 14px; 
+            text-align: center; 
+            outline: none;
+            background: transparent;
+        }
+        table.input-table input:focus { background: #fffbe6; }
+
+        /* PASEK AKCJI DOLNYCH */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .copies-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+
+        /* PRZYCISKI */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        .btn-print { background: var(--primary-color); color: white; box-shadow: 0 4px 6px rgba(0,51,102,0.3); }
+        .btn-print:hover { background: #002244; transform: translateY(-1px); }
+        
+        .btn-reset { background: white; color: var(--danger-color); border: 2px solid var(--danger-color); }
+        .btn-reset:hover { background: #fff0f0; }
+
+        .btn-clear-rows { font-size: 12px; color: #666; background: #eee; padding: 5px 10px; margin-left: 10px; border-radius: 3px; border:none; cursor:pointer;}
+        .btn-clear-rows:hover { background: #ddd; }
+
+        /* STATUS ZAPISU */
+        #saveStatus {
+            font-size: 12px;
+            color: green;
+            opacity: 0;
+            transition: opacity 0.5s;
+            margin-right: 15px;
+        }
+
+        /* --- UI WYDRUKU (BEZ ZMIAN W UKŁADZIE A4) --- */
+        @media print {
+            .screen-ui { display: none !important; }
+            body { background: white; margin: 0; }
+            @page { size: A4; margin: 10mm; } 
+        }
+
+        .print-area { display: none; }
+        @media print { .print-area { display: block; } }
+
+        .page-a4 {
+            width: 100%; 
+            height: 275mm; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between; 
+            page-break-after: always;
+        }
+        .page-a4:last-child { page-break-after: auto; }
+
+        .form-half {
+            height: 48%; 
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Grid Layout Wydruku */
+        table.header-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 5px; }
+        .h-col-left { width: 25%; vertical-align: top; }
+        .h-col-center { width: 50%; vertical-align: top; text-align: center; }
+        .h-col-right { width: 25%; vertical-align: top; padding-left: 10px; }
+        .stamp-box { height: 60px; width: 100px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 9px; }
+        .main-title { font-size: 16pt; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; }
+        .sub-title { font-size: 10pt; margin-bottom: 10px; }
+        .conductor-label { font-size: 9px; margin-bottom: 2px; }
+        .conductor-val { border-bottom: 1px dotted #000; font-weight: bold; min-height: 14px; margin-bottom: 8px; }
+
+        table.train-table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 11px; }
+        table.train-table td { padding: 2px; white-space: nowrap; }
+        .val-line { border-bottom: 1px dotted #000; font-weight: bold; text-align: center; padding: 0 5px; min-height: 14px; }
+
+        table.list-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 5px; table-layout: fixed; }
+        table.list-table th { border: 1px solid #000; padding: 3px; font-weight: normal; text-align: center; vertical-align: middle; }
+        table.list-table td { border: 1px solid #000; height: 18px; padding: 0 4px; vertical-align: middle; text-align: center; overflow: hidden; white-space: nowrap; }
+        
+        .summary-row td { font-weight: bold; border-top: 2px solid #000 !important; font-size: 9px; background: transparent; }
+
+        .form-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-bottom: 5px; }
+        .sign-placeholder { border-top: 1px dotted #000; width: 150px; margin-top: 30px; }
+        .cut-line { width: 100%; border-bottom: 1px dashed #999; height: 0; margin: auto 0; }
+    </style>
+</head>
+<body>
+
+<div class="screen-ui">
+    
+    <div class="app-header">
+        <h2>Generator Wykazu Oddawczego</h2>
+        <p>Wersja 2.0 (Auto-zapis włączony)</p>
+    </div>
+    
+    <form id="mainForm">
+        
+        <div class="section-card">
+            <div class="section-title">Dane Nagłówkowe</div>
+            <div class="header-inputs">
+                <div class="form-group">
+                    <label>Do pociągu nr:</label>
+                    <input type="text" id="in_t_to" placeholder="Wpisz numer">
+                </div>
+                <div class="form-group">
+                    <label>Dnia:</label>
+                    <input type="date" id="in_d_to">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                Lista Przesyłek
+                <button type="button" class="btn-clear-rows" onclick="clearRows()">Wyczyść wiersze</button>
+            </div>
+            
+            <div id="tableContainer"></div> </div>
+
+        <div class="action-bar">
+            <button type="button" class="btn btn-reset" onclick="resetAll()">
+                🗑️ Wyczyść wszystko
+            </button>
+
+            <div style="display: flex; align-items: center;">
+                <span id="saveStatus">Zapisano ✓</span>
+                
+                <div class="copies-wrapper">
+                    <label style="font-size: 13px; font-weight: bold;">Kopie dodatkowe:</label>
+                    <input type="number" id="in_copies" value="1" min="1" style="width: 50px; padding: 5px; text-align: center; font-weight: bold; border: 1px solid #ccc;">
+                </div>
+                
+                <button type="button" class="btn btn-print" style="margin-left: 20px;" onclick="generatePrint()">
+                    🖨️ DRUKUJ
+                </button>
+            </div>
+        </div>
+
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px; font-size: 11px; color: #aaa;">
+        Współautorzy: Gemini, Piotr M 🚂
+    </div>
+</div>
+
+<div id="printOutput" class="print-area"></div>
+
+<script>
+    // --- KONFIGURACJA ---
+    const ROWS_COUNT = 10; 
+    const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
+
+    // --- INICJALIZACJA ---
+    window.addEventListener('DOMContentLoaded', () => {
+        renderInputTable();
+        loadFromStorage(); // Ładowanie danych po renderowaniu tabeli
+        setupAutoSave();   // Podpięcie nasłuchiwania zmian
+    });
+
+    // 1. Renderowanie tabeli
+    function renderInputTable() {
+        const container = document.getElementById('tableContainer');
+        let html = `
+        <table class="input-table" id="gridTable">
+            <thead>
+                <tr>
+                    <th width="20%">Stacja Nadania</th>
+                    <th width="20%">Stacja Przezn.</th>
+                    <th width="10%">Rodzaj</th>
+                    <th width="10%">Nr dok.</th>
+                    <th width="8%">Szt.</th>
+                    <th width="8%">Masa</th>
+                    <th>Uwagi</th>
+                </tr>
+            </thead>
+            <tbody>`;
+        
+        for(let i=0; i<ROWS_COUNT; i++) {
+            html += `
+                <tr>
+                    <td><input class="cell-nad"></td>
+                    <td><input class="cell-prz"></td>
+                    <td><input class="cell-rodz"></td>
+                    <td><input class="cell-nr"></td>
+                    <td><input class="cell-szt"></td>
+                    <td><input class="cell-masa"></td>
+                    <td><input class="cell-uwagi" style="text-align:left;"></td>
+                </tr>`;
+        }
+        html += `</tbody></table>`;
+        container.innerHTML = html;
+    }
+
+    // 2. LocalStorage: Zapisywanie
+    function saveToStorage() {
+        const data = collectData(); // Pobieramy wszystko co jest w formularzu
+        // Dodatkowo musimy zapisać liczbę kopii, która nie jest w collectData do wydruku
+        data.copies = document.getElementById('in_copies').value;
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        
+        // Pokaż "Zapisano"
+        const status = document.getElementById('saveStatus');
+        status.style.opacity = '1';
+        setTimeout(() => { status.style.opacity = '0'; }, 2000);
+    }
+
+    // 3. LocalStorage: Ładowanie
+    function loadFromStorage() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+            // Domyślna data jeśli brak zapisu
+            document.getElementById('in_d_to').value = new Date().toISOString().split('T')[0];
+            return; 
+        }
+
+        try {
+            const data = JSON.parse(raw);
+            
+            // Przywracanie nagłówków
+            document.getElementById('in_t_to').value = data.trainTo || '';
+            document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
+            document.getElementById('in_copies').value = data.copies || 1;
+
+            // Przywracanie tabeli
+            const trs = document.querySelectorAll('#gridTable tbody tr');
+            if (data.rows && data.rows.length > 0) {
+                data.rows.forEach((rowData, index) => {
+                    if (index < trs.length) {
+                        const tr = trs[index];
+                        tr.querySelector('.cell-nad').value = rowData.nad || '';
+                        tr.querySelector('.cell-prz').value = rowData.prz || '';
+                        tr.querySelector('.cell-rodz').value = rowData.rodz || '';
+                        tr.querySelector('.cell-nr').value = rowData.nr || '';
+                        tr.querySelector('.cell-szt').value = rowData.szt || '';
+                        tr.querySelector('.cell-masa').value = rowData.masa || '';
+                        tr.querySelector('.cell-uwagi').value = rowData.uwagi || '';
+                    }
+                });
+            }
+        } catch (e) {
+            console.error("Błąd odczytu danych", e);
+        }
+    }
+
+    // 4. Auto-save setup
+    function setupAutoSave() {
+        // Nasłuchuj każdego zdarzenia 'input' w całym formularzu
+        document.getElementById('mainForm').addEventListener('input', saveToStorage);
+    }
+
+    // 5. Resetowanie (Twardy Reset)
+    function resetAll() {
+        if (confirm("Czy na pewno chcesz wyczyścić CAŁY formularz i usunąć zapisane dane?")) {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload(); // Najczystszy sposób na reset
+        }
+    }
+
+    // 6. Czyszczenie tylko wierszy
+    function clearRows() {
+        document.querySelectorAll('#gridTable input').forEach(inp => inp.value = '');
+        saveToStorage(); // Zapisz pusty stan
+    }
+
+    // --- LOGIKA WYDRUKU (Bez zmian layoutu) ---
+    function collectData() {
+        const rows = [];
+        const trs = document.querySelectorAll('#gridTable tbody tr');
+        trs.forEach(tr => {
+            rows.push({
+                nad: tr.querySelector('.cell-nad').value,
+                prz: tr.querySelector('.cell-prz').value,
+                rodz: tr.querySelector('.cell-rodz').value,
+                nr: tr.querySelector('.cell-nr').value,
+                szt: tr.querySelector('.cell-szt').value,
+                masa: tr.querySelector('.cell-masa').value,
+                uwagi: tr.querySelector('.cell-uwagi').value
+            });
+        });
+
+        return {
+            name: '', // Puste
+            station: '', // Puste
+            trainTo: document.getElementById('in_t_to').value,
+            dateTo: document.getElementById('in_d_to').value,
+            trainFrom: '', // Puste
+            dateFrom: '', // Puste
+            stationAt: '', // Puste
+            rows: rows
+        };
+    }
+
+    function getSheetHTML(data, type) {
+        const filledRows = data.rows.filter(r => r.nad.trim() !== '' || r.prz.trim() !== '');
+        const posCount = filledRows.length;
+        const piecesSum = data.rows.reduce((sum, r) => sum + (parseInt(r.szt) || 0), 0);
+        const massSum = data.rows.reduce((sum, r) => sum + (parseFloat(r.masa.replace(',','.')) || 0), 0);
+        const massDisplay = massSum > 0 ? massSum.toFixed(1) : '';
+
+        const rowsHTML = data.rows.map(r => `
+            <tr>
+                <td>${r.nad}</td>
+                <td>${r.prz}</td>
+                <td>${r.rodz}</td>
+                <td>${r.nr}</td>
+                <td>${r.szt}</td>
+                <td>${r.masa}</td>
+                <td style="text-align:left">${r.uwagi}</td>
+            </tr>
+        `).join('');
+
+        return `
+        <div class="form-half">
+            <table class="header-table">
+                <tr>
+                    <td class="h-col-left"><div class="stamp-box">(stempel wystawcy)</div></td>
+                    <td class="h-col-center">
+                        <div class="main-title">WYKAZ ODDAWCZY</div>
+                        <div class="sub-title">na przesyłki oddane</div>
+                    </td>
+                    <td class="h-col-right">
+                        <div class="conductor-label">Nazwisko konduktora oddającego</div>
+                        <div class="conductor-val"></div>
+                        <div class="conductor-label">i jego stacja macierzysta</div>
+                        <div class="conductor-val"></div>
+                    </td>
+                </tr>
+            </table>
+            <table class="train-table">
+                <tr>
+                    <td style="width: 80px;">do poc. nr</td>
+                    <td class="val-line" style="width: 100px;">${data.trainTo}</td>
+                    <td style="width: 40px; text-align: right;">dnia</td>
+                    <td class="val-line" style="width: 100px;">${data.dateTo}</td>
+                    <td></td>
+                </tr>
+                <tr style="height: 5px;"><td colspan="5"></td></tr>
+                <tr>
+                    <td style="width: 80px;">z poc. nr</td>
+                    <td class="val-line" style="width: 100px;"></td>
+                    <td style="width: 40px; text-align: right;">dnia</td>
+                    <td class="val-line" style="width: 100px;"></td>
+                    <td style="width: 60px; text-align: right;">na stacji</td>
+                    <td class="val-line" style="width: 150px;"></td>
+                </tr>
+            </table>
+            <table class="list-table">
+                <colgroup>
+                    <col style="width: 20%"><col style="width: 20%">
+                    <col style="width: 10%"><col style="width: 10%">
+                    <col style="width: 8%"><col style="width: 8%">
+                    <col style="width: 24%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">STACJA</th>
+                        <th colspan="2">Dokument przewozowy</th>
+                        <th rowspan="2">Liczba<br>sztuk</th>
+                        <th rowspan="2">Masa<br>kg</th>
+                        <th rowspan="2">Uwagi (nr wagonu,<br>dok. celnych itp.)</th>
+                    </tr>
+                    <tr>
+                        <th>Nadania</th>
+                        <th>Przeznaczenia</th>
+                        <th>rodzaj</th>
+                        <th>nr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rowsHTML}
+                    <tr class="summary-row">
+                        <td colspan="4" style="text-align: right; padding-right: 10px; border-right: 1px solid #000;">
+                            OGÓŁEM (pozycji: ${posCount}):
+                        </td>
+                        <td>${piecesSum}</td>
+                        <td>${massDisplay}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-footer">
+                <div style="font-weight:bold; font-size:14px; width: 100px;">${type}</div>
+                <div style="text-align:center;"><div style="font-size:10px;">ZDAŁ:</div><div class="sign-placeholder"></div></div>
+                <div style="text-align:center;"><div style="font-size:10px;">PRZYJĄŁ:</div><div class="sign-placeholder"></div></div>
+            </div>
+        </div>
+        `;
+    }
+
+    function generatePrint() {
+        saveToStorage(); // Upewnij się, że stan jest zapisany przed drukiem
+        const data = collectData();
+        const container = document.getElementById('printOutput');
+        container.innerHTML = '';
+
+        const copiesInput = parseInt(document.getElementById('in_copies').value) || 1;
+        const totalForms = 1 + copiesInput;
+        const totalPages = Math.ceil(totalForms / 2);
+
+        let generatedCount = 0;
+
+        for (let i = 0; i < totalPages; i++) {
+            const pageDiv = document.createElement('div');
+            pageDiv.className = 'page-a4';
+            if (generatedCount < totalForms) {
+                const type = (generatedCount === 0) ? 'ORYGINAŁ' : 'KOPIA';
+                pageDiv.innerHTML += getSheetHTML(data, type);
+                generatedCount++;
+            }
+            if (generatedCount < totalForms && generatedCount % 2 !== 0) { 
+               pageDiv.innerHTML += '<div class="cut-line"></div>';
+            }
+            if (generatedCount < totalForms) {
+                pageDiv.innerHTML += getSheetHTML(data, 'KOPIA');
+                generatedCount++;
+            }
+            container.appendChild(pageDiv);
+        }
+        window.print();
+    }
+</script>
+
+</body>
+</html>
