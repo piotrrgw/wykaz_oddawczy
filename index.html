@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v2.3</title>
+    <title>Wykaz Oddawczy v2.4</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -40,17 +40,15 @@
         
         .form-group label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 6px; color: #444; }
         
-        /* Stylizacja Inputów - Niebieski Tekst */
         .form-group input { 
             width: 100%; padding: 10px; 
             border: 1px solid #ccc; border-radius: 4px; 
             font-size: 16px; box-sizing: border-box; 
-            color: var(--pen-color); /* KOLOR NIEBIESKI */
+            color: var(--pen-color);
             font-weight: 600;
         }
         .form-group input:focus { border-color: var(--primary-color); outline: none; background: #f9fcff; }
 
-        /* Przycisk "Dziś" */
         .date-wrapper { display: flex; gap: 8px; }
         .btn-today {
             padding: 0 15px;
@@ -64,19 +62,23 @@
         }
         .btn-today:hover { background: #d0d0d0; }
 
-        /* TABELA */
+        /* TABELA EDYCJI */
         table.input-table { width: 100%; border-collapse: collapse; border: 2px solid #333; }
         table.input-table th { background: #e0e0e0; padding: 10px; font-size: 12px; border: 1px solid #333; color: #000; }
         table.input-table td { padding: 0; border: 1px solid #333; }
         
-        /* Inputy w tabeli - Niebieski Tekst */
         table.input-table input { 
-            width: 100%; border: none; padding: 8px; margin: 0; 
+            width: 100%; border: none; 
+            padding: 8px 5px; /* ZMIANA v2.4: Dodano padding boczny */
+            margin: 0; 
             font-size: 14px; text-align: center; outline: none; background: transparent;
-            color: var(--pen-color); /* KOLOR NIEBIESKI */
+            color: var(--pen-color);
             font-weight: 600;
+            box-sizing: border-box; /* Ważne dla paddingu */
         }
         table.input-table input:focus { background: #fffbe6; }
+        /* Wyrównanie do lewej dla uwag w edytorze */
+        table.input-table input.align-left { text-align: left; }
 
         .action-bar {
             display: flex; justify-content: space-between; align-items: center;
@@ -102,7 +104,6 @@
             body { background: white; margin: 0; }
             @page { size: A4; margin: 10mm; } 
             
-            /* Klasa dla niebieskiego tuszu w druku */
             .blue-ink { color: #0044cc !important; font-weight: bold; }
         }
 
@@ -133,13 +134,37 @@
         table.train-table td { padding: 2px; white-space: nowrap; }
         .val-line { border-bottom: 1px dotted #000; font-weight: bold; text-align: center; padding: 0 5px; min-height: 14px; }
 
+        /* --- TABELA GŁÓWNA - POPRAWKI TEKSTU --- */
         table.list-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 5px; table-layout: fixed; }
         table.list-table th { border: 1px solid #000; padding: 3px; font-weight: normal; text-align: center; vertical-align: middle; }
         
-        /* Komórki tabeli w druku - kolor zdefiniowany klasą blue-ink wewnątrz */
-        table.list-table td { border: 1px solid #000; height: 18px; padding: 0 4px; vertical-align: middle; text-align: center; overflow: hidden; white-space: nowrap; }
+        table.list-table td { 
+            border: 1px solid #000; 
+            height: 18px; /* Sztywna wysokość */
+            padding: 0 2px; 
+            vertical-align: middle; 
+            text-align: center; 
+            overflow: hidden; 
+            /* ZMIANA v2.4: Pozwalamy na łamanie, ale kontrolujemy wysokość */
+            white-space: normal; 
+            line-height: 1; 
+            word-wrap: break-word;
+        }
         
-        .summary-row td { font-weight: bold; border-top: 2px solid #000 !important; font-size: 9px; background: transparent; color: #000; } /* Suma domyślnie czarna, czy też niebieska? Zostawmy czarną systemową lub zmieńmy na niebieską jeśli to też "wpis" */
+        /* ZMIANA v2.4: Mniejsza czcionka dla Uwag, aby zmieścić więcej tekstu w 2 linijkach */
+        .cell-print-remarks {
+            font-size: 8px; 
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+        /* ZMIANA v2.4: Mniejsza czcionka dla Stacji, jeśli nazwy są długie */
+        .cell-print-station {
+            font-size: 9px;
+            line-height: 0.9;
+        }
+
+        .summary-row td { font-weight: bold; border-top: 2px solid #000 !important; font-size: 9px; background: transparent; color: #000; }
 
         .form-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-bottom: 5px; }
         .sign-placeholder { border-top: 1px dotted #000; width: 150px; margin-top: 30px; }
@@ -152,7 +177,7 @@
     
     <div class="app-header">
         <h2>Generator Wykazu Oddawczego</h2>
-        <p>Wersja 2.3 (Niebieski Druk)</p>
+        <p>Wersja 2.4 (Fix: Łamanie tekstu)</p>
     </div>
     
     <form id="mainForm">
@@ -258,7 +283,7 @@
                     <td><input class="cell-nr"></td>
                     <td><input class="cell-szt"></td>
                     <td><input class="cell-masa"></td>
-                    <td><input class="cell-uwagi" style="text-align:left;"></td>
+                    <td><input class="cell-uwagi align-left"></td>
                 </tr>`;
         }
         html += `</tbody></table>`;
@@ -277,7 +302,6 @@
     function loadFromStorage() {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) {
-            // Jeśli brak danych, ustaw Dziś
             setToday();
             return; 
         }
@@ -353,16 +377,16 @@
         const massSum = data.rows.reduce((sum, r) => sum + (parseFloat(r.masa.replace(',','.')) || 0), 0);
         const massDisplay = massSum > 0 ? massSum.toFixed(1) : '';
 
-        // TWORZENIE WIERSZY Z KLASĄ .blue-ink DLA DANYCH
+        // TWORZENIE WIERSZY Z KLASAMI DLA LEPSZEGO ZAWIJANIA (v2.4)
         const rowsHTML = data.rows.map(r => `
             <tr>
-                <td class="blue-ink">${r.nad}</td>
-                <td class="blue-ink">${r.prz}</td>
+                <td class="blue-ink cell-print-station">${r.nad}</td>
+                <td class="blue-ink cell-print-station">${r.prz}</td>
                 <td class="blue-ink">${r.rodz}</td>
                 <td class="blue-ink">${r.nr}</td>
                 <td class="blue-ink">${r.szt}</td>
                 <td class="blue-ink">${r.masa}</td>
-                <td class="blue-ink" style="text-align:left">${r.uwagi}</td>
+                <td class="blue-ink cell-print-remarks">${r.uwagi}</td>
             </tr>
         `).join('');
 
@@ -414,7 +438,7 @@
                         <th colspan="2">Dokument przewozowy</th>
                         <th rowspan="2">Liczba<br>sztuk</th>
                         <th rowspan="2">Masa<br>kg</th>
-                        <th rowspan="2">Uwagi (nr wagonu,<br>dok. celnych,<br> skarbowych itp.)</th>
+                        <th rowspan="2">Uwagi (nr wagonu,<br>dok. celnych itp.)</th>
                     </tr>
                     <tr>
                         <th>Nadania</th>
