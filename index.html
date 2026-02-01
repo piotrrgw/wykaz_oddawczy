@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v2.4</title>
+    <title>Wykaz Oddawczy v2.5</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -69,15 +69,14 @@
         
         table.input-table input { 
             width: 100%; border: none; 
-            padding: 8px 5px; /* ZMIANA v2.4: Dodano padding boczny */
+            padding: 8px 5px; 
             margin: 0; 
             font-size: 14px; text-align: center; outline: none; background: transparent;
             color: var(--pen-color);
             font-weight: 600;
-            box-sizing: border-box; /* Ważne dla paddingu */
+            box-sizing: border-box; 
         }
         table.input-table input:focus { background: #fffbe6; }
-        /* Wyrównanie do lewej dla uwag w edytorze */
         table.input-table input.align-left { text-align: left; }
 
         .action-bar {
@@ -102,7 +101,12 @@
         @media print {
             .screen-ui { display: none !important; }
             body { background: white; margin: 0; }
-            @page { size: A4; margin: 10mm; } 
+            
+            /* ZMIANA v2.5: Wymuszenie marginesów 1cm */
+            @page { 
+                size: A4; 
+                margin: 1cm; /* 10mm z każdej strony */
+            }
             
             .blue-ink { color: #0044cc !important; font-weight: bold; }
         }
@@ -111,8 +115,14 @@
         @media print { .print-area { display: block; } }
 
         .page-a4 {
-            width: 100%; height: 275mm; 
-            display: flex; flex-direction: column; justify-content: space-between; 
+            width: 100%; 
+            /* ZMIANA v2.5: Wysokość dopasowana do obszaru roboczego (A4 - marginesy) */
+            /* A4 = 297mm. Marginesy góra+dół = 20mm. Obszar roboczy = 277mm. */
+            /* Ustawiamy bezpieczne 270mm, aby Flexbox miał luz */
+            height: 270mm; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
             page-break-after: always;
         }
         .page-a4:last-child { page-break-after: auto; }
@@ -134,35 +144,24 @@
         table.train-table td { padding: 2px; white-space: nowrap; }
         .val-line { border-bottom: 1px dotted #000; font-weight: bold; text-align: center; padding: 0 5px; min-height: 14px; }
 
-        /* --- TABELA GŁÓWNA - POPRAWKI TEKSTU --- */
+        /* --- TABELA GŁÓWNA --- */
         table.list-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 5px; table-layout: fixed; }
         table.list-table th { border: 1px solid #000; padding: 3px; font-weight: normal; text-align: center; vertical-align: middle; }
         
         table.list-table td { 
             border: 1px solid #000; 
-            height: 18px; /* Sztywna wysokość */
+            height: 18px; 
             padding: 0 2px; 
             vertical-align: middle; 
             text-align: center; 
             overflow: hidden; 
-            /* ZMIANA v2.4: Pozwalamy na łamanie, ale kontrolujemy wysokość */
-            white-space: normal; 
+            white-space: normal; /* Zawijanie tekstu */
             line-height: 1; 
             word-wrap: break-word;
         }
         
-        /* ZMIANA v2.4: Mniejsza czcionka dla Uwag, aby zmieścić więcej tekstu w 2 linijkach */
-        .cell-print-remarks {
-            font-size: 8px; 
-            text-align: left;
-            vertical-align: middle;
-        }
-        
-        /* ZMIANA v2.4: Mniejsza czcionka dla Stacji, jeśli nazwy są długie */
-        .cell-print-station {
-            font-size: 9px;
-            line-height: 0.9;
-        }
+        .cell-print-remarks { font-size: 8px; text-align: left; vertical-align: middle; }
+        .cell-print-station { font-size: 9px; line-height: 0.9; }
 
         .summary-row td { font-weight: bold; border-top: 2px solid #000 !important; font-size: 9px; background: transparent; color: #000; }
 
@@ -177,7 +176,7 @@
     
     <div class="app-header">
         <h2>Generator Wykazu Oddawczego</h2>
-        <p>Wersja 2.4 (Fix: Łamanie tekstu)</p>
+        <p>Wersja 2.5 (Marginesy 1cm)</p>
     </div>
     
     <form id="mainForm">
@@ -254,7 +253,7 @@
         const today = new Date().toISOString().split('T')[0];
         const dateInput = document.getElementById('in_d_to');
         dateInput.value = today;
-        saveToStorage(); // Wymuś zapis
+        saveToStorage(); 
     }
 
     function renderInputTable() {
@@ -377,7 +376,6 @@
         const massSum = data.rows.reduce((sum, r) => sum + (parseFloat(r.masa.replace(',','.')) || 0), 0);
         const massDisplay = massSum > 0 ? massSum.toFixed(1) : '';
 
-        // TWORZENIE WIERSZY Z KLASAMI DLA LEPSZEGO ZAWIJANIA (v2.4)
         const rowsHTML = data.rows.map(r => `
             <tr>
                 <td class="blue-ink cell-print-station">${r.nad}</td>
