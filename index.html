@@ -2,108 +2,137 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v2.6</title>
+    <title>Wykaz Oddawczy v3.0</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
             --print-font: 'Arial', sans-serif;
-            --primary-color: #003366;
-            --pen-color: #0044cc;
-            --danger-color: #cc0000;
+            --primary-color: #003366; /* Kolejowy granat */
+            --secondary-color: #f4f6f9;
+            --pen-color: #0044cc; /* Niebieski długopis */
+            --danger-color: #cc0000; /* Czerwony dla Oryginału */
+            --border-color: #dde2e9;
         }
         
         body { margin: 0; padding: 0; font-family: var(--print-font); background: #e9ecef; color: #333; }
         
         /* --- UI EDYCJI (EKRAN) --- */
         .screen-ui {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 30px auto;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
         .app-header { text-align: center; margin-bottom: 30px; }
-        .app-header h2 { color: var(--primary-color); margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 1px; }
+        .app-header h2 { color: var(--primary-color); margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
         .app-header p { color: #666; font-size: 14px; margin-top: 5px; }
 
+        /* KARTY */
         .section-card {
             background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
-        .section-title { font-size: 16px; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-
-        .header-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        .form-group label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 6px; color: #444; }
-        
-        .form-group input { 
-            width: 100%; padding: 10px; 
-            border: 1px solid #ccc; border-radius: 4px; 
-            font-size: 16px; box-sizing: border-box; 
-            color: var(--pen-color);
-            font-weight: 600;
-        }
-        .form-group input:focus { border-color: var(--primary-color); outline: none; background: #f9fcff; }
-
-        .date-wrapper { display: flex; gap: 8px; }
-        .btn-today {
-            padding: 0 15px;
-            background: #e0e0e0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
+        .section-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            font-size: 15px;
             font-weight: bold;
-            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .btn-today:hover { background: #d0d0d0; }
+
+        .section-body { padding: 25px; }
+
+        /* DASHBOARD GRID */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .input-group-styled {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s;
+        }
+        .input-group-styled:focus-within {
+            border-color: var(--pen-color);
+            box-shadow: 0 0 0 3px rgba(0, 68, 204, 0.1);
+        }
+
+        .input-label {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+            color: #666; font-weight: bold; margin-bottom: 8px;
+        }
+
+        .input-control {
+            border: none; background: transparent; font-size: 16px; font-weight: 600;
+            color: var(--pen-color); width: 100%; outline: none; padding: 0;
+        }
+        .input-control::placeholder { color: #bbb; font-weight: normal; }
+
+        .date-row { display: flex; align-items: center; justify-content: space-between; }
+        .btn-mini {
+            background: #e1e4e8; color: #333; border: none;
+            padding: 4px 10px; border-radius: 4px; font-size: 11px;
+            cursor: pointer; font-weight: bold;
+        }
+        .btn-mini:hover { background: #d0d4da; }
 
         /* TABELA EDYCJI */
         table.input-table { width: 100%; border-collapse: collapse; border: 2px solid #333; }
-        table.input-table th { background: #e0e0e0; padding: 10px; font-size: 12px; border: 1px solid #333; color: #000; }
-        table.input-table td { padding: 0; border: 1px solid #333; }
+        table.input-table th { background: #f0f0f0; padding: 12px; font-size: 12px; border: 1px solid #333; color: #000; text-transform: uppercase; }
+        table.input-table td { padding: 0; border: 1px solid #333; background: #fff; }
         
         table.input-table input { 
-            width: 100%; border: none; 
-            padding: 8px 5px; 
-            margin: 0; 
-            font-size: 14px; text-align: center; outline: none; background: transparent;
-            color: var(--pen-color);
-            font-weight: 600;
-            box-sizing: border-box; 
+            width: 100%; border: none; padding: 10px 5px; 
+            margin: 0; font-size: 14px; text-align: center; outline: none; background: transparent;
+            color: var(--pen-color); font-weight: 600; box-sizing: border-box; 
         }
         table.input-table input:focus { background: #fffbe6; }
-        table.input-table input.align-left { text-align: left; }
+        table.input-table input.align-left { text-align: left; padding-left: 8px; }
 
+        /* PASEK AKCJI */
         .action-bar {
+            background: #fff; padding: 15px 25px; border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: sticky; bottom: 20px; border: 1px solid var(--border-color);
             display: flex; justify-content: space-between; align-items: center;
-            background: #fff; padding: 20px; border-radius: 8px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            position: sticky; bottom: 20px; border: 1px solid #ddd;
         }
 
-        .copies-wrapper { display: flex; align-items: center; gap: 10px; background: #f0f0f0; padding: 10px 15px; border-radius: 4px; }
+        .copy-control {
+            display: flex; align-items: center; gap: 15px;
+            background: var(--secondary-color); padding: 8px 15px; border-radius: 6px; border: 1px solid var(--border-color);
+        }
+        .total-badge {
+            background: var(--primary-color); color: white;
+            padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;
+        }
         
-        .btn { padding: 12px 24px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all 0.2s; }
-        .btn-print { background: var(--primary-color); color: white; box-shadow: 0 4px 6px rgba(0,51,102,0.3); }
-        .btn-print:hover { background: #002244; transform: translateY(-1px); }
-        .btn-reset { background: white; color: var(--danger-color); border: 2px solid var(--danger-color); }
-        .btn-reset:hover { background: #fff0f0; }
-        .btn-clear-rows { font-size: 12px; color: #666; background: #eee; padding: 5px 10px; margin-left: 10px; border-radius: 3px; border:none; cursor:pointer;}
-        .btn-clear-rows:hover { background: #ddd; }
-        #saveStatus { font-size: 12px; color: green; opacity: 0; transition: opacity 0.5s; margin-right: 15px; }
+        .btn { padding: 12px 28px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .btn-print { background: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(0,51,102,0.2); }
+        .btn-print:hover { background: #002e5c; transform: translateY(-1px); }
+        .btn-reset { background: white; color: var(--danger-color); border: 1px solid #ffcccc; }
+        .btn-reset:hover { background: #fff5f5; border-color: var(--danger-color); }
+
+        #saveStatus { font-size: 12px; color: green; opacity: 0; transition: opacity 0.5s; margin-right: 15px; font-weight: bold;}
 
         /* --- UI WYDRUKU --- */
         @media print {
             .screen-ui { display: none !important; }
             body { background: white; margin: 0; }
-            
             @page { size: A4; margin: 1cm; }
-            
             .blue-ink { color: #0044cc !important; font-weight: bold; }
         }
 
@@ -119,7 +148,7 @@
 
         .form-half { height: 48%; width: 100%; position: relative; display: flex; flex-direction: column; }
 
-        /* Grid Layout Wydruku */
+        /* UKŁAD TABELI WYDRUKU */
         table.header-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 5px; }
         .h-col-left { width: 25%; vertical-align: top; }
         .h-col-center { width: 50%; vertical-align: top; text-align: center; }
@@ -134,29 +163,62 @@
         table.train-table td { padding: 2px; white-space: nowrap; }
         .val-line { border-bottom: 1px dotted #000; font-weight: bold; text-align: center; padding: 0 5px; min-height: 14px; }
 
-        /* --- TABELA GŁÓWNA --- */
         table.list-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 5px; table-layout: fixed; }
         table.list-table th { border: 1px solid #000; padding: 3px; font-weight: normal; text-align: center; vertical-align: middle; }
-        
         table.list-table td { 
-            border: 1px solid #000; 
-            height: 18px; 
-            padding: 0 2px; 
-            vertical-align: middle; 
-            text-align: center; 
-            overflow: hidden; 
-            white-space: normal; 
-            line-height: 1; 
-            word-wrap: break-word;
+            border: 1px solid #000; height: 18px; padding: 0 2px; 
+            vertical-align: middle; text-align: center; overflow: hidden; 
+            white-space: normal; line-height: 1; word-wrap: break-word;
         }
         
         .cell-print-remarks { font-size: 8px; text-align: left; vertical-align: middle; }
         .cell-print-station { font-size: 9px; line-height: 0.9; }
 
-        .summary-row td { font-weight: bold; border-top: 2px solid #000 !important; font-size: 9px; background: transparent; color: #000; }
+        /* ZMIANA v3.0: Styl sekcji sumowania (poza tabelą) */
+        .summary-bar {
+            width: 100%;
+            display: flex;
+            font-size: 9px;
+            margin-top: 2px;
+            /* Flexbox udający kolumny tabeli: 20+20+10+10 = 60% lewej strony */
+        }
+        .sum-label {
+            width: 60%; /* Odpowiada kolumnom Stacje + Rodzaj + Nr */
+            text-align: right;
+            padding-right: 5px;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .sum-val-szt {
+            width: 8%; /* Odpowiada kolumnie Szt */
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #000; /* Opcjonalne podkreślenie sumy */
+        }
+        .sum-val-masa {
+            width: 8%; /* Odpowiada kolumnie Masa */
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+        }
+        .sum-empty {
+            width: 24%; /* Odpowiada kolumnie Uwagi */
+        }
 
         .form-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-bottom: 5px; }
-        .sign-placeholder { border-top: 1px dotted #000; width: 150px; margin-top: 30px; }
+        
+        .sign-placeholder { 
+            border-bottom: 1px dotted #000; 
+            width: 150px; 
+            margin-top: 30px;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding-bottom: 2px; min-height: 20px; font-size: 12px;
+        }
+        
+        /* ZMIANA v3.0: Kolory etykiet */
+        .label-original { color: #cc0000; font-weight: bold; font-size: 14px; width: 100px; }
+        .label-copy { color: #000000; font-weight: bold; font-size: 14px; width: 100px; }
+        
         .cut-line { width: 100%; border-bottom: 1px dashed #999; height: 0; margin: auto 0; }
     </style>
 </head>
@@ -168,55 +230,74 @@
     
     <div class="app-header">
         <h2>Generator Wykazu Oddawczego</h2>
-        <p>Wersja 2.6 (Autouzupełnianie Stacji)</p>
+        <p>Wersja 3.0 (Pixel Perfect & 4 Sztuki)</p>
     </div>
     
     <form id="mainForm">
         
         <div class="section-card">
-            <div class="section-title">Dane Nagłówkowe</div>
-            <div class="header-inputs">
-                <div class="form-group">
-                    <label>Do pociągu nr:</label>
-                    <input type="text" id="in_t_to" placeholder="Wpisz numer">
-                </div>
-                <div class="form-group">
-                    <label>Dnia:</label>
-                    <div class="date-wrapper">
-                        <input type="date" id="in_d_to">
-                        <button type="button" class="btn-today" onclick="setToday()">Dziś</button>
+            <div class="section-header">
+                <span>DANE NAGŁÓWKOWE</span>
+                <span style="font-size: 11px; opacity: 0.8;">UZUPEŁNIJ POLA PONIŻEJ</span>
+            </div>
+            <div class="section-body">
+                <div class="dashboard-grid">
+                    
+                    <div class="input-group-styled">
+                        <label class="input-label">Do pociągu nr</label>
+                        <input type="text" id="in_t_to" class="input-control" placeholder="np. 1814">
                     </div>
+
+                    <div class="input-group-styled">
+                        <label class="input-label">Data</label>
+                        <div class="date-row">
+                            <input type="date" id="in_d_to" class="input-control">
+                            <button type="button" class="btn-mini" onclick="setToday()">DZIŚ</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group-styled">
+                        <label class="input-label">Zdał (Imię i Nazwisko)</label>
+                        <input type="text" id="in_handed_by" class="input-control" placeholder="Wpisz nazwisko...">
+                    </div>
+
                 </div>
             </div>
-            <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                * Stacje posiadają autouzupełnianie. Zacznij pisać, aby zobaczyć podpowiedzi.
-            </p>
         </div>
 
         <div class="section-card">
-            <div class="section-title">
-                Lista Przesyłek
-                <button type="button" class="btn-clear-rows" onclick="clearRows()">Wyczyść wiersze</button>
+            <div class="section-header">
+                <span>LISTA PRZESYŁEK</span>
+                <button type="button" class="btn-mini" style="color: #333;" onclick="clearRows()">WYCZYŚĆ TABELĘ</button>
             </div>
-            
-            <div id="tableContainer"></div>
+            <div class="section-body" style="padding: 0;">
+                <div id="tableContainer"></div>
+            </div>
+            <div style="padding: 10px 25px; background: #f9f9f9; font-size: 12px; color: #777; border-top: 1px solid #eee;">
+                * <strong>Tip:</strong> System automatycznie kopiuje stacje z pierwszego wiersza do kolejnych podczas uzupełniania danych.
+            </div>
         </div>
 
         <div class="action-bar">
             <button type="button" class="btn btn-reset" onclick="resetAll()">
-                🗑️ Wyczyść
+                <span>🗑️</span> Reset
             </button>
 
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 20px;">
                 <span id="saveStatus">Zapisano ✓</span>
                 
-                <div class="copies-wrapper">
-                    <label style="font-size: 13px; font-weight: bold;">Kopie dodatkowe:</label>
-                    <input type="number" id="in_copies" value="1" min="1" style="width: 50px; padding: 5px; text-align: center; font-weight: bold; border: 1px solid #ccc; color: black;">
+                <div class="copy-control">
+                    <div>
+                        <div style="font-size: 10px; color: #666; font-weight: bold; text-transform: uppercase;">Kopie dodatkowe</div>
+                        <input type="number" id="in_copies" value="3" min="1" style="width: 50px; border: 1px solid #ccc; border-radius: 4px; padding: 4px; font-weight: bold; color: black;" onchange="updateTotalCount()" onkeyup="updateTotalCount()">
+                    </div>
+                    <div style="border-left: 1px solid #ccc; padding-left: 15px;">
+                        <span id="total-badge" class="total-badge">Łącznie: 4 szt.</span>
+                    </div>
                 </div>
                 
-                <button type="button" class="btn btn-print" style="margin-left: 20px;" onclick="generatePrint()">
-                    🖨️ DRUKUJ
+                <button type="button" class="btn btn-print" onclick="generatePrint()">
+                    <span>🖨️</span> DRUKUJ DOKUMENTY
                 </button>
             </div>
         </div>
@@ -235,7 +316,6 @@
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
 
-    // Lista awaryjna (gdyby stacje.json nie działało lokalnie przez CORS)
     const FALLBACK_STATIONS = [
         "Białystok", "Bydgoszcz Główna", "Ełk", "Gdańsk Główny", "Gdańsk Wrzeszcz",
         "Gdynia Główna", "Katowice", "Kołobrzeg", "Kraków Główny", "Kutno",
@@ -246,31 +326,29 @@
     ];
 
     window.addEventListener('DOMContentLoaded', () => {
-        loadStations(); // 1. Wczytaj stacje
-        renderInputTable(); // 2. Zbuduj tabelę (z podpiętymi listami)
+        loadStations();
+        renderInputTable();
         loadFromStorage();
         setupAutoSave();
+        setupAutoFillLogic();
+        updateTotalCount();
     });
 
-    // --- ŁADOWANIE STACJI ---
-    function loadStations() {
-        const datalist = document.getElementById('stations-list');
-        
-        fetch(STATIONS_FILE)
-            .then(response => {
-                if (!response.ok) throw new Error("Błąd sieci");
-                return response.json();
-            })
-            .then(data => {
-                populateDatalist(datalist, data);
-                console.log("Wczytano stacje z pliku JSON.");
-            })
-            .catch(error => {
-                console.warn("Nie udało się wczytać stacje.json (to normalne przy uruchamianiu lokalnym). Używam listy wbudowanej.");
-                populateDatalist(datalist, FALLBACK_STATIONS);
-            });
+    function updateTotalCount() {
+        const input = document.getElementById('in_copies');
+        let extras = parseInt(input.value);
+        if (isNaN(extras) || extras < 0) extras = 0;
+        const total = 1 + extras;
+        document.getElementById('total-badge').innerText = `Łącznie: ${total} szt.`;
     }
 
+    function loadStations() {
+        const datalist = document.getElementById('stations-list');
+        fetch(STATIONS_FILE)
+            .then(response => { if (!response.ok) throw new Error("Err"); return response.json(); })
+            .then(data => populateDatalist(datalist, data))
+            .catch(error => populateDatalist(datalist, FALLBACK_STATIONS));
+    }
     function populateDatalist(element, stations) {
         element.innerHTML = '';
         stations.forEach(station => {
@@ -280,11 +358,34 @@
         });
     }
 
-    // --- POZOSTAŁA LOGIKA ---
+    function setupAutoFillLogic() {
+        const table = document.getElementById('gridTable');
+        table.addEventListener('input', function(e) {
+            const triggerClasses = ['cell-rodz', 'cell-nr', 'cell-szt', 'cell-masa', 'cell-uwagi'];
+            const isTrigger = triggerClasses.some(cls => e.target.classList.contains(cls));
+
+            if (isTrigger) {
+                const currentRow = e.target.closest('tr');
+                const rows = Array.from(currentRow.closest('tbody').querySelectorAll('tr'));
+                const rowIndex = rows.indexOf(currentRow);
+
+                if (rowIndex > 0) {
+                    const firstRow = rows[0];
+                    const nad0 = firstRow.querySelector('.cell-nad').value;
+                    const prz0 = firstRow.querySelector('.cell-prz').value;
+                    const currentNad = currentRow.querySelector('.cell-nad');
+                    const currentPrz = currentRow.querySelector('.cell-prz');
+
+                    if (currentNad.value.trim() === '') currentNad.value = nad0;
+                    if (currentPrz.value.trim() === '') currentPrz.value = prz0;
+                    saveToStorage();
+                }
+            }
+        });
+    }
 
     function setToday() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('in_d_to').value = today;
+        document.getElementById('in_d_to').value = new Date().toISOString().split('T')[0];
         saveToStorage(); 
     }
 
@@ -304,7 +405,6 @@
                 </tr>
             </thead>
             <tbody>`;
-        
         for(let i=0; i<ROWS_COUNT; i++) {
             html += `
                 <tr>
@@ -332,15 +432,14 @@
 
     function loadFromStorage() {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) {
-            setToday();
-            return; 
-        }
+        if (!raw) { setToday(); return; }
         try {
             const data = JSON.parse(raw);
             document.getElementById('in_t_to').value = data.trainTo || '';
             document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
-            document.getElementById('in_copies').value = data.copies || 1;
+            // ZMIANA v3.0: Domyślnie 3 kopie jeśli brak danych
+            document.getElementById('in_copies').value = (data.copies !== undefined) ? data.copies : 3;
+            document.getElementById('in_handed_by').value = data.handedBy || '';
 
             const trs = document.querySelectorAll('#gridTable tbody tr');
             if (data.rows && data.rows.length > 0) {
@@ -357,9 +456,8 @@
                     }
                 });
             }
-        } catch (e) {
-            console.error("Błąd odczytu danych", e);
-        }
+            updateTotalCount(); 
+        } catch (e) { console.error(e); }
     }
 
     function setupAutoSave() {
@@ -367,7 +465,7 @@
     }
 
     function resetAll() {
-        if (confirm("Czy na pewno chcesz wyczyścić CAŁY formularz i usunąć zapisane dane?")) {
+        if (confirm("Czy wyczyścić formularz?")) {
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
         }
@@ -393,10 +491,9 @@
             });
         });
         return {
-            name: '', station: '', 
             trainTo: document.getElementById('in_t_to').value,
             dateTo: document.getElementById('in_d_to').value,
-            trainFrom: '', dateFrom: '', stationAt: '',
+            handedBy: document.getElementById('in_handed_by').value,
             rows: rows
         };
     }
@@ -407,6 +504,9 @@
         const piecesSum = data.rows.reduce((sum, r) => sum + (parseInt(r.szt) || 0), 0);
         const massSum = data.rows.reduce((sum, r) => sum + (parseFloat(r.masa.replace(',','.')) || 0), 0);
         const massDisplay = massSum > 0 ? massSum.toFixed(1) : '';
+
+        // Ustalenie klasy koloru dla etykiety Oryginał/Kopia
+        const labelClass = (type === 'ORYGINAŁ') ? 'label-original' : 'label-copy';
 
         const rowsHTML = data.rows.map(r => `
             <tr>
@@ -455,6 +555,7 @@
                     <td class="val-line" style="width: 150px;"></td>
                 </tr>
             </table>
+            
             <table class="list-table">
                 <colgroup>
                     <col style="width: 20%"><col style="width: 20%">
@@ -479,20 +580,27 @@
                 </thead>
                 <tbody>
                     ${rowsHTML}
-                    <tr class="summary-row">
-                        <td colspan="4" style="text-align: right; padding-right: 10px; border-right: 1px solid #000;">
-                            OGÓŁEM (pozycji: ${posCount}):
-                        </td>
-                        <td class="blue-ink">${piecesSum}</td>
-                        <td class="blue-ink">${massDisplay}</td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
+            
+            <div class="summary-bar">
+                <div class="sum-label">OGÓŁEM (pozycji: ${posCount}):</div>
+                <div class="sum-val-szt blue-ink">${piecesSum}</div>
+                <div class="sum-val-masa blue-ink">${massDisplay}</div>
+                <div class="sum-empty"></div>
+            </div>
+
             <div class="form-footer">
-                <div style="font-weight:bold; font-size:14px; width: 100px;">${type}</div>
-                <div style="text-align:center;"><div style="font-size:10px;">ZDAŁ:</div><div class="sign-placeholder"></div></div>
-                <div style="text-align:center;"><div style="font-size:10px;">PRZYJĄŁ:</div><div class="sign-placeholder"></div></div>
+                <div class="${labelClass}">${type}</div>
+                
+                <div style="text-align:center;">
+                    <div style="font-size:10px;">ZDAŁ:</div>
+                    <div class="sign-placeholder blue-ink">${data.handedBy}</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:10px;">PRZYJĄŁ:</div>
+                    <div class="sign-placeholder"></div>
+                </div>
             </div>
         </div>
         `;
@@ -504,12 +612,11 @@
         const container = document.getElementById('printOutput');
         container.innerHTML = '';
 
-        const copiesInput = parseInt(document.getElementById('in_copies').value) || 1;
+        const copiesInput = parseInt(document.getElementById('in_copies').value) || 0;
         const totalForms = 1 + copiesInput;
         const totalPages = Math.ceil(totalForms / 2);
 
         let generatedCount = 0;
-
         for (let i = 0; i < totalPages; i++) {
             const pageDiv = document.createElement('div');
             pageDiv.className = 'page-a4';
