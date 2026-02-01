@@ -2,13 +2,13 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v2.5</title>
+    <title>Wykaz Oddawczy v2.6</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
             --print-font: 'Arial', sans-serif;
             --primary-color: #003366;
-            --pen-color: #0044cc; /* Kolor niebieskiego długopisu */
+            --pen-color: #0044cc;
             --danger-color: #cc0000;
         }
         
@@ -102,11 +102,7 @@
             .screen-ui { display: none !important; }
             body { background: white; margin: 0; }
             
-            /* ZMIANA v2.5: Wymuszenie marginesów 1cm */
-            @page { 
-                size: A4; 
-                margin: 1cm; /* 10mm z każdej strony */
-            }
+            @page { size: A4; margin: 1cm; }
             
             .blue-ink { color: #0044cc !important; font-weight: bold; }
         }
@@ -115,14 +111,8 @@
         @media print { .print-area { display: block; } }
 
         .page-a4 {
-            width: 100%; 
-            /* ZMIANA v2.5: Wysokość dopasowana do obszaru roboczego (A4 - marginesy) */
-            /* A4 = 297mm. Marginesy góra+dół = 20mm. Obszar roboczy = 277mm. */
-            /* Ustawiamy bezpieczne 270mm, aby Flexbox miał luz */
-            height: 270mm; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
+            width: 100%; height: 270mm; 
+            display: flex; flex-direction: column; justify-content: space-between; 
             page-break-after: always;
         }
         .page-a4:last-child { page-break-after: auto; }
@@ -155,7 +145,7 @@
             vertical-align: middle; 
             text-align: center; 
             overflow: hidden; 
-            white-space: normal; /* Zawijanie tekstu */
+            white-space: normal; 
             line-height: 1; 
             word-wrap: break-word;
         }
@@ -172,11 +162,13 @@
 </head>
 <body>
 
+<datalist id="stations-list"></datalist>
+
 <div class="screen-ui">
     
     <div class="app-header">
         <h2>Generator Wykazu Oddawczego</h2>
-        <p>Wersja 2.5 (Marginesy 1cm)</p>
+        <p>Wersja 2.6 (Autouzupełnianie Stacji)</p>
     </div>
     
     <form id="mainForm">
@@ -197,7 +189,7 @@
                 </div>
             </div>
             <p style="font-size: 12px; color: #888; margin-top: 10px;">
-                * Dane wprowadzane są w kolorze niebieskim. Pola konduktora pozostają puste.
+                * Stacje posiadają autouzupełnianie. Zacznij pisać, aby zobaczyć podpowiedzi.
             </p>
         </div>
 
@@ -220,7 +212,7 @@
                 
                 <div class="copies-wrapper">
                     <label style="font-size: 13px; font-weight: bold;">Kopie dodatkowe:</label>
-                    <input type="number" id="in_copies" value="3" min="1" style="width: 50px; padding: 5px; text-align: center; font-weight: bold; border: 1px solid #ccc; color: black;">
+                    <input type="number" id="in_copies" value="1" min="1" style="width: 50px; padding: 5px; text-align: center; font-weight: bold; border: 1px solid #ccc; color: black;">
                 </div>
                 
                 <button type="button" class="btn btn-print" style="margin-left: 20px;" onclick="generatePrint()">
@@ -241,18 +233,58 @@
 <script>
     const ROWS_COUNT = 10; 
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
+    const STATIONS_FILE = 'stacje.json';
+
+    // Lista awaryjna (gdyby stacje.json nie działało lokalnie przez CORS)
+    const FALLBACK_STATIONS = [
+        "Białystok", "Bydgoszcz Główna", "Ełk", "Gdańsk Główny", "Gdańsk Wrzeszcz",
+        "Gdynia Główna", "Katowice", "Kołobrzeg", "Kraków Główny", "Kutno",
+        "Lublin Główny", "Łódź Fabryczna", "Łódź Kaliska", "Łódź Widzew",
+        "Poznań Główny", "Rzeszów Główny", "Szczecin Główny", "Terespol",
+        "Warszawa Centralna", "Warszawa Gdańska", "Warszawa Grochów",
+        "Warszawa Wschodnia", "Warszawa Zachodnia", "Wrocław Główny"
+    ];
 
     window.addEventListener('DOMContentLoaded', () => {
-        renderInputTable();
+        loadStations(); // 1. Wczytaj stacje
+        renderInputTable(); // 2. Zbuduj tabelę (z podpiętymi listami)
         loadFromStorage();
         setupAutoSave();
     });
 
-    // Funkcja: Ustawienie daty "Dziś"
+    // --- ŁADOWANIE STACJI ---
+    function loadStations() {
+        const datalist = document.getElementById('stations-list');
+        
+        fetch(STATIONS_FILE)
+            .then(response => {
+                if (!response.ok) throw new Error("Błąd sieci");
+                return response.json();
+            })
+            .then(data => {
+                populateDatalist(datalist, data);
+                console.log("Wczytano stacje z pliku JSON.");
+            })
+            .catch(error => {
+                console.warn("Nie udało się wczytać stacje.json (to normalne przy uruchamianiu lokalnym). Używam listy wbudowanej.");
+                populateDatalist(datalist, FALLBACK_STATIONS);
+            });
+    }
+
+    function populateDatalist(element, stations) {
+        element.innerHTML = '';
+        stations.forEach(station => {
+            const option = document.createElement('option');
+            option.value = station;
+            element.appendChild(option);
+        });
+    }
+
+    // --- POZOSTAŁA LOGIKA ---
+
     function setToday() {
         const today = new Date().toISOString().split('T')[0];
-        const dateInput = document.getElementById('in_d_to');
-        dateInput.value = today;
+        document.getElementById('in_d_to').value = today;
         saveToStorage(); 
     }
 
@@ -276,8 +308,8 @@
         for(let i=0; i<ROWS_COUNT; i++) {
             html += `
                 <tr>
-                    <td><input class="cell-nad"></td>
-                    <td><input class="cell-prz"></td>
+                    <td><input class="cell-nad" list="stations-list"></td>
+                    <td><input class="cell-prz" list="stations-list"></td>
                     <td><input class="cell-rodz"></td>
                     <td><input class="cell-nr"></td>
                     <td><input class="cell-szt"></td>
