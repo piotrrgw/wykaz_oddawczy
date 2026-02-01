@@ -6,73 +6,95 @@
     <title>Generator Wykazu Oddawczego</title>
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwMDMzNjYiLz48cGF0aCBkPSJNMzIgMTBDMjIgMTAgMTYgMTggMTYgMzBWNDZINDhWMzBDNDggMTggNDIgMTAgMzIgMTBaTTIyIDI0SDI2VjMwSDIyVjI0Wk0zOCAzMEgzNFYyNEgzOFYzMFpNMzIgNTJDMjggNTIgMjYgNTQgMjYgNThIMzhDMzggNTQgMzYgNTIgMzIgNTJaIiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iNTIiIHI9IjQiIGZpbGw9IndoaXRlIi8+PGNpcmNsZSBjeD0iNDYiIGN5PSI1MiIgcj0iNCIgZmlsbD0id2hpdGUiLz48L3N2Zz4=" type="image/svg+xml">
     <style>
-        /* Stylizacja instrukcji */
-        .instruction-box {
-            background-color: #f0f7ff;
-            border-left: 5px solid #003366;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-            font-family: sans-serif;
-        }
-        .instruction-box h2 {
-            margin-top: 0;
-            color: #003366;
-            font-size: 1.2rem;
-        }
-        .instruction-steps {
-            list-style: none;
-            padding: 0;
-        }
-        .instruction-steps li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-        }
-        .instruction-steps li::before {
-            content: "🚂";
-            margin-right: 10px;
-        }
+        /* --- STYLE INTERFEJSU --- */
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         
-        /* Reszta stylów (uproszczona na potrzeby podglądu) */
-        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1000px; margin: auto; padding: 20px; }
-        .footer { margin-top: 50px; border-top: 1px solid #ccc; padding-top: 10px; font-size: 0.9rem; color: #555; }
-        .no-print { display: block; }
-        @media print { .no-print { display: none; } }
+        .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #003366; padding-bottom: 15px; }
+        
+        /* Przyciski */
+        .btn { padding: 10px 18px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-help { background-color: #17a2b8; color: white; }
+        .btn-print { background-color: #003366; color: white; }
+        .btn-reset { background-color: #dc3545; color: white; }
+        .btn:hover { opacity: 0.9; }
+
+        /* OKNO INSTRUKCJI (Modal) */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+        .modal-content { background: white; margin: 10% auto; padding: 25px; border-radius: 10px; width: 90%; max-width: 550px; position: relative; animation: slideIn 0.3s; }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .close { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; }
+        .instr-step { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+        .instr-step b { color: #003366; }
+
+        /* Stopka */
+        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px; font-size: 12px; color: #777; text-align: center; }
+
+        /* Ukrywanie podczas druku */
+        @media print { .no-print { display: none !important; } body { background: white; padding: 0; } .container { box-shadow: none; width: 100%; } }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Generator Wykazu Oddawczego</h1>
-    </header>
+<div class="container">
+    <div class="header-actions no-print">
+        <h1 style="margin: 0; font-size: 22px; color: #003366;">Wykaz Oddawczy</h1>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-help" onclick="toggleModal(true)">❓ Instrukcja</button>
+            <button class="btn btn-print" onclick="window.print()">🖨️ Drukuj</button>
+            <button class="btn btn-reset" onclick="if(confirm('Czy na pewno wyczyścić cały formularz?')) location.reload()">🗑️ Reset</button>
+        </div>
+    </div>
 
-    <section class="instruction-box no-print">
-        <h2>Instrukcja obsługi (krok po kroku):</h2>
-        <ul class="instruction-steps">
-            <li><strong>Wypełnij dane ogólne:</strong> Wpisz numer pociągu, datę oraz swoje nazwisko. Te dane pojawią się automatycznie na obu częściach dokumentu.</li>
-            <li><strong>Dodaj przesyłki:</strong> Wpisz stację nadania, przeznaczenia i dane o przesyłce. Jeśli masz więcej pozycji, kliknij przycisk "Dodaj wiersz".</li>
-            <li><strong>Sprawdź podgląd:</strong> Aplikacja na bieżąco zapisuje Twoje dane – nic nie zginie, nawet jeśli odświeżysz stronę.</li>
-            <li><strong>Drukuj:</strong> Kliknij niebieski przycisk "Drukuj dokument". Program sam przygotuje arkusz A4 z gotowym Oryginałem i Kopią.</li>
-            <li><strong>Ustawienia drukarki:</strong> W oknie, które się pojawi, wybierz orientację "Pionowa" i upewnij się, że marginesy są ustawione na "Domyślne".</li>
-        </ul>
-    </section>
-
-    <main class="no-print">
-        <p><em>[Miejsce na formularz edycji danych]</em></p>
-        <button onclick="window.print()" style="padding: 10px 20px; background: #003366; color: white; border: none; cursor: pointer;">
-            🖨️ DRUKUJ DOKUMENTY
-        </button>
-    </main>
+    <div id="form-content">
+        <p style="text-align:center; color: #999; padding: 50px; border: 2px dashed #ccc;">[ Miejsce na formularz z przesyłkami ]</p>
+    </div>
 
     <footer class="footer">
-        <p>Współautorzy: Gemini oraz Piotr M 🚂</p>
-        <p>Wersja aplikacji: v3.1</p>
+        Współautorzy: Gemini oraz Piotr M 🚂 | <strong>Wersja aplikacji: v3.2</strong>
     </footer>
+</div>
 
-    <script>
-        // Wersja kodu: 3.1
-        // Logika zapisu i bazy stacji pozostaje bez zmian
-    </script>
+<div id="instructionModal" class="modal no-print">
+    <div class="modal-content">
+        <span class="close" onclick="toggleModal(false)">&times;</span>
+        <h2 style="color: #003366; margin-top: 0;">🚂 Jak używać generatora?</h2>
+        <div class="instr-step">
+            <span>1️⃣</span>
+            <div><b>Wypełnij górę:</b> Wpisz numer pociągu i swoje dane. Zostaną one automatycznie skopiowane na Oryginał i Kopię.</div>
+        </div>
+        <div class="instr-step">
+            <span>2️⃣</span>
+            <div><b>Dodaj przesyłki:</b> Wpisuj stacje i dane paczek. Użyj przycisku "Dodaj wiersz", jeśli masz więcej pozycji.</div>
+        </div>
+        <div class="instr-step">
+            <span>3️⃣</span>
+            <div><b>Automatyczny zapis:</b> Nie martw się o dane – strona zapisuje wszystko na bieżąco w Twojej przeglądarce.</div>
+        </div>
+        <div class="instr-step">
+            <span>4️⃣</span>
+            <div><b>Wydruk:</b> Kliknij "Drukuj". System ułoży dokumenty tak, aby zmieściły się na jednej kartce A4 (góra/dół).</div>
+        </div>
+        <button class="btn btn-print" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="toggleModal(false)">Wszystko jasne!</button>
+    </div>
+</div>
+
+<script>
+    // Obsługa okna modalnego
+    function toggleModal(show) {
+        document.getElementById('instructionModal').style.display = show ? 'block' : 'none';
+    }
+
+    // Zamknięcie po kliknięciu poza okno
+    window.onclick = function(event) {
+        let modal = document.getElementById('instructionModal');
+        if (event.target == modal) toggleModal(false);
+    }
+
+    // Wersja: 3.2
+    console.log("Wykaz Oddawczy v3.2 załadowany.");
+</script>
+
 </body>
 </html>
