@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 <script>
-  // Rejestracja Service Workera
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
@@ -18,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v3.4</title>
+    <title>Wykaz Oddawczy v3.8</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -104,6 +103,8 @@
         .btn-mini:hover { background: #d0d4da; }
         .btn-mini-primary { background: #0044cc; color: #fff; }
         .btn-mini-primary:hover { background: #003399; }
+        .btn-mini-danger { background: #cc0000; color: #fff; }
+        .btn-mini-danger:hover { background: #aa0000; }
         
         /* TABELA EDYCJI (RESPONSYWNA) */
         #tableContainer { overflow-x: auto; }
@@ -127,8 +128,8 @@
             flex-wrap: wrap; gap: 15px;
         }
         .copy-control {
-            display: flex; align-items: center; gap: 15px;
-            background: var(--secondary-color); padding: 8px 15px; border-radius: 6px; border: 1px solid var(--border-color);
+            display: flex; flex-direction: column; align-items: stretch; gap: 10px;
+            background: var(--secondary-color); padding: 10px 15px; border-radius: 6px; border: 1px solid var(--border-color);
         }
         .total-badge {
             background: var(--primary-color); color: white;
@@ -153,7 +154,6 @@
         @media (max-width: 768px) {
             .dashboard-grid { grid-template-columns: 1fr; gap: 15px; }
             .action-bar { flex-direction: column; align-items: stretch; }
-            .copy-control { justify-content: space-between; }
             .btn { width: 100%; }
         }
 
@@ -208,10 +208,16 @@
         .cell-print-remarks { font-size: 8px; text-align: left; vertical-align: middle; }
         .cell-print-station { font-size: 9px; line-height: 0.9; }
 
-        .strike-line {
+        .cell-strike {
+            height: 18px; 
+            vertical-align: middle;
+            padding: 0 !important;
+        }
+        .cell-strike-line {
             display: block;
-            margin: 0 -2px; 
-            border-top: 1.5px solid #0044cc;
+            border-top: 1.5px solid #0044cc; 
+            width: 75%; 
+            margin: 0 auto; 
             height: 0;
         }
         
@@ -281,7 +287,7 @@
                     </div>
                     <div class="input-group-styled">
                         <label class="input-label" for="in_book_num">Nr z książki koresp.</label>
-                        <input type="text" id="in_book_num" class="input-control">
+                        <input type="text" id="in_book_num" class="input-control" placeholder="np. BZWSHP4-KD-074/09/2026">
                     </div>
                 </div>
             </div>
@@ -290,9 +296,10 @@
         <div class="section-card">
             <div class="section-header">
                 <span>LISTA PRZESYŁEK</span>
-                <div style="display: flex; gap: 8px;">
-                    <button type="button" class="btn-mini btn-mini-primary" onclick="addMoreRows()">+ DODAJ 10 RUBRYK</button>
-                    <button type="button" class="btn-mini" style="color: #333;" onclick="clearRows()">WYCZYŚĆ TABELĘ</button>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button type="button" id="btnAddRows" class="btn-mini btn-mini-primary" onclick="addMoreRows()">+ DODAJ 15 RUBRYK</button>
+                    <button type="button" id="btnRestoreRows" class="btn-mini btn-mini-danger" onclick="restoreRows()" style="display: none;">- DOMYŚLNE 10 RUBRYK</button>
+                    <button type="button" class="btn-mini" style="color: #333;" onclick="clearTableAndCashier()">WYCZYŚĆ TABELĘ I KASJERA</button>
                 </div>
             </div>
             <div class="section-body" style="padding: 0;">
@@ -308,12 +315,18 @@
                 <span id="saveStatus">Zapisano ✔</span>
                 
                 <div class="copy-control">
-                    <div>
-                        <div style="font-size: 10px; color: #666; font-weight: bold; text-transform: uppercase;">Kopie dodatkowe</div>
-                        <input type="number" id="in_copies" value="3" min="1" aria-label="Liczba dodatkowych kopii" style="width: 50px; border: 1px solid #ccc; border-radius: 4px; padding: 4px; font-weight: bold; color: black;" onchange="updateTotalCount()" onkeyup="updateTotalCount()">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                        <div>
+                            <div style="font-size: 10px; color: #666; font-weight: bold; text-transform: uppercase;">Kopie dodatkowe</div>
+                            <input type="number" id="in_copies" value="3" min="1" aria-label="Liczba dodatkowych kopii" style="width: 50px; border: 1px solid #ccc; border-radius: 4px; padding: 4px; font-weight: bold; color: black;" onchange="updateTotalCount()" onkeyup="updateTotalCount()">
+                        </div>
+                        <div style="border-left: 1px solid #ccc; padding-left: 15px;">
+                            <span id="total-badge" class="total-badge">Łącznie: 4 szt.</span>
+                        </div>
                     </div>
-                    <div style="border-left: 1px solid #ccc; padding-left: 15px;">
-                        <span id="total-badge" class="total-badge">Łącznie: 4 szt.</span>
+                    <div style="display: flex; align-items: center; gap: 5px; border-top: 1px solid #e1e4e8; padding-top: 8px;">
+                        <input type="checkbox" id="in_duplex" checked style="cursor: pointer; margin: 0; width: 14px; height: 14px;" onchange="saveToStorage()">
+                        <label for="in_duplex" style="font-size: 10px; color: #666; font-weight: bold; cursor: pointer; text-transform: uppercase;">Puste strony dla Dupleksu</label>
                     </div>
                 </div>
                 
@@ -325,7 +338,7 @@
     </form>
     
     <div class="app-footer">
-        Wersja aplikacji: v3.4<br>
+        Wersja aplikacji: v3.8<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -333,6 +346,7 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
+    const APP_VERSION = "v3.8"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
@@ -345,7 +359,49 @@
         "Warszawa Wschodnia", "Warszawa Zachodnia", "Wrocław Główny"
     ];
 
+    // ZMIANA v3.8: Algorytm sprawdzający czy na serwerze jest nowsza wersja
+    async function autoUpdateCheck() {
+        if (!navigator.onLine) return; // Pomijamy brak połączenia
+        try {
+            // Omijamy cache przeglądarki dopisując unikalny timestamp
+            const response = await fetch(window.location.pathname + '?v=' + new Date().getTime(), { cache: 'no-store' });
+            const text = await response.text();
+            
+            // Jeśli kod na serwerze NIE ma naszej wersji, wymuszamy aktualizację
+            if (!text.includes(APP_VERSION)) {
+                console.log("Znaleziono nową wersję! Trwa czyszczenie cache...");
+                
+                // Informacja dla użytkownika na UI
+                const status = document.getElementById('saveStatus');
+                status.innerText = "Aktualizacja do nowej wersji...";
+                status.style.color = "#cc0000";
+                status.style.opacity = '1';
+
+                // Usunięcie starych plików z Cache API
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                }
+                
+                // Usunięcie starych Service Workerów
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let reg of registrations) {
+                        await reg.unregister();
+                    }
+                }
+                
+                // Twarde przeładowanie po sekundzie
+                setTimeout(() => window.location.reload(true), 1000);
+            }
+        } catch (err) {
+            console.log("Błąd sprawdzania wersji (offline):", err);
+        }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+        autoUpdateCheck(); // Odpalenie weryfikacji przy każdym otwarciu apki
+        
         loadStations();
         loadFromStorage();
         setupAutoSave();
@@ -359,6 +415,18 @@
         if (isNaN(extras) || extras < 0) extras = 0;
         const total = 1 + extras;
         document.getElementById('total-badge').innerText = `Łącznie: ${total} szt.`;
+    }
+
+    function updateRowButtonsState() {
+        const btnAdd = document.getElementById('btnAddRows');
+        const btnRestore = document.getElementById('btnRestoreRows');
+        if (currentRowCount > 10) {
+            btnAdd.style.display = 'none';
+            btnRestore.style.display = 'inline-block';
+        } else {
+            btnAdd.style.display = 'inline-block';
+            btnRestore.style.display = 'none';
+        }
     }
 
     function loadStations() {
@@ -378,7 +446,6 @@
         });
     }
 
-    // ZMIANA v3.4: Nowa logika inteligentnego autouzupełniania stacji
     function setupAutoFillLogic() {
         const container = document.getElementById('tableContainer');
         container.addEventListener('input', function(e) {
@@ -388,13 +455,11 @@
             const rows = Array.from(currentRow.closest('tbody').querySelectorAll('tr'));
             const rowIndex = rows.indexOf(currentRow);
             
-            // 1. Zmiana stacji nadania w pierwszym wierszu -> aktualizacja wszystkich wypełnionych wierszy poniżej
             if (rowIndex === 0 && e.target.classList.contains('cell-nad')) {
                 const newNad = e.target.value;
                 for (let i = 1; i < rows.length; i++) {
                     const row = rows[i];
                     const rowNad = row.querySelector('.cell-nad');
-                    // Sprawdzamy, czy wiersz ma jakieś wpisane dane (żeby nie zalać tekstem pustej tabeli)
                     const hasData = Array.from(row.querySelectorAll('input:not(.cell-nad)')).some(inp => inp.value.trim() !== '');
                     if (hasData) {
                         rowNad.value = newNad;
@@ -402,7 +467,6 @@
                 }
             }
             
-            // 2. Wprowadzanie danych do wierszy poniżej pierwszego
             if (rowIndex > 0) {
                 const nad0 = rows[0].querySelector('.cell-nad').value;
                 const prevPrz = rows[rowIndex - 1].querySelector('.cell-prz').value;
@@ -410,12 +474,10 @@
                 const currentNad = currentRow.querySelector('.cell-nad');
                 const currentPrz = currentRow.querySelector('.cell-prz');
                 
-                // Kopiowanie Stacji Nadania (jeśli jest pusta i jej w tym momencie nie edytujemy)
                 if (currentNad.value.trim() === '' && nad0.trim() !== '' && !e.target.classList.contains('cell-nad')) {
                     currentNad.value = nad0;
                 }
                 
-                // Kopiowanie Stacji Przeznaczenia z wiersza WYŻEJ (jeśli jest pusta i jej w tym momencie nie edytujemy)
                 if (currentPrz.value.trim() === '' && prevPrz.trim() !== '' && !e.target.classList.contains('cell-prz')) {
                     currentPrz.value = prevPrz;
                 }
@@ -462,13 +524,21 @@
         
         html += `</tbody></table>`;
         container.innerHTML = html;
+        updateRowButtonsState();
     }
 
     function addMoreRows() {
-        currentRowCount += 15;
+        currentRowCount = 25; 
         saveToStorage(); 
         renderInputTable(); 
         loadFromStoragePopulateOnly();
+    }
+
+    function restoreRows() {
+        currentRowCount = 10;
+        renderInputTable();
+        loadFromStoragePopulateOnly();
+        saveToStorage();
     }
 
     function saveToStorage() {
@@ -477,6 +547,8 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         
         const status = document.getElementById('saveStatus');
+        status.innerText = "Zapisano ✔";
+        status.style.color = "green";
         status.style.opacity = '1';
         setTimeout(() => { status.style.opacity = '0'; }, 2000);
     }
@@ -490,8 +562,10 @@
         }
         try {
             const data = JSON.parse(raw);
-            if (data.rows && data.rows.length > 0) {
-                currentRowCount = Math.max(10, data.rows.length);
+            if (data.rows && data.rows.length > 10) {
+                currentRowCount = 25;
+            } else {
+                currentRowCount = 10;
             }
             renderInputTable();
             loadFromStoragePopulateOnly(data);
@@ -514,6 +588,7 @@
         document.getElementById('in_handed_by').value = data.handedBy || '';
         document.getElementById('in_book_num').value = data.bookNum || '';
         document.getElementById('in_copies').value = (data.copies !== undefined) ? data.copies : 3;
+        document.getElementById('in_duplex').checked = (data.duplexFix !== undefined) ? data.duplexFix : true;
         
         const trs = document.querySelectorAll('#gridTable tbody tr');
         if (data.rows && data.rows.length > 0) {
@@ -538,14 +613,15 @@
     }
 
     function resetAll() {
-        if (confirm("Czy na pewno wyczyścić cały formularz?")) {
+        if (confirm("Czy na pewno całkowicie zresetować formularz, w tym numery i stacje?")) {
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
         }
     }
 
-    function clearRows() {
+    function clearTableAndCashier() {
         document.querySelectorAll('#gridTable input').forEach(inp => inp.value = '');
+        document.getElementById('in_handed_by').value = '';
         saveToStorage();
     }
 
@@ -568,6 +644,7 @@
             dateTo: document.getElementById('in_d_to').value,
             handedBy: document.getElementById('in_handed_by').value,
             bookNum: document.getElementById('in_book_num').value,
+            duplexFix: document.getElementById('in_duplex').checked,
             rows: rows
         };
     }
@@ -588,13 +665,13 @@
             if (isEmptyRow) {
                 return `
                 <tr>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
-                    <td><div class="strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
+                    <td class="cell-strike"><div class="cell-strike-line"></div></td>
                 </tr>`;
             } else {
                 return `
@@ -710,6 +787,7 @@
         const copiesInput = parseInt(document.getElementById('in_copies').value) || 0;
         const totalForms = 1 + copiesInput;
         const isFullPage = data.rows.length > 10; 
+        const fixDuplex = document.getElementById('in_duplex').checked; 
         
         let generatedCount = 0;
         
@@ -721,6 +799,13 @@
                 const type = (i === 0) ? 'ORYGINAŁ' : 'KOPIA';
                 pageDiv.innerHTML = getSheetHTML(data, type, true);
                 container.appendChild(pageDiv);
+                
+                if (fixDuplex && i < totalForms - 1) {
+                    const blank = document.createElement('div');
+                    blank.className = 'page-a4 blank-page';
+                    blank.innerHTML = '&nbsp;'; 
+                    container.appendChild(blank);
+                }
             }
         } else {
             const totalPages = Math.ceil(totalForms / 2);
@@ -744,6 +829,13 @@
                 }
                 
                 container.appendChild(pageDiv);
+                
+                if (fixDuplex && i < totalPages - 1) {
+                    const blank = document.createElement('div');
+                    blank.className = 'page-a4 blank-page';
+                    blank.innerHTML = '&nbsp;';
+                    container.appendChild(blank);
+                }
             }
         }
         
