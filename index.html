@@ -5,7 +5,8 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#003366">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 <script>
   // Rejestracja Service Workera
   if ('serviceWorker' in navigator) {
@@ -17,15 +18,15 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v3.0</title>
+    <title>Wykaz Oddawczy v3.4</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
             --print-font: 'Arial', sans-serif;
-            --primary-color: #003366; /* Kolejowy granat */
+            --primary-color: #003366;
             --secondary-color: #f4f6f9;
-            --pen-color: #0044cc; /* Niebieski długopis */
-            --danger-color: #cc0000; /* Czerwony dla Oryginału */
+            --pen-color: #0044cc;
+            --danger-color: #cc0000;
             --border-color: #dde2e9;
         }
         
@@ -33,15 +34,15 @@
         
         /* --- UI EDYCJI (EKRAN) --- */
         .screen-ui {
+            width: 95%;
             max-width: 1050px;
             margin: 30px auto;
             padding-bottom: 60px;
         }
-
         .app-header { text-align: center; margin-bottom: 30px; }
         .app-header h2 { color: var(--primary-color); margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
         .app-header p { color: #666; font-size: 14px; margin-top: 5px; }
-
+        
         /* KARTY */
         .section-card {
             background: #fff;
@@ -51,7 +52,6 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
-
         .section-header {
             background: var(--primary-color);
             color: white;
@@ -61,17 +61,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-
         .section-body { padding: 25px; }
-
+        
         /* DASHBOARD GRID */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
         }
-
         .input-group-styled {
             background: var(--secondary-color);
             padding: 15px;
@@ -85,31 +85,31 @@
             border-color: var(--pen-color);
             box-shadow: 0 0 0 3px rgba(0, 68, 204, 0.1);
         }
-
         .input-label {
             font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
             color: #666; font-weight: bold; margin-bottom: 8px;
         }
-
         .input-control {
             border: none; background: transparent; font-size: 16px; font-weight: 600;
             color: var(--pen-color); width: 100%; outline: none; padding: 0;
         }
         .input-control::placeholder { color: #bbb; font-weight: normal; }
-
         .date-row { display: flex; align-items: center; justify-content: space-between; }
+        
         .btn-mini {
             background: #e1e4e8; color: #333; border: none;
-            padding: 4px 10px; border-radius: 4px; font-size: 11px;
-            cursor: pointer; font-weight: bold;
+            padding: 6px 12px; border-radius: 4px; font-size: 11px;
+            cursor: pointer; font-weight: bold; transition: background 0.2s;
         }
         .btn-mini:hover { background: #d0d4da; }
-
-        /* TABELA EDYCJI */
-        table.input-table { width: 100%; border-collapse: collapse; border: 2px solid #333; }
+        .btn-mini-primary { background: #0044cc; color: #fff; }
+        .btn-mini-primary:hover { background: #003399; }
+        
+        /* TABELA EDYCJI (RESPONSYWNA) */
+        #tableContainer { overflow-x: auto; }
+        table.input-table { width: 100%; min-width: 750px; border-collapse: collapse; border: 2px solid #333; }
         table.input-table th { background: #f0f0f0; padding: 12px; font-size: 12px; border: 1px solid #333; color: #000; text-transform: uppercase; }
         table.input-table td { padding: 0; border: 1px solid #333; background: #fff; }
-        
         table.input-table input { 
             width: 100%; border: none; padding: 10px 5px; 
             margin: 0; font-size: 14px; text-align: center; outline: none; background: transparent;
@@ -117,15 +117,15 @@
         }
         table.input-table input:focus { background: #fffbe6; }
         table.input-table input.align-left { text-align: left; padding-left: 8px; }
-
+        
         /* PASEK AKCJI */
         .action-bar {
             background: #fff; padding: 15px 25px; border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             position: sticky; bottom: 20px; border: 1px solid var(--border-color);
             display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 15px;
         }
-
         .copy-control {
             display: flex; align-items: center; gap: 15px;
             background: var(--secondary-color); padding: 8px 15px; border-radius: 6px; border: 1px solid var(--border-color);
@@ -135,13 +135,27 @@
             padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;
         }
         
-        .btn { padding: 12px 28px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .btn { padding: 12px 28px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-print { background: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(0,51,102,0.2); }
         .btn-print:hover { background: #002e5c; transform: translateY(-1px); }
         .btn-reset { background: white; color: var(--danger-color); border: 1px solid #ffcccc; }
         .btn-reset:hover { background: #fff5f5; border-color: var(--danger-color); }
-
+        
         #saveStatus { font-size: 12px; color: green; opacity: 0; transition: opacity 0.5s; margin-right: 15px; font-weight: bold;}
+        
+        /* ZAKTUALIZOWANA STOPKA */
+        .app-footer { text-align: center; margin-top: 25px; font-size: 12px; color: #666; line-height: 1.6; }
+        
+        /* ZAPYTANIA MEDIA DLA SMARTFONÓW I TABLETÓW */
+        @media (max-width: 992px) {
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .dashboard-grid { grid-template-columns: 1fr; gap: 15px; }
+            .action-bar { flex-direction: column; align-items: stretch; }
+            .copy-control { justify-content: space-between; }
+            .btn { width: 100%; }
+        }
 
         /* --- UI WYDRUKU --- */
         @media print {
@@ -150,34 +164,37 @@
             @page { size: A4; margin: 1cm; }
             .blue-ink { color: #0044cc !important; font-weight: bold; }
         }
-
         .print-area { display: none; }
         @media print { .print-area { display: block; } }
-
+        
         .page-a4 {
             width: 100%; height: 270mm; 
             display: flex; flex-direction: column; justify-content: space-between; 
             page-break-after: always;
         }
         .page-a4:last-child { page-break-after: auto; }
-
+        
         .form-half { height: 48%; width: 100%; position: relative; display: flex; flex-direction: column; }
-
+        .form-full { height: 98%; width: 100%; position: relative; display: flex; flex-direction: column; }
+        
         /* UKŁAD TABELI WYDRUKU */
         table.header-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 5px; }
         .h-col-left { width: 25%; vertical-align: top; }
         .h-col-center { width: 50%; vertical-align: top; text-align: center; }
         .h-col-right { width: 25%; vertical-align: top; padding-left: 10px; }
         .stamp-box { height: 60px; width: 100px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 9px; }
+        
         .main-title { font-size: 16pt; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; }
-        .sub-title { font-size: 10pt; margin-bottom: 10px; }
+        .sub-title { font-size: 10pt; margin-bottom: 3px; }
+        .book-number-print { font-size: 9pt; margin-bottom: 10px; }
+        
         .conductor-label { font-size: 9px; margin-bottom: 2px; }
         .conductor-val { border-bottom: 1px dotted #000; font-weight: bold; min-height: 14px; margin-bottom: 8px; }
-
+        
         table.train-table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 11px; }
         table.train-table td { padding: 2px; white-space: nowrap; }
         .val-line { border-bottom: 1px dotted #000; font-weight: bold; text-align: center; padding: 0 5px; min-height: 14px; }
-
+        
         table.list-table { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: 5px; table-layout: fixed; }
         table.list-table th { border: 1px solid #000; padding: 3px; font-weight: normal; text-align: center; vertical-align: middle; }
         table.list-table td { 
@@ -186,67 +203,47 @@
             white-space: normal; line-height: 1; word-wrap: break-word;
         }
         
+        .form-full table.list-table td { padding: 4px 2px; } 
+        
         .cell-print-remarks { font-size: 8px; text-align: left; vertical-align: middle; }
         .cell-print-station { font-size: 9px; line-height: 0.9; }
 
-        /* ZMIANA v3.0: Styl sekcji sumowania (poza tabelą) */
-        .summary-bar {
-            width: 100%;
-            display: flex;
-            font-size: 9px;
-            margin-top: 2px;
-            /* Flexbox udający kolumny tabeli: 20+20+10+10 = 60% lewej strony */
+        .strike-line {
+            display: block;
+            margin: 0 -2px; 
+            border-top: 1.5px solid #0044cc;
+            height: 0;
         }
-        .sum-label {
-            width: 60%; /* Odpowiada kolumnom Stacje + Rodzaj + Nr */
-            text-align: right;
-            padding-right: 5px;
-            font-weight: bold;
-            box-sizing: border-box;
-        }
-        .sum-val-szt {
-            width: 8%; /* Odpowiada kolumnie Szt */
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid #000; /* Opcjonalne podkreślenie sumy */
-        }
-        .sum-val-masa {
-            width: 8%; /* Odpowiada kolumnie Masa */
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid #000;
-        }
-        .sum-empty {
-            width: 24%; /* Odpowiada kolumnie Uwagi */
-        }
-
-        .form-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-bottom: 5px; }
         
+        .summary-bar {
+            width: 100%; display: flex; font-size: 9px; margin-top: 2px;
+        }
+        .sum-label { width: 60%; text-align: right; padding-right: 5px; font-weight: bold; box-sizing: border-box; }
+        .sum-val-szt { width: 8%; text-align: center; font-weight: bold; border-bottom: 1px solid #000; }
+        .sum-val-masa { width: 8%; text-align: center; font-weight: bold; border-bottom: 1px solid #000; }
+        .sum-empty { width: 24%; }
+        
+        .form-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-bottom: 5px; }
         .sign-placeholder { 
-            border-bottom: 1px dotted #000; 
-            width: 150px; 
-            margin-top: 30px;
+            border-bottom: 1px dotted #000; width: 150px; margin-top: 30px;
             display: flex; align-items: flex-end; justify-content: center;
             padding-bottom: 2px; min-height: 20px; font-size: 12px;
         }
         
-        /* ZMIANA v3.0: Kolory etykiet */
         .label-original { color: #cc0000; font-weight: bold; font-size: 14px; width: 100px; }
         .label-copy { color: #000000; font-weight: bold; font-size: 14px; width: 100px; }
         
         .cut-line { width: 100%; border-bottom: 1px dashed #999; height: 0; margin: auto 0; }
     </style>
-
-          <!-- Google tag (gtag.js) -->
+      
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W05T4L1HFD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-W05T4L1HFD');
 </script>
-
 </head>
 <body>
 
@@ -267,25 +264,25 @@
             </div>
             <div class="section-body">
                 <div class="dashboard-grid">
-                    
                     <div class="input-group-styled">
-                        <label class="input-label">Do pociągu nr</label>
+                        <label class="input-label" for="in_t_to">Do pociągu nr</label>
                         <input type="text" id="in_t_to" class="input-control" placeholder="np. 1814">
                     </div>
-
                     <div class="input-group-styled">
-                        <label class="input-label">Data</label>
+                        <label class="input-label" for="in_d_to">Data</label>
                         <div class="date-row">
                             <input type="date" id="in_d_to" class="input-control">
-                            <button type="button" class="btn-mini" onclick="setToday()">DZIŚ</button>
+                            <button type="button" class="btn-mini" onclick="setToday()">DZISIAJ</button>
                         </div>
                     </div>
-
                     <div class="input-group-styled">
-                        <label class="input-label">Zdał (Imię i Nazwisko)</label>
+                        <label class="input-label" for="in_handed_by">Zdał (Imię i Nazwisko kasjera)</label>
                         <input type="text" id="in_handed_by" class="input-control" placeholder="Wpisz nazwisko...">
                     </div>
-
+                    <div class="input-group-styled">
+                        <label class="input-label" for="in_book_num">Nr z książki koresp.</label>
+                        <input type="text" id="in_book_num" class="input-control">
+                    </div>
                 </div>
             </div>
         </div>
@@ -293,7 +290,10 @@
         <div class="section-card">
             <div class="section-header">
                 <span>LISTA PRZESYŁEK</span>
-                <button type="button" class="btn-mini" style="color: #333;" onclick="clearRows()">WYCZYŚĆ TABELĘ</button>
+                <div style="display: flex; gap: 8px;">
+                    <button type="button" class="btn-mini btn-mini-primary" onclick="addMoreRows()">+ DODAJ 10 RUBRYK</button>
+                    <button type="button" class="btn-mini" style="color: #333;" onclick="clearRows()">WYCZYŚĆ TABELĘ</button>
+                </div>
             </div>
             <div class="section-body" style="padding: 0;">
                 <div id="tableContainer"></div>
@@ -302,16 +302,15 @@
 
         <div class="action-bar">
             <button type="button" class="btn btn-reset" onclick="resetAll()">
-                <span>🗑️</span> Reset
+                Reset formularza
             </button>
-
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <span id="saveStatus">Zapisano ✓</span>
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <span id="saveStatus">Zapisano ✔</span>
                 
                 <div class="copy-control">
                     <div>
                         <div style="font-size: 10px; color: #666; font-weight: bold; text-transform: uppercase;">Kopie dodatkowe</div>
-                        <input type="number" id="in_copies" value="3" min="1" style="width: 50px; border: 1px solid #ccc; border-radius: 4px; padding: 4px; font-weight: bold; color: black;" onchange="updateTotalCount()" onkeyup="updateTotalCount()">
+                        <input type="number" id="in_copies" value="3" min="1" aria-label="Liczba dodatkowych kopii" style="width: 50px; border: 1px solid #ccc; border-radius: 4px; padding: 4px; font-weight: bold; color: black;" onchange="updateTotalCount()" onkeyup="updateTotalCount()">
                     </div>
                     <div style="border-left: 1px solid #ccc; padding-left: 15px;">
                         <span id="total-badge" class="total-badge">Łącznie: 4 szt.</span>
@@ -319,25 +318,24 @@
                 </div>
                 
                 <button type="button" class="btn btn-print" onclick="generatePrint()">
-                    <span>🖨️</span> DRUKUJ DOKUMENTY
+                    DRUKUJ DOKUMENTY
                 </button>
             </div>
         </div>
-
     </form>
     
-    <div style="text-align: center; margin-top: 20px; font-size: 11px; color: #aaa;">
-        Współautorzy: Gemini, Piotr M 🚂
+    <div class="app-footer">
+        Wersja aplikacji: v3.4<br>
+        Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
 
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const ROWS_COUNT = 10; 
+    let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
-
     const FALLBACK_STATIONS = [
         "Białystok", "Bydgoszcz Główna", "Ełk", "Gdańsk Główny", "Gdańsk Wrzeszcz",
         "Gdynia Główna", "Katowice", "Kołobrzeg", "Kraków Główny", "Kutno",
@@ -349,7 +347,6 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         loadStations();
-        renderInputTable();
         loadFromStorage();
         setupAutoSave();
         setupAutoFillLogic();
@@ -371,6 +368,7 @@
             .then(data => populateDatalist(datalist, data))
             .catch(error => populateDatalist(datalist, FALLBACK_STATIONS));
     }
+
     function populateDatalist(element, stations) {
         element.innerHTML = '';
         stations.forEach(station => {
@@ -380,29 +378,50 @@
         });
     }
 
+    // ZMIANA v3.4: Nowa logika inteligentnego autouzupełniania stacji
     function setupAutoFillLogic() {
-        const table = document.getElementById('gridTable');
-        table.addEventListener('input', function(e) {
-            const triggerClasses = ['cell-rodz', 'cell-nr', 'cell-szt', 'cell-masa', 'cell-uwagi'];
-            const isTrigger = triggerClasses.some(cls => e.target.classList.contains(cls));
-
-            if (isTrigger) {
-                const currentRow = e.target.closest('tr');
-                const rows = Array.from(currentRow.closest('tbody').querySelectorAll('tr'));
-                const rowIndex = rows.indexOf(currentRow);
-
-                if (rowIndex > 0) {
-                    const firstRow = rows[0];
-                    const nad0 = firstRow.querySelector('.cell-nad').value;
-                    const prz0 = firstRow.querySelector('.cell-prz').value;
-                    const currentNad = currentRow.querySelector('.cell-nad');
-                    const currentPrz = currentRow.querySelector('.cell-prz');
-
-                    if (currentNad.value.trim() === '') currentNad.value = nad0;
-                    if (currentPrz.value.trim() === '') currentPrz.value = prz0;
-                    saveToStorage();
+        const container = document.getElementById('tableContainer');
+        container.addEventListener('input', function(e) {
+            const currentRow = e.target.closest('tr');
+            if (!currentRow) return;
+            
+            const rows = Array.from(currentRow.closest('tbody').querySelectorAll('tr'));
+            const rowIndex = rows.indexOf(currentRow);
+            
+            // 1. Zmiana stacji nadania w pierwszym wierszu -> aktualizacja wszystkich wypełnionych wierszy poniżej
+            if (rowIndex === 0 && e.target.classList.contains('cell-nad')) {
+                const newNad = e.target.value;
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    const rowNad = row.querySelector('.cell-nad');
+                    // Sprawdzamy, czy wiersz ma jakieś wpisane dane (żeby nie zalać tekstem pustej tabeli)
+                    const hasData = Array.from(row.querySelectorAll('input:not(.cell-nad)')).some(inp => inp.value.trim() !== '');
+                    if (hasData) {
+                        rowNad.value = newNad;
+                    }
                 }
             }
+            
+            // 2. Wprowadzanie danych do wierszy poniżej pierwszego
+            if (rowIndex > 0) {
+                const nad0 = rows[0].querySelector('.cell-nad').value;
+                const prevPrz = rows[rowIndex - 1].querySelector('.cell-prz').value;
+                
+                const currentNad = currentRow.querySelector('.cell-nad');
+                const currentPrz = currentRow.querySelector('.cell-prz');
+                
+                // Kopiowanie Stacji Nadania (jeśli jest pusta i jej w tym momencie nie edytujemy)
+                if (currentNad.value.trim() === '' && nad0.trim() !== '' && !e.target.classList.contains('cell-nad')) {
+                    currentNad.value = nad0;
+                }
+                
+                // Kopiowanie Stacji Przeznaczenia z wiersza WYŻEJ (jeśli jest pusta i jej w tym momencie nie edytujemy)
+                if (currentPrz.value.trim() === '' && prevPrz.trim() !== '' && !e.target.classList.contains('cell-prz')) {
+                    currentPrz.value = prevPrz;
+                }
+            }
+            
+            saveToStorage();
         });
     }
 
@@ -427,26 +446,36 @@
                 </tr>
             </thead>
             <tbody>`;
-        for(let i=0; i<ROWS_COUNT; i++) {
+            
+        for(let i = 0; i < currentRowCount; i++) {
             html += `
                 <tr>
-                    <td><input class="cell-nad" list="stations-list"></td>
-                    <td><input class="cell-prz" list="stations-list"></td>
-                    <td><input class="cell-rodz"></td>
-                    <td><input class="cell-nr"></td>
-                    <td><input class="cell-szt"></td>
-                    <td><input class="cell-masa"></td>
-                    <td><input class="cell-uwagi align-left"></td>
+                    <td><input class="cell-nad" list="stations-list" aria-label="Stacja nadania pozycja ${i+1}"></td>
+                    <td><input class="cell-prz" list="stations-list" aria-label="Stacja przeznaczenia pozycja ${i+1}"></td>
+                    <td><input class="cell-rodz" aria-label="Rodzaj dokumentu pozycja ${i+1}"></td>
+                    <td><input class="cell-nr" aria-label="Numer dokumentu pozycja ${i+1}"></td>
+                    <td><input type="text" inputmode="numeric" class="cell-szt" aria-label="Liczba sztuk pozycja ${i+1}"></td>
+                    <td><input type="text" inputmode="decimal" class="cell-masa" aria-label="Masa przesyłki pozycja ${i+1}"></td>
+                    <td><input class="cell-uwagi align-left" aria-label="Uwagi pozycja ${i+1}"></td>
                 </tr>`;
         }
+        
         html += `</tbody></table>`;
         container.innerHTML = html;
+    }
+
+    function addMoreRows() {
+        currentRowCount += 15;
+        saveToStorage(); 
+        renderInputTable(); 
+        loadFromStoragePopulateOnly();
     }
 
     function saveToStorage() {
         const data = collectData();
         data.copies = document.getElementById('in_copies').value;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        
         const status = document.getElementById('saveStatus');
         status.style.opacity = '1';
         setTimeout(() => { status.style.opacity = '0'; }, 2000);
@@ -454,32 +483,54 @@
 
     function loadFromStorage() {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) { setToday(); return; }
+        if (!raw) { 
+            renderInputTable();
+            setToday(); 
+            return; 
+        }
         try {
             const data = JSON.parse(raw);
-            document.getElementById('in_t_to').value = data.trainTo || '';
-            document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
-            // ZMIANA v3.0: Domyślnie 3 kopie jeśli brak danych
-            document.getElementById('in_copies').value = (data.copies !== undefined) ? data.copies : 3;
-            document.getElementById('in_handed_by').value = data.handedBy || '';
-
-            const trs = document.querySelectorAll('#gridTable tbody tr');
             if (data.rows && data.rows.length > 0) {
-                data.rows.forEach((rowData, index) => {
-                    if (index < trs.length) {
-                        const tr = trs[index];
-                        tr.querySelector('.cell-nad').value = rowData.nad || '';
-                        tr.querySelector('.cell-prz').value = rowData.prz || '';
-                        tr.querySelector('.cell-rodz').value = rowData.rodz || '';
-                        tr.querySelector('.cell-nr').value = rowData.nr || '';
-                        tr.querySelector('.cell-szt').value = rowData.szt || '';
-                        tr.querySelector('.cell-masa').value = rowData.masa || '';
-                        tr.querySelector('.cell-uwagi').value = rowData.uwagi || '';
-                    }
-                });
+                currentRowCount = Math.max(10, data.rows.length);
             }
-            updateTotalCount(); 
-        } catch (e) { console.error(e); }
+            renderInputTable();
+            loadFromStoragePopulateOnly(data);
+        } catch (e) { 
+            console.error(e);
+            renderInputTable();
+        }
+    }
+
+    function loadFromStoragePopulateOnly(providedData = null) {
+        let data = providedData;
+        if (!data) {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            data = JSON.parse(raw);
+        }
+        
+        document.getElementById('in_t_to').value = data.trainTo || '';
+        document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
+        document.getElementById('in_handed_by').value = data.handedBy || '';
+        document.getElementById('in_book_num').value = data.bookNum || '';
+        document.getElementById('in_copies').value = (data.copies !== undefined) ? data.copies : 3;
+        
+        const trs = document.querySelectorAll('#gridTable tbody tr');
+        if (data.rows && data.rows.length > 0) {
+            data.rows.forEach((rowData, index) => {
+                if (index < trs.length) {
+                    const tr = trs[index];
+                    tr.querySelector('.cell-nad').value = rowData.nad || '';
+                    tr.querySelector('.cell-prz').value = rowData.prz || '';
+                    tr.querySelector('.cell-rodz').value = rowData.rodz || '';
+                    tr.querySelector('.cell-nr').value = rowData.nr || '';
+                    tr.querySelector('.cell-szt').value = rowData.szt || '';
+                    tr.querySelector('.cell-masa').value = rowData.masa || '';
+                    tr.querySelector('.cell-uwagi').value = rowData.uwagi || '';
+                }
+            });
+        }
+        updateTotalCount();
     }
 
     function setupAutoSave() {
@@ -487,7 +538,7 @@
     }
 
     function resetAll() {
-        if (confirm("Czy wyczyścić formularz?")) {
+        if (confirm("Czy na pewno wyczyścić cały formularz?")) {
             localStorage.removeItem(STORAGE_KEY);
             location.reload();
         }
@@ -516,40 +567,60 @@
             trainTo: document.getElementById('in_t_to').value,
             dateTo: document.getElementById('in_d_to').value,
             handedBy: document.getElementById('in_handed_by').value,
+            bookNum: document.getElementById('in_book_num').value,
             rows: rows
         };
     }
 
-    function getSheetHTML(data, type) {
+    function getSheetHTML(data, type, isFullPage) {
         const filledRows = data.rows.filter(r => r.nad.trim() !== '' || r.prz.trim() !== '');
         const posCount = filledRows.length;
         const piecesSum = data.rows.reduce((sum, r) => sum + (parseInt(r.szt) || 0), 0);
         const massSum = data.rows.reduce((sum, r) => sum + (parseFloat(r.masa.replace(',','.')) || 0), 0);
         const massDisplay = massSum > 0 ? massSum.toFixed(1) : '';
-
-        // Ustalenie klasy koloru dla etykiety Oryginał/Kopia
+        
         const labelClass = (type === 'ORYGINAŁ') ? 'label-original' : 'label-copy';
-
-        const rowsHTML = data.rows.map(r => `
-            <tr>
-                <td class="blue-ink cell-print-station">${r.nad}</td>
-                <td class="blue-ink cell-print-station">${r.prz}</td>
-                <td class="blue-ink">${r.rodz}</td>
-                <td class="blue-ink">${r.nr}</td>
-                <td class="blue-ink">${r.szt}</td>
-                <td class="blue-ink">${r.masa}</td>
-                <td class="blue-ink cell-print-remarks">${r.uwagi}</td>
-            </tr>
-        `).join('');
+        const wrapperClass = isFullPage ? 'form-full' : 'form-half';
+        
+        const rowsHTML = data.rows.map(r => {
+            const isEmptyRow = !r.nad.trim() && !r.prz.trim() && !r.rodz.trim() && !r.nr.trim() && !r.szt.trim() && !r.masa.trim() && !r.uwagi.trim();
+            
+            if (isEmptyRow) {
+                return `
+                <tr>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                    <td><div class="strike-line"></div></td>
+                </tr>`;
+            } else {
+                return `
+                <tr>
+                    <td class="blue-ink cell-print-station">${r.nad}</td>
+                    <td class="blue-ink cell-print-station">${r.prz}</td>
+                    <td class="blue-ink">${r.rodz}</td>
+                    <td class="blue-ink">${r.nr}</td>
+                    <td class="blue-ink">${r.szt}</td>
+                    <td class="blue-ink">${r.masa}</td>
+                    <td class="blue-ink cell-print-remarks">${r.uwagi}</td>
+                </tr>`;
+            }
+        }).join('');
 
         return `
-        <div class="form-half">
+        <div class="${wrapperClass}">
             <table class="header-table">
                 <tr>
                     <td class="h-col-left"><div class="stamp-box">(stempel wystawcy)</div></td>
                     <td class="h-col-center">
                         <div class="main-title">WYKAZ ODDAWCZY</div>
                         <div class="sub-title">na przesyłki oddane</div>
+                        <div class="book-number-print">
+                            Nr koresp.: <span class="blue-ink" style="font-weight:bold; border-bottom:1px dotted #000; padding:0 10px; display:inline-block; min-width: 140px;">${data.bookNum || ''}</span>
+                        </div>
                     </td>
                     <td class="h-col-right">
                         <div class="conductor-label">Nazwisko konduktora oddającego</div>
@@ -559,6 +630,7 @@
                     </td>
                 </tr>
             </table>
+            
             <table class="train-table">
                 <tr>
                     <td style="width: 80px;">do poc. nr</td>
@@ -611,7 +683,7 @@
                 <div class="sum-val-masa blue-ink">${massDisplay}</div>
                 <div class="sum-empty"></div>
             </div>
-
+            
             <div class="form-footer">
                 <div class="${labelClass}">${type}</div>
                 
@@ -630,35 +702,53 @@
 
     function generatePrint() {
         saveToStorage(); 
+
         const data = collectData();
         const container = document.getElementById('printOutput');
         container.innerHTML = '';
-
+        
         const copiesInput = parseInt(document.getElementById('in_copies').value) || 0;
         const totalForms = 1 + copiesInput;
-        const totalPages = Math.ceil(totalForms / 2);
-
+        const isFullPage = data.rows.length > 10; 
+        
         let generatedCount = 0;
-        for (let i = 0; i < totalPages; i++) {
-            const pageDiv = document.createElement('div');
-            pageDiv.className = 'page-a4';
-            if (generatedCount < totalForms) {
-                const type = (generatedCount === 0) ? 'ORYGINAŁ' : 'KOPIA';
-                pageDiv.innerHTML += getSheetHTML(data, type);
-                generatedCount++;
+        
+        if (isFullPage) {
+            for (let i = 0; i < totalForms; i++) {
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page-a4';
+                
+                const type = (i === 0) ? 'ORYGINAŁ' : 'KOPIA';
+                pageDiv.innerHTML = getSheetHTML(data, type, true);
+                container.appendChild(pageDiv);
             }
-            if (generatedCount < totalForms && generatedCount % 2 !== 0) { 
-               pageDiv.innerHTML += '<div class="cut-line"></div>';
+        } else {
+            const totalPages = Math.ceil(totalForms / 2);
+            for (let i = 0; i < totalPages; i++) {
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page-a4';
+                
+                if (generatedCount < totalForms) {
+                    const type = (generatedCount === 0) ? 'ORYGINAŁ' : 'KOPIA';
+                    pageDiv.innerHTML += getSheetHTML(data, type, false);
+                    generatedCount++;
+                }
+                
+                if (generatedCount < totalForms && generatedCount % 2 !== 0) {
+                    pageDiv.innerHTML += '<div class="cut-line"></div>';
+                }
+                
+                if (generatedCount < totalForms) {
+                    pageDiv.innerHTML += getSheetHTML(data, 'KOPIA', false);
+                    generatedCount++;
+                }
+                
+                container.appendChild(pageDiv);
             }
-            if (generatedCount < totalForms) {
-                pageDiv.innerHTML += getSheetHTML(data, 'KOPIA');
-                generatedCount++;
-            }
-            container.appendChild(pageDiv);
         }
+        
         window.print();
     }
 </script>
-
 </body>
 </html>
