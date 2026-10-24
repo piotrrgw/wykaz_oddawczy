@@ -1,4 +1,4 @@
-# 🚂 Generator Wykazu Oddawczego (v4.5)
+# 🚂 Generator Wykazu Oddawczego (v4.5.1)
 
 Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
@@ -21,7 +21,7 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
     * **Inteligentna konwersja nazwy na numer:** Po wpisaniu nazwy handlowej skrypt automatycznie podmienia ją na numer pociągu (z uwzględnieniem kierunku trasy na podstawie stacji nadania) oraz wyświetla pod polem czytelną podpowiedź: `🚆 POBRZEŻE (ŁÓDŹ FABRYCZNA ➔ KOŁOBRZEG)`.
     * **Panel bazy pociągów (`🚆 Pociągi`):** Wygodny modal umożliwiający przeszukiwanie bazy, natychmiastowe pobranie z API `trasy-ic`, import pliku JSON oraz przywracanie domyślnego spisu.
     * **100% Offline-First:** Plik `pociagi.json` oraz pamięć podręczna `localStorage` i Service Worker gwarantują natychmiastowe działanie bez konieczności stałego dostępu do internetu.
-* **Uporządkowany, dopracowany i w pełni responsywny UX (v4.5):**
+* **Uporządkowany, dopracowany i w pełni responsywny UX (v4.5.1):**
     * **Usprawniony Pasek Akcji (`.action-bar`):** Zabezpieczony przed przepełnieniem (flex-wrap i elastyczne dopasowanie) – przycisk `DRUKUJ DOKUMENTY` oraz sekcja kopii nigdy nie uciekają poza obrys karty, nawet na mniejszych ekranach, laptopach czy tabletach.
     * **Kompaktowe Przyciski Narzędziowe:** Zoptymalizowane etykiety (`✍️ Przekreślanie: WŁ`, `🚉 Stacje 510`, `🚆 Pociągi 561`, `🧹 Reset`) z zachowaniem pełnych opisów w dymkach pomocniczych (tooltip).
     * **Pole "Nr z książki koresp.":** Wyposażone w intuicyjny placeholder `Wprowadź numer...`, zachowujące pełną swobodę wpisywania dowolnych formatów (spacje, ukośniki, myślniki, kropki).
@@ -41,7 +41,7 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
     * Płynny suwak formatu **A5 / A4**: Szybki wybór pomiędzy formatem A5 (10 pozycji, 2 formularze na stronę A4) a A4 (25 pozycji, pełna strona A4).
 * **Inteligentne Autouzupełnianie:**
     * Automatyczne kopiowanie stacji nadania/przeznaczenia do kolejnych wierszy.
-    * Przycisk "DZISIAJ" do szybkiego wstawiania daty.
+    * **Przycisk "DZISIAJ" z obsługą strefy czasowej:** Precyzyjne pobieranie bieżącej daty z uwzględnieniem strefy czasowej Polski (`Europe/Warsaw`), zapobiegające błędnemu cofaniu daty do dnia poprzedniego przy pracy po północy (00:00 - 02:00 UTC).
 * **Auto-Zapis (Local Storage):** Zoptymalizowany zapis w czasie rzeczywistym z mechanizmem debounce. Po odświeżeniu strony nic nie ginie.
 * **Twardy Reset (Cache):** Dedykowany przycisk czyszczący pamięć podręczną (CacheStorage), Service Workera i dane formularza.
 * **Wsparcie Dupleksu:** Automatyczne wstawianie pustych stron zapobiegające zadrukowaniu rewersu przy druku dwustronnym.

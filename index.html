@@ -17,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v4.5</title>
+    <title>Wykaz Oddawczy v4.5.1</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -730,7 +730,7 @@
     </div>
     
     <div class="app-footer">
-        Wersja aplikacji: v4.5<br>
+        Wersja aplikacji: v4.5.1<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -738,7 +738,7 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.5"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.5.1"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
@@ -1944,8 +1944,21 @@
         }
     });
 
+    // Pobiera bieżącą datę w formacie YYYY-MM-DD dla strefy czasowej Polski (Europe/Warsaw)
+    function getTodayDateString() {
+        try {
+            return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Warsaw' }).format(new Date());
+        } catch (e) {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+    }
+
     function setToday() {
-        document.getElementById('in_d_to').value = new Date().toISOString().split('T')[0];
+        document.getElementById('in_d_to').value = getTodayDateString();
         saveToStorage(); 
     }
 
@@ -2066,7 +2079,7 @@
         
         document.getElementById('in_t_to').value = data.trainTo || '';
         updateTrainHint(data.trainTo || '');
-        document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
+        document.getElementById('in_d_to').value = data.dateTo || getTodayDateString();
         document.getElementById('in_handed_by').value = data.handedBy || '';
         document.getElementById('in_book_num').value = data.bookNum || '';
         document.getElementById('in_copies').value = (data.copies !== undefined) ? data.copies : 3;
