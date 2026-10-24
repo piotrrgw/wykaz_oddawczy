@@ -1,4 +1,4 @@
-# 🚂 Generator Wykazu Oddawczego (v4.0)
+# 🚂 Generator Wykazu Oddawczego (v4.1)
 
 Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
@@ -20,7 +20,8 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
 * **Pełna Samodzielność i Praca Offline (PWA):** Słownik stacji jest wbudowany bezpośrednio w aplikację oraz zapisywany w pamięci lokalnej (CacheStorage + LocalStorage) – wykaz oddawczy działa w 100% offline na dowolnym urządzeniu bez konieczności stałego połączenia z AKB.
 * **Opcja Przekreślania Pustych Rubryk:** Wygodny przycisk w dolnej belce pozwalający włączyć lub wyłączyć automatyczne poziome przekreślanie pustych wierszy na wydruku.
 * **Inteligentne Zarządzanie Wierszami:**
-    * Czerwony przycisk **✕** po lewej stronie tabeli pozwalający wyczyścić wskazany wiersz i automatycznie przesunąć wiersze poniżej w górę.
+    * Czerwony przycisk **✕** w nagłówku tabeli (obok "Stacja Nadania"): Szybkie wyczyszczenie całej tabeli (wszystkich pozycji wierszy) za jednym kliknięciem, z zachowaniem danych nagłówka i kasjera.
+    * Czerwony przycisk **✕** po lewej stronie każdego wiersza: Wyszyszczenie pojedynczego wiersza i automatyczne przesunięcie pozycji poniżej w górę.
     * Płynny suwak formatu **A5 / A4**: Szybki wybór pomiędzy formatem A5 (10 pozycji, 2 formularze na stronę A4) a A4 (25 pozycji, pełna strona A4).
 * **Inteligentne Autouzupełnianie:**
     * Automatyczne kopiowanie stacji nadania/przeznaczenia do kolejnych wierszy.

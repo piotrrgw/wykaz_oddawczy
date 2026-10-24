@@ -17,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v4.0</title>
+    <title>Wykaz Oddawczy v4.1</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -628,7 +628,7 @@
     </div>
     
     <div class="app-footer">
-        Wersja aplikacji: v4.0<br>
+        Wersja aplikacji: v4.1<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -636,7 +636,7 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.0"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.1"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
@@ -767,6 +767,20 @@
             lastTr.querySelector(selector).value = '';
         });
         
+        saveToStorage();
+    }
+
+    // Wyczyszczenie wszystkich wierszy tabeli (bez ruszania danych nagłówka i kasjera)
+    function clearAllTableRows() {
+        const inputs = document.querySelectorAll('#gridTable tbody input');
+        const hasData = Array.from(inputs).some(inp => inp.value.trim() !== '');
+        if (!hasData) return;
+        
+        if (!confirm("Czy na pewno chcesz wyczyścić całą tabelę (wszystkie pozycje wierszy)?")) {
+            return;
+        }
+        
+        inputs.forEach(inp => inp.value = '');
         saveToStorage();
     }
 
@@ -1228,7 +1242,9 @@
         <table class="input-table" id="gridTable">
             <thead>
                 <tr>
-                    <th style="width: 36px; text-align: center; color: var(--danger-color);" title="Wyczyść wiersz i przesuń w górę">✕</th>
+                    <th style="width: 36px; padding: 0; text-align: center; vertical-align: middle;">
+                        <button type="button" class="btn-row-delete" onclick="clearAllTableRows()" title="Wyczyść całą tabelę (wszystkie pozycje wierszy)" aria-label="Wyczyść całą tabelę">✕</button>
+                    </th>
                     <th width="20%">Stacja Nadania</th>
                     <th width="20%">Stacja Przezn.</th>
                     <th width="10%">Rodzaj</th>
