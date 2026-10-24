@@ -1,9 +1,12 @@
-const CACHE_NAME = 'wykaz-v3.8-cache';
+const CACHE_NAME = 'wykaz-v4.0-cache';
 const ASSETS = [
   './',
   './index.html',
   './stacje.json',
-  './favicon.svg'
+  './favicon.svg',
+  './icon-192.png',
+  './icon-512.png',
+  './manifest.json'
 ];
 
 // Instalacja i cache'owanie zasobów

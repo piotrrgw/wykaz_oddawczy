@@ -1,41 +1,47 @@
-# 🚂 Generator Wykazu Oddawczego (v3.0)
+# 🚂 Generator Wykazu Oddawczego (v4.0)
 
-Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
+Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
-Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przygotowuje idealnie sformatowany wydruk A4 (Oryginał + Kopia na jednej stronie).
+Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przygotowuje idealnie sformatowany wydruk A4 (Oryginał + Kopia na jednej stronie lub pełna strona dla 25 rubryk).
 
-## 👥 Autorzy
+## 👥 Współautorzy
 * **Piotr M 🚂** – Koncepcja, testy, wdrożenie
 * **Gemini** – Kod, architektura, style CSS
+* **Thundo** – Współpraca i rozwój
 
 ## 📋 Główne Funkcjonalności
 
-* **Wersja 3.0 (Ostateczna):** Stabilny, sprawdzony kod zoptymalizowany pod kątem niezawodności wydruku.
-* **Wydruk A4 (Pixel-Perfect):** Automatyczne generowanie arkusza zawierającego "ORYGINAŁ" i "KOPIĘ" na jednej kartce A4, z zachowaniem wymogów formalnych.
+* **Wydruk A4 (Pixel-Perfect):** Automatyczne generowanie arkusza zawierającego "ORYGINAŁ" i "KOPIĘ" na jednej kartce A4 (lub 1 pełna strona przy 25 wierszach), z zachowaniem wymogów formalnych.
+* **Integracja ze Słownikiem Stacji i Kodów EPA (AKB / Kurs90):**
+    * Pełna baza 257 stacji kolejowych (wyłącznie stacje krajowe) zintegrowana ze słownikiem *Asystenta Kas Biletowych (AKB)*.
+    * **Inteligentna podmiana kodu EPA:** Pracownik wpisuje w polu stacji jedynie numer EPA (np. `242` dla Warszawy Centralnej, `71` dla Katowic, `4400` dla Żywca), a skrypt automatycznie podmienia numer na oficjalną nazwę stacji po naciśnięciu Tab, Enter lub zmianie pola.
+    * **Wyszukiwarka i podpowiedzi (Datalist):** Podpowiedzi stacji wraz z kodami EPA podczas pisania.
+    * **Własny panel bazy stacji (`🚉 Baza stacji`):** Przeglądanie bazy i kodów EPA, synchronizacja z serwerem jednym kliknięciem, import własnych plików JSON (w tym bezpośrednio backupów AKB) oraz przywracanie domyślnego słownika.
+* **Pełna Samodzielność i Praca Offline (PWA):** Słownik stacji jest wbudowany bezpośrednio w aplikację oraz zapisywany w pamięci lokalnej (CacheStorage + LocalStorage) – wykaz oddawczy działa w 100% offline na dowolnym urządzeniu bez konieczności stałego połączenia z AKB.
+* **Opcja Przekreślania Pustych Rubryk:** Wygodny przycisk w dolnej belce pozwalający włączyć lub wyłączyć automatyczne poziome przekreślanie pustych wierszy na wydruku.
+* **Inteligentne Zarządzanie Wierszami:**
+    * Czerwony przycisk **✕** po lewej stronie tabeli pozwalający wyczyścić wskazany wiersz i automatycznie przesunąć wiersze poniżej w górę.
+    * Płynny suwak formatu **A5 / A4**: Szybki wybór pomiędzy formatem A5 (10 pozycji, 2 formularze na stronę A4) a A4 (25 pozycji, pełna strona A4).
 * **Inteligentne Autouzupełnianie:**
-    * Baza stacji kolejowych (podpowiedzi przy wpisywaniu).
     * Automatyczne kopiowanie stacji nadania/przeznaczenia do kolejnych wierszy.
-    * Przycisk "DZIŚ" do szybkiego wstawiania daty.
-* **Auto-Zapis (Local Storage):** Dane są zapisywane w przeglądarce w czasie rzeczywistym. Po odświeżeniu strony nic nie ginie.
-* **Profesjonalny Interfejs:** Czytelny formularz edycji, oddzielony od widoku wydruku.
-* **Favicon:** Dedykowana ikona lokomotywy dla łatwej identyfikacji karty w przeglądarce.
+    * Przycisk "DZISIAJ" do szybkiego wstawiania daty.
+* **Auto-Zapis (Local Storage):** Zoptymalizowany zapis w czasie rzeczywistym z mechanizmem debounce. Po odświeżeniu strony nic nie ginie.
+* **Twardy Reset (Cache):** Dedykowany przycisk czyszczący pamięć podręczną (CacheStorage), Service Workera i dane formularza.
+* **Wsparcie Dupleksu:** Automatyczne wstawianie pustych stron zapobiegające zadrukowaniu rewersu przy druku dwustronnym.
 
 ## 🚀 Jak używać?
 
-1.  Pobierz pliki z tego repozytorium.
-2.  Otwórz plik `index.html` w dowolnej nowoczesnej przeglądarce (Chrome, Edge, Firefox).
-3.  Wypełnij formularz na ekranie (dane nagłówkowe, lista przesyłek).
-4.  Kliknij przycisk **🖨️ DRUKUJ DOKUMENTY**.
-5.  W oknie drukowania upewnij się, że:
+1. Pobierz pliki z tego repozytorium lub otwórz stronę aplikacji.
+2. Otwórz plik `index.html` w dowolnej nowoczesnej przeglądarce (Chrome, Edge, Firefox, Safari).
+3. Wypełnij formularz na ekranie (dane nagłówkowe, lista przesyłek). W polach stacji możesz wpisać nazwę lub kod EPA (np. `242`).
+4. Kliknij przycisk **DRUKUJ DOKUMENTY**.
+5. W oknie drukowania upewnij się, że:
     * Format papieru to **A4**.
-    * Marginesy są ustawione na **Domyślne** lub **Minimalne** (zależnie od drukarki).
-    * Opcja "Grafika w tle" (Background graphics) jest zaznaczona (opcjonalnie, dla lepszego kontrastu nagłówków).
+    * Marginesy są ustawione na **Domyślne** lub **Minimalne**.
+    * Opcja "Grafika w tle" (Background graphics) jest zaznaczona (dla lepszego kontrastu nagłówków).
 
 ## 🛠️ Technologie
 
 * **HTML5 / CSS3:** Struktura i style (sztywny układ tabelaryczny dla wydruku).
-* **JavaScript (Vanilla JS):** Logika aplikacji, brak zewnętrznych frameworków.
-* **Base64 SVG:** Ikona aplikacji zaszyta bezpośrednio w kodzie.
-
----
-*Ostatnia aktualizacja: Luty 2026*
+* **JavaScript (Vanilla JS):** Wydajna logika aplikacji, brak zewnętrznych frameworków.
+* **PWA & Service Worker:** Szybkie ładowanie i pełna obsługa pracy offline.
