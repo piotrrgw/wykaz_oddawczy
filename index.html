@@ -709,6 +709,9 @@
             return;
         }
 
+        strikeEmptyRows = true;
+        updateStrikeButtonState();
+
         const status = document.getElementById('saveStatus');
         if (status) {
             status.innerText = "Trwa twardy reset...";
@@ -781,6 +784,8 @@
         }
         
         inputs.forEach(inp => inp.value = '');
+        strikeEmptyRows = true;
+        updateStrikeButtonState();
         saveToStorage();
     }
 
@@ -1324,6 +1329,8 @@
         if (!raw) { 
             renderInputTable();
             setToday(); 
+            strikeEmptyRows = true;
+            updateStrikeButtonState();
             return; 
         }
         try {
@@ -1384,6 +1391,8 @@
     function clearTableAndCashier() {
         document.querySelectorAll('#gridTable input').forEach(inp => inp.value = '');
         document.getElementById('in_handed_by').value = '';
+        strikeEmptyRows = true;
+        updateStrikeButtonState();
         saveToStorage();
     }
 
