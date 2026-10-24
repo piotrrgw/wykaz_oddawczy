@@ -17,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v4.2</title>
+    <title>Wykaz Oddawczy v4.5</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -224,26 +224,28 @@
         
         /* PASEK AKCJI */
         .action-bar {
-            background: #fff; padding: 14px 20px; border-radius: 12px;
+            background: #fff; padding: 12px 18px; border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             border: 1px solid var(--border-color);
             display: flex; justify-content: space-between; align-items: center;
-            gap: 15px; margin-top: 25px;
+            gap: 12px; margin-top: 25px;
             position: relative;
+            box-sizing: border-box;
+            width: 100%;
+            flex-wrap: wrap;
         }
         .action-left {
             display: flex;
             gap: 8px;
             align-items: center;
-            flex-shrink: 0;
             flex-wrap: wrap;
         }
         .action-right {
             display: flex;
             align-items: center;
             gap: 12px;
-            flex-shrink: 0;
             flex-wrap: wrap;
+            justify-content: flex-end;
         }
         .copy-control {
             display: flex; flex-direction: column; align-items: stretch; gap: 6px;
@@ -359,6 +361,14 @@
         /* ZAPYTANIA MEDIA DLA SMARTFONÓW I TABLETÓW */
         @media (max-width: 992px) {
             .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+            .action-bar {
+                justify-content: center;
+                gap: 12px;
+            }
+            .action-left, .action-right {
+                justify-content: center;
+                width: 100%;
+            }
         }
         @media (max-width: 768px) {
             .dashboard-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -367,7 +377,6 @@
                 align-items: stretch;
                 padding: 12px;
                 gap: 10px;
-                bottom: 10px;
             }
             .action-right {
                 flex-direction: column;
@@ -388,6 +397,7 @@
                 width: 100%;
                 order: -1;
                 padding: 12px;
+                box-sizing: border-box;
             }
             .btn-sm {
                 width: 100%;
@@ -531,7 +541,7 @@
                     </div>
                     <div class="input-group-styled">
                         <label class="input-label" for="in_book_num">Nr z książki koresp.</label>
-                        <input type="text" id="in_book_num" class="input-control">
+                        <input type="text" id="in_book_num" class="input-control" placeholder="Wprowadź numer...">
                     </div>
                 </div>
             </div>
@@ -563,13 +573,13 @@
                     ✍️ Przekreślanie: WŁ
                 </button>
                 <button type="button" class="btn btn-sm btn-stations" id="btn_stations_modal" onclick="openStationsModal()" title="Zarządzaj słownikiem stacji i bazą kodów EPA">
-                    🚉 Baza stacji <span id="stationsCountBadge" class="badge-mini">510</span>
+                    🚉 Stacje <span id="stationsCountBadge" class="badge-mini">510</span>
                 </button>
                 <button type="button" class="btn btn-sm btn-trains" id="btn_trains_modal" onclick="openTrainsModal()" title="Zarządzaj bazą pociągów PKP Intercity (trasy-ic)">
-                    🚆 Baza pociągów <span id="trainsCountBadge" class="badge-mini badge-mini-trains">0</span>
+                    🚆 Pociągi <span id="trainsCountBadge" class="badge-mini badge-mini-trains">0</span>
                 </button>
-                <button type="button" class="btn btn-hard-reset btn-sm" onclick="hardResetApp()" title="Czyści pamięć podręczną (cache), Service Workera i pobiera najnowszą wersję">
-                    🧹 Twardy reset
+                <button type="button" class="btn btn-hard-reset btn-sm" onclick="hardResetApp()" title="Twardy reset aplikacji (czyści cache, Service Workera i pobiera najnowszą wersję)">
+                    🧹 Reset
                 </button>
             </div>
             <div class="action-right">
@@ -720,7 +730,7 @@
     </div>
     
     <div class="app-footer">
-        Wersja aplikacji: v4.4<br>
+        Wersja aplikacji: v4.5<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -728,7 +738,7 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.4"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.5"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
