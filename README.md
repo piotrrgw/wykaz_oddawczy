@@ -1,4 +1,4 @@
-# 🚂 Generator Wykazu Oddawczego (v4.1)
+# 🚂 Generator Wykazu Oddawczego (v4.2)
 
 Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
@@ -12,12 +12,13 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
 ## 📋 Główne Funkcjonalności
 
 * **Wydruk A4 (Pixel-Perfect):** Automatyczne generowanie arkusza zawierającego "ORYGINAŁ" i "KOPIĘ" na jednej kartce A4 (lub 1 pełna strona przy 25 wierszach), z zachowaniem wymogów formalnych.
-* **Integracja ze Słownikiem Stacji i Kodów EPA (AKB / Kurs90):**
-    * Pełna baza 257 stacji kolejowych (wyłącznie stacje krajowe) zintegrowana ze słownikiem *Asystenta Kas Biletowych (AKB)*.
+* **Bezpośrednia Integracja z API AKB-DATA (Kurs90 / EPA):**
+    * Aplikacja łączy się bezpośrednio z publicznym API bazy **AKB-DATA** (`public_data/stations_dict`), pobierając 510 aktualnych stacji krajowych z kodami EPA i zapisując je w pamięci podręcznej przeglądarki (`localStorage` + Service Worker).
+    * **Automatyczna synchronizacja w tle:** Przy obecności połączenia internetowego aplikacja sama odświeża bazę z API, a w razie braku sieci natychmiast korzysta z pamięci podręcznej (tryb offline-first).
     * **Inteligentna podmiana kodu EPA:** Pracownik wpisuje w polu stacji jedynie numer EPA (np. `242` dla Warszawy Centralnej, `71` dla Katowic, `4400` dla Żywca), a skrypt automatycznie podmienia numer na oficjalną nazwę stacji po naciśnięciu Tab, Enter lub zmianie pola.
     * **Wyszukiwarka i podpowiedzi (Datalist):** Podpowiedzi stacji wraz z kodami EPA podczas pisania.
-    * **Własny panel bazy stacji (`🚉 Baza stacji`):** Przeglądanie bazy i kodów EPA, synchronizacja z serwerem jednym kliknięciem, import własnych plików JSON (w tym bezpośrednio backupów AKB) oraz przywracanie domyślnego słownika.
-* **Pełna Samodzielność i Praca Offline (PWA):** Słownik stacji jest wbudowany bezpośrednio w aplikację oraz zapisywany w pamięci lokalnej (CacheStorage + LocalStorage) – wykaz oddawczy działa w 100% offline na dowolnym urządzeniu bez konieczności stałego połączenia z AKB.
+    * **Panel bazy stacji (`🚉 Baza stacji`):** Przeglądanie bazy i kodów EPA, przycisk natychmiastowego pobrania prosto z API AKB-DATA (`⚡ Pobierz z API AKB-DATA`), import własnych plików JSON oraz przywracanie domyślnego słownika.
+* **Pełna Samodzielność i Praca Offline (PWA):** Wykaz oddawczy działa w 100% offline na dowolnym urządzeniu bez konieczności stałego połączenia z siecią.
 * **Opcja Przekreślania Pustych Rubryk:** Wygodny przycisk w dolnej belce pozwalający włączyć lub wyłączyć automatyczne poziome przekreślanie pustych wierszy na wydruku.
 * **Inteligentne Zarządzanie Wierszami:**
     * Czerwony przycisk **✕** w nagłówku tabeli (obok "Stacja Nadania"): Szybkie wyczyszczenie całej tabeli (wszystkich pozycji wierszy) za jednym kliknięciem, z zachowaniem danych nagłówka i kasjera.

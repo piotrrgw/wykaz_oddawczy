@@ -17,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v4.1</title>
+    <title>Wykaz Oddawczy v4.2</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -538,7 +538,7 @@
                     ✍️ Przekreślanie: WŁ
                 </button>
                 <button type="button" class="btn btn-sm btn-stations" id="btn_stations_modal" onclick="openStationsModal()" title="Zarządzaj słownikiem stacji i bazą kodów EPA">
-                    🚉 Baza stacji <span id="stationsCountBadge" class="badge-mini">257</span>
+                    🚉 Baza stacji <span id="stationsCountBadge" class="badge-mini">510</span>
                 </button>
                 <button type="button" class="btn btn-hard-reset btn-sm" onclick="hardResetApp()" title="Czyści pamięć podręczną (cache), Service Workera i pobiera najnowszą wersję">
                     🧹 Twardy reset
@@ -578,7 +578,7 @@
                     <span style="font-size: 20px;">🚉</span>
                     <div>
                         <h3 style="margin: 0; font-size: 15px; color: #1e293b;">Baza Stacji Krajowych i Słownik EPA</h3>
-                        <div style="font-size: 11px; color: #64748b;" id="stationsModalSubtitle">Załadowano 257 stacji krajowych • Praca 100% Offline (PWA)</div>
+                        <div style="font-size: 11px; color: #64748b;" id="stationsModalSubtitle">Załadowano 510 stacji krajowych • Pamięć podręczna / API AKB-DATA</div>
                     </div>
                 </div>
                 <button type="button" class="modal-close-btn" onclick="closeStationsModal()" aria-label="Zamknij modal">✕</button>
@@ -590,11 +590,14 @@
                 </div>
                 
                 <div class="stations-actions-toolbar">
-                    <button type="button" class="btn-outline" onclick="syncStationsFromServer()">
-                        🔄 Pobierz z serwera
+                    <button type="button" class="btn-outline" onclick="syncStationsFromAkbApi()" title="Pobierz najświeższe dane prosto z bazy API AKB-DATA">
+                        ⚡ Pobierz z API AKB-DATA
+                    </button>
+                    <button type="button" class="btn-outline" onclick="syncStationsFromServer()" title="Pobierz plik stacje.json z serwera">
+                        📁 Plik stacje.json
                     </button>
                     <label class="btn-outline" style="cursor: pointer; margin: 0; display: inline-flex; align-items: center;">
-                        📥 Importuj JSON (AKB)
+                        📥 Importuj JSON
                         <input type="file" id="stationsFileInput" accept=".json" style="display: none;" onchange="importStationsFromFile(event)">
                     </label>
                     <button type="button" class="btn-outline-danger" onclick="restoreDefaultStations()">
@@ -628,7 +631,7 @@
     </div>
     
     <div class="app-footer">
-        Wersja aplikacji: v4.1<br>
+        Wersja aplikacji: v4.2<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -636,7 +639,7 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.1"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.2"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
@@ -910,7 +913,7 @@
         }
         const subtitle = document.getElementById('stationsModalSubtitle');
         if (subtitle) {
-            subtitle.innerText = `Załadowano ${stationsDatabase.length} stacji krajowych • Praca 100% Offline (PWA)`;
+            subtitle.innerText = `Załadowano ${stationsDatabase.length} stacji krajowych • Pamięć podręczna / API AKB-DATA`;
         }
 
         if (saveToStorageFlag) {
@@ -1059,36 +1062,117 @@
         });
     }
 
+    // Konfiguracja API AKB-DATA (Firebase Firestore REST API)
+    const AKB_DATA_CONFIG = {
+        projectId: "akb-data",
+        apiKey: "AIzaSyCFxopq44ISarrhnGIYNgmjndx6AQGeJRE"
+    };
+    const AKB_DATA_API_URL = `https://firestore.googleapis.com/v1/projects/${AKB_DATA_CONFIG.projectId}/databases/(default)/documents/public_data/stations_dict?key=${AKB_DATA_CONFIG.apiKey}`;
+
+    // Parser dokumentu Firestore public_data/stations_dict z projektu akb-data
+    function parseFirestoreStationsDict(firestoreDoc) {
+        if (!firestoreDoc || !firestoreDoc.fields || !firestoreDoc.fields.data) return [];
+        const values = (firestoreDoc.fields.data.arrayValue && firestoreDoc.fields.data.arrayValue.values) || [];
+        const map = new Map();
+        
+        values.forEach(item => {
+            const f = item.mapValue && item.mapValue.fields;
+            if (!f) return;
+            const name = (f.stacja && f.stacja.stringValue || '').trim();
+            if (!name) return;
+            
+            const poland = (f.poland && f.poland.stringValue) || '';
+            const country = (f.country && f.country.stringValue) || '';
+            
+            // Filtrujemy tylko stacje krajowe: poland !== 'NO' oraz brak obcego kraju
+            if (poland === 'NO' || (country && country !== 'Polska' && country !== 'Poland')) {
+                return;
+            }
+            
+            const epa = (f.epa && (f.epa.stringValue || f.epa.integerValue)) || '';
+            map.set(name.toUpperCase(), {
+                stacja: name.toUpperCase(),
+                epa: String(epa).trim()
+            });
+        });
+
+        // Węzeł manewrowo-postojowy PKP Intercity
+        if (!map.has('WARSZAWA GROCHÓW')) {
+            map.set('WARSZAWA GROCHÓW', { stacja: 'WARSZAWA GROCHÓW', epa: '' });
+        }
+        
+        return Array.from(map.values());
+    }
+
+    // Pobranie danych stacji bezpośrednio z API AKB-DATA
+    async function fetchStationsFromAkbApi() {
+        const response = await fetch(AKB_DATA_API_URL);
+        if (!response.ok) throw new Error("Błąd API AKB-DATA: " + response.status);
+        const doc = await response.json();
+        const stations = parseFirestoreStationsDict(doc);
+        if (stations.length === 0) throw new Error("API AKB-DATA zwróciło pustą listę stacji");
+        return stations;
+    }
+
     async function loadStations() {
-        // 1. Wczytanie z pamięci lokalnej jeśli dostępne
+        // 1. Natychmiastowe wczytanie z pamięci lokalnej (offline-first PWA)
+        let loaded = false;
         try {
             const cached = localStorage.getItem(STATIONS_STORAGE_KEY);
             if (cached) {
                 const parsed = JSON.parse(cached);
                 if (Array.isArray(parsed) && parsed.length > 0) {
                     setStationsDatabase(parsed, false);
+                    loaded = true;
                 }
             }
         } catch (err) {
             console.warn("Błąd odczytu stacji z localStorage:", err);
         }
 
-        // 2. Pobranie z pliku stacje.json
-        try {
-            const response = await fetch(STATIONS_FILE + '?v=' + APP_VERSION);
-            if (!response.ok) throw new Error("Błąd pobierania bazy: " + response.status);
-            const data = await response.json();
-            if (Array.isArray(data) && data.length > 0) {
-                setStationsDatabase(data, true);
-                return;
+        // 2. Jeśli brak w localStorage, wczytaj plik lokalny stacje.json
+        if (!loaded) {
+            try {
+                const response = await fetch(STATIONS_FILE + '?v=' + APP_VERSION);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        setStationsDatabase(data, true);
+                        loaded = true;
+                    }
+                }
+            } catch (err) {
+                console.log("Ładowanie stacje.json w trybie offline:", err);
             }
-        } catch (err) {
-            console.log("Ładowanie stacji z sieci niedostępne (tryb offline):", err);
         }
 
         // 3. Fallback do wbudowanej listy jeśli baza jest wciąż pusta
-        if (stationsDatabase.length === 0) {
+        if (!loaded && stationsDatabase.length === 0) {
             setStationsDatabase(FALLBACK_STATIONS, false);
+        }
+
+        // 4. W tle, jeśli jest połączenie internetowe, odśwież dane prosto z API AKB-DATA
+        if (navigator.onLine) {
+            fetchStationsFromAkbApi().then(apiStations => {
+                setStationsDatabase(apiStations, true);
+                console.log(`Zaktualizowano bazę stacji z API AKB-DATA (${apiStations.length} stacji).`);
+            }).catch(err => {
+                console.log("Pobieranie w tle z API AKB-DATA pominięte (użyto pamięci podręcznej):", err);
+            });
+        }
+    }
+
+    // Ręczna synchronizacja prosto z API AKB-DATA
+    async function syncStationsFromAkbApi() {
+        showStationsAlert("Trwa pobieranie aktualnej bazy stacji prosto z API AKB-DATA...", true);
+        try {
+            const stations = await fetchStationsFromAkbApi();
+            setStationsDatabase(stations, true);
+            renderStationsPreview(stationsDatabase);
+            showStationsAlert(`✅ Pomyślnie pobrano ${stations.length} stacji krajowych prosto z API AKB-DATA!`, true);
+        } catch (err) {
+            console.error("Błąd synchronizacji z API AKB-DATA:", err);
+            showStationsAlert("❌ Błąd synchronizacji: nie udało się pobrać danych z API AKB-DATA (sprawdź połączenie z internetem).", false);
         }
     }
 

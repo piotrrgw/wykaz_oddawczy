@@ -4,12 +4,20 @@
     "epa": "5021"
   },
   {
+    "stacja": "ANDRYCHÓW",
+    "epa": "4021"
+  },
+  {
     "stacja": "AUGUSTÓW",
     "epa": "1"
   },
   {
     "stacja": "BABIAK",
     "epa": "5023"
+  },
+  {
+    "stacja": "BABIMOST",
+    "epa": "7022"
   },
   {
     "stacja": "BABY",
@@ -24,6 +32,14 @@
     "epa": "1034"
   },
   {
+    "stacja": "BEŁCHÓW",
+    "epa": "1038"
+  },
+  {
+    "stacja": "BEŁŻEC",
+    "epa": "2"
+  },
+  {
     "stacja": "BĘDZIN MIASTO",
     "epa": "4031"
   },
@@ -36,12 +52,24 @@
     "epa": "1041"
   },
   {
+    "stacja": "BIAŁA PODLASKA",
+    "epa": "3"
+  },
+  {
+    "stacja": "BIAŁOGARD",
+    "epa": "4"
+  },
+  {
     "stacja": "BIAŁYSTOK",
     "epa": "6"
   },
   {
     "stacja": "BIAŁYSTOK ZIELONE WZGÓRZA",
     "epa": "6623"
+  },
+  {
+    "stacja": "BIECZ",
+    "epa": "3035"
   },
   {
     "stacja": "BIELSK PODLASKI",
@@ -52,8 +80,24 @@
     "epa": "7"
   },
   {
+    "stacja": "BIŁGORAJ",
+    "epa": "2029"
+  },
+  {
     "stacja": "BINIEW",
     "epa": "7034"
+  },
+  {
+    "stacja": "BOBOWA-MIASTO",
+    "epa": "3037"
+  },
+  {
+    "stacja": "BOCHNIA",
+    "epa": "9"
+  },
+  {
+    "stacja": "BOGONIOWICE CIĘŻKOWICE",
+    "epa": "3039"
   },
   {
     "stacja": "BOLESŁAWIEC",
@@ -70,6 +114,14 @@
   {
     "stacja": "BRZEG DOLNY",
     "epa": "12"
+  },
+  {
+    "stacja": "BRZESKO OKOCIM",
+    "epa": "3043"
+  },
+  {
+    "stacja": "BYCZYNA KLUCZBORSKA",
+    "epa": "6067"
   },
   {
     "stacja": "BYDGOSZCZ GŁÓWNA",
@@ -92,28 +144,96 @@
     "epa": "15"
   },
   {
+    "stacja": "CHABÓWKA",
+    "epa": "3047"
+  },
+  {
+    "stacja": "CHABÓWKA STADION",
+    "epa": "6653"
+  },
+  {
     "stacja": "CHAŁUPKI",
     "epa": "278"
+  },
+  {
+    "stacja": "CHAŁUPY",
+    "epa": "5084"
+  },
+  {
+    "stacja": "CHEŁM",
+    "epa": "16"
+  },
+  {
+    "stacja": "CHEŁM MIASTO",
+    "epa": "2045"
   },
   {
     "stacja": "CHEŁMŻA",
     "epa": "5089"
   },
   {
+    "stacja": "CHOCIWEL",
+    "epa": "8063"
+  },
+  {
+    "stacja": "CHODZIEŻ",
+    "epa": "17"
+  },
+  {
     "stacja": "CHOJNA",
     "epa": "8064"
+  },
+  {
+    "stacja": "CHOJNICE",
+    "epa": "18"
   },
   {
     "stacja": "CHOJNÓW",
     "epa": "902"
   },
   {
+    "stacja": "CHORZELE",
+    "epa": "1074"
+  },
+  {
+    "stacja": "CHORZEW SIEMKOWICE",
+    "epa": "4060"
+  },
+  {
+    "stacja": "CHORZÓW BATORY",
+    "epa": "4061"
+  },
+  {
+    "stacja": "CHORZÓW MIASTO",
+    "epa": "4062"
+  },
+  {
     "stacja": "CHOSZCZNO",
     "epa": "19"
   },
   {
+    "stacja": "CHOTYŁÓW",
+    "epa": "1076"
+  },
+  {
+    "stacja": "CHRZANÓW ŚRÓDMIEŚCIE",
+    "epa": "3054"
+  },
+  {
     "stacja": "CIECHANÓW",
     "epa": "20"
+  },
+  {
+    "stacja": "CIECHOCINEK",
+    "epa": "21"
+  },
+  {
+    "stacja": "CZARNA BIAŁOSTOCKA",
+    "epa": "1091"
+  },
+  {
+    "stacja": "CZARNA WODA",
+    "epa": "5098"
   },
   {
     "stacja": "CZECHOWICE-DZIEDZICE",
@@ -122,6 +242,10 @@
   {
     "stacja": "CZEREMCHA",
     "epa": "424"
+  },
+  {
+    "stacja": "CZERSK",
+    "epa": "5104"
   },
   {
     "stacja": "CZĘSTOCHOWA",
@@ -148,12 +272,32 @@
     "epa": "4095"
   },
   {
+    "stacja": "DĄBROWICE SKIERNIEWICKIE",
+    "epa": "1105"
+  },
+  {
+    "stacja": "DĘBICA",
+    "epa": "31"
+  },
+  {
     "stacja": "DĘBLIN",
     "epa": "32"
   },
   {
     "stacja": "DOBIEGNIEW",
     "epa": "8094"
+  },
+  {
+    "stacja": "DOROHUSK",
+    "epa": "706"
+  },
+  {
+    "stacja": "DRAWSKO POMORSKIE",
+    "epa": "8106"
+  },
+  {
+    "stacja": "DRZEWICA",
+    "epa": "34"
   },
   {
     "stacja": "DUSZNIKI-ZDRÓJ",
@@ -164,8 +308,16 @@
     "epa": "402"
   },
   {
+    "stacja": "DZIAŁOSZYN",
+    "epa": "4100"
+  },
+  {
     "stacja": "DZIERŻONIÓW ŚLĄSKI",
     "epa": "36"
+  },
+  {
+    "stacja": "ELBLĄG",
+    "epa": "37"
   },
   {
     "stacja": "EŁK",
@@ -188,6 +340,10 @@
     "epa": "41"
   },
   {
+    "stacja": "GIŻYCKO",
+    "epa": "42"
+  },
+  {
     "stacja": "GLIWICE",
     "epa": "43"
   },
@@ -200,12 +356,32 @@
     "epa": "6117"
   },
   {
+    "stacja": "GŁOWNO",
+    "epa": "410"
+  },
+  {
     "stacja": "GNIEZNO",
     "epa": "45"
   },
   {
     "stacja": "GOGOLIN",
     "epa": "6129"
+  },
+  {
+    "stacja": "GOLENIÓW",
+    "epa": "506"
+  },
+  {
+    "stacja": "GOLESZÓW",
+    "epa": "4109"
+  },
+  {
+    "stacja": "GORLICE ZAGÓRZANY",
+    "epa": "3079"
+  },
+  {
+    "stacja": "GORZKOWICE",
+    "epa": "1136"
   },
   {
     "stacja": "GORZÓW WIELKOPOLSKI",
@@ -236,12 +412,44 @@
     "epa": "48"
   },
   {
+    "stacja": "GRYBÓW",
+    "epa": "3085"
+  },
+  {
+    "stacja": "GRYFICE",
+    "epa": "8134"
+  },
+  {
     "stacja": "GRYFINO",
     "epa": "507"
   },
   {
+    "stacja": "GRYFÓW ŚLĄSKI",
+    "epa": "6147"
+  },
+  {
     "stacja": "HAJNÓWKA",
     "epa": "423"
+  },
+  {
+    "stacja": "HEL",
+    "epa": "51"
+  },
+  {
+    "stacja": "HERBY NOWE",
+    "epa": "708"
+  },
+  {
+    "stacja": "HORYNIEC-ZDRÓJ",
+    "epa": "3088"
+  },
+  {
+    "stacja": "HREBENNE",
+    "epa": "3089"
+  },
+  {
+    "stacja": "HRUBIESZÓW MIASTO",
+    "epa": "2083"
   },
   {
     "stacja": "IŁAWA GŁÓWNA",
@@ -256,8 +464,40 @@
     "epa": "5230"
   },
   {
+    "stacja": "IZBICA",
+    "epa": "2087"
+  },
+  {
+    "stacja": "JABŁONOWO POMORSKIE",
+    "epa": "55"
+  },
+  {
+    "stacja": "JANOWICE WIELKIE",
+    "epa": "6155"
+  },
+  {
     "stacja": "JAROCIN",
     "epa": "56"
+  },
+  {
+    "stacja": "JAROSŁAW",
+    "epa": "57"
+  },
+  {
+    "stacja": "JASŁO",
+    "epa": "58"
+  },
+  {
+    "stacja": "JASŁO FABRYCZNE",
+    "epa": "3058"
+  },
+  {
+    "stacja": "JASTARNIA",
+    "epa": "59"
+  },
+  {
+    "stacja": "JASTROWIE",
+    "epa": "8145"
   },
   {
     "stacja": "JAWORZNO SZCZAKOWA",
@@ -268,8 +508,16 @@
     "epa": "61"
   },
   {
+    "stacja": "JEDLICZE",
+    "epa": "3098"
+  },
+  {
     "stacja": "JEDLINA-ZDRÓJ",
     "epa": "62"
+  },
+  {
+    "stacja": "JELCZ-LASKOWICE",
+    "epa": "6227"
   },
   {
     "stacja": "JELENIA GÓRA",
@@ -280,8 +528,36 @@
     "epa": "6166"
   },
   {
+    "stacja": "JELEŚNIA",
+    "epa": "4137"
+  },
+  {
+    "stacja": "JĘDRZEJÓW",
+    "epa": "2096"
+  },
+  {
+    "stacja": "JURATA",
+    "epa": "64"
+  },
+  {
+    "stacja": "KALISKA",
+    "epa": "5254"
+  },
+  {
     "stacja": "KALISZ",
     "epa": "65"
+  },
+  {
+    "stacja": "KALISZ POMORSKI",
+    "epa": "66"
+  },
+  {
+    "stacja": "KALWARIA ZEBRZYDOWSKA",
+    "epa": "3104"
+  },
+  {
+    "stacja": "KALWARIA ZEBRZYDOWSKA LANCKORONA",
+    "epa": "709"
   },
   {
     "stacja": "KAMIENIEC ZĄBKOWICKI",
@@ -296,12 +572,40 @@
     "epa": "72"
   },
   {
+    "stacja": "KĘPNO",
+    "epa": "903"
+  },
+  {
+    "stacja": "KĘTRZYN",
+    "epa": "408"
+  },
+  {
+    "stacja": "KĘTY",
+    "epa": "4162"
+  },
+  {
+    "stacja": "KIELCE GŁÓWNE",
+    "epa": "73"
+  },
+  {
+    "stacja": "KLUCZBORK",
+    "epa": "74"
+  },
+  {
+    "stacja": "KŁOBUCK",
+    "epa": "4167"
+  },
+  {
     "stacja": "KŁODZKO GŁÓWNE",
     "epa": "75"
   },
   {
     "stacja": "KŁODZKO MIASTO",
     "epa": "6191"
+  },
+  {
+    "stacja": "KOLBUSZOWA",
+    "epa": "3118"
   },
   {
     "stacja": "KOLUSZKI",
@@ -316,16 +620,44 @@
     "epa": "78"
   },
   {
+    "stacja": "KONIECPOL",
+    "epa": "711"
+  },
+  {
     "stacja": "KONIN",
     "epa": "79"
+  },
+  {
+    "stacja": "KOŃSKIE",
+    "epa": "2114"
+  },
+  {
+    "stacja": "KORSZE",
+    "epa": "401"
   },
   {
     "stacja": "KOSTRZYN",
     "epa": "80"
   },
   {
+    "stacja": "KOSZALIN",
+    "epa": "81"
+  },
+  {
     "stacja": "KOŚCIAN",
     "epa": "82"
+  },
+  {
+    "stacja": "KOWALEWO POMORSKIE",
+    "epa": "509"
+  },
+  {
+    "stacja": "KOZŁÓW",
+    "epa": "712"
+  },
+  {
+    "stacja": "KRAJENKA",
+    "epa": "8184"
   },
   {
     "stacja": "KRAKÓW GŁÓWNY",
@@ -336,8 +668,32 @@
     "epa": "86"
   },
   {
+    "stacja": "KRASNYSTAW MIASTO",
+    "epa": "2120"
+  },
+  {
+    "stacja": "KRAŚNIK",
+    "epa": "2121"
+  },
+  {
+    "stacja": "KROSNO",
+    "epa": "87"
+  },
+  {
+    "stacja": "KROSNOWA",
+    "epa": "1220"
+  },
+  {
     "stacja": "KROTOSZYN",
     "epa": "88"
+  },
+  {
+    "stacja": "KRYNICA-ZDRÓJ",
+    "epa": "89"
+  },
+  {
+    "stacja": "KRZEPICE",
+    "epa": "4185"
   },
   {
     "stacja": "KRZESZOWICE",
@@ -360,8 +716,16 @@
     "epa": "4191"
   },
   {
+    "stacja": "KUŹNICA (HEL)",
+    "epa": "5319"
+  },
+  {
     "stacja": "KWIDZYN",
     "epa": "5321"
+  },
+  {
+    "stacja": "LASKOWICE POMORSKIE",
+    "epa": "97"
   },
   {
     "stacja": "LEGIONOWO",
@@ -374,6 +738,38 @@
   {
     "stacja": "LESZNO",
     "epa": "100"
+  },
+  {
+    "stacja": "LEŻAJSK",
+    "epa": "3152"
+  },
+  {
+    "stacja": "LĘBORK",
+    "epa": "101"
+  },
+  {
+    "stacja": "LIPCE REYMONTOWSKIE",
+    "epa": "1240"
+  },
+  {
+    "stacja": "LIPKA KRAJEŃSKA",
+    "epa": "8201"
+  },
+  {
+    "stacja": "LIPNO",
+    "epa": "5340"
+  },
+  {
+    "stacja": "LUBACZÓW",
+    "epa": "3156"
+  },
+  {
+    "stacja": "LUBAŃ ŚLĄSKI",
+    "epa": "102"
+  },
+  {
+    "stacja": "LUBARTÓW",
+    "epa": "2132"
   },
   {
     "stacja": "LUBIN",
@@ -392,6 +788,10 @@
     "epa": "104"
   },
   {
+    "stacja": "ŁAŃCUT",
+    "epa": "107"
+  },
+  {
     "stacja": "ŁAPY",
     "epa": "108"
   },
@@ -400,12 +800,32 @@
     "epa": "1248"
   },
   {
+    "stacja": "ŁĄG",
+    "epa": "5360"
+  },
+  {
+    "stacja": "ŁEBA",
+    "epa": "109"
+  },
+  {
     "stacja": "ŁĘCZYCA",
     "epa": "1254"
   },
   {
+    "stacja": "ŁOBEZ",
+    "epa": "8215"
+  },
+  {
     "stacja": "ŁOCHÓW",
     "epa": "1255"
+  },
+  {
+    "stacja": "ŁOMNICA-ZDRÓJ",
+    "epa": "3160"
+  },
+  {
+    "stacja": "ŁOMŻA",
+    "epa": "420"
   },
   {
     "stacja": "ŁOWICZ GŁÓWNY",
@@ -424,6 +844,14 @@
     "epa": "113"
   },
   {
+    "stacja": "ŁÓDŹ RADOGOSZCZ WSCHÓD",
+    "epa": "6563"
+  },
+  {
+    "stacja": "ŁÓDŹ RADOGOSZCZ ZACHÓD",
+    "epa": "1258"
+  },
+  {
     "stacja": "ŁÓDŹ WIDZEW",
     "epa": "114"
   },
@@ -432,8 +860,24 @@
     "epa": "1262"
   },
   {
+    "stacja": "ŁUKÓW",
+    "epa": "115"
+  },
+  {
+    "stacja": "MAKÓW",
+    "epa": "1266"
+  },
+  {
+    "stacja": "MAKÓW PODHALAŃSKI",
+    "epa": "3166"
+  },
+  {
     "stacja": "MALBORK",
     "epa": "117"
+  },
+  {
+    "stacja": "MAŁASZEWICZE",
+    "epa": "116"
   },
   {
     "stacja": "MAŁKINIA",
@@ -444,12 +888,28 @@
     "epa": "3173"
   },
   {
+    "stacja": "MIELEC",
+    "epa": "3175"
+  },
+  {
     "stacja": "MIESZKOWICE",
     "epa": "8230"
   },
   {
     "stacja": "MIĘDZYLESIE",
     "epa": "122"
+  },
+  {
+    "stacja": "MIĘDZYRZEC PODLASKI",
+    "epa": "125"
+  },
+  {
+    "stacja": "MIĘDZYRZECZ",
+    "epa": "7286"
+  },
+  {
+    "stacja": "MIĘDZYZDROJE",
+    "epa": "124"
   },
   {
     "stacja": "MILICZ",
@@ -472,8 +932,20 @@
     "epa": "1287"
   },
   {
+    "stacja": "MORĄG",
+    "epa": "127"
+  },
+  {
     "stacja": "MROZY",
     "epa": "1293"
+  },
+  {
+    "stacja": "MUSZYNA",
+    "epa": "128"
+  },
+  {
+    "stacja": "MUSZYNA ZDRÓJ",
+    "epa": "3188"
   },
   {
     "stacja": "MYSŁOWICE",
@@ -492,6 +964,14 @@
     "epa": "130"
   },
   {
+    "stacja": "NAMYSŁÓW",
+    "epa": "6289"
+  },
+  {
+    "stacja": "NASIELSK",
+    "epa": "131"
+  },
+  {
     "stacja": "NIDZICA",
     "epa": "418"
   },
@@ -500,8 +980,20 @@
     "epa": "1299"
   },
   {
+    "stacja": "NISKO",
+    "epa": "2163"
+  },
+  {
+    "stacja": "NOWA DĘBA",
+    "epa": "2167"
+  },
+  {
     "stacja": "NOWA RUDA",
     "epa": "132"
+  },
+  {
+    "stacja": "NOWA SARZYNA",
+    "epa": "3195"
   },
   {
     "stacja": "NOWA SÓL",
@@ -512,8 +1004,24 @@
     "epa": "8253"
   },
   {
+    "stacja": "NOWOGARD",
+    "epa": "8257"
+  },
+  {
     "stacja": "NOWY DWÓR MAZOWIECKI",
     "epa": "1309"
+  },
+  {
+    "stacja": "NOWY SĄCZ",
+    "epa": "134"
+  },
+  {
+    "stacja": "NOWY TARG",
+    "epa": "135"
+  },
+  {
+    "stacja": "NOWY TOMYŚL",
+    "epa": "7317"
   },
   {
     "stacja": "NURZEC",
@@ -528,8 +1036,28 @@
     "epa": "6305"
   },
   {
+    "stacja": "OBORNIKI WIELKOPOLSKIE MIASTO",
+    "epa": "7321"
+  },
+  {
+    "stacja": "OLECKO",
+    "epa": "414"
+  },
+  {
+    "stacja": "OLESNO ŚLĄSKIE",
+    "epa": "137"
+  },
+  {
+    "stacja": "OLEŚNICA",
+    "epa": "138"
+  },
+  {
     "stacja": "OLEŚNICA RATAJE",
     "epa": "6311"
+  },
+  {
+    "stacja": "OLKUSZ",
+    "epa": "139"
   },
   {
     "stacja": "OLSZTYN GŁÓWNY",
@@ -548,6 +1076,14 @@
     "epa": "6314"
   },
   {
+    "stacja": "OPALENICA",
+    "epa": "7330"
+  },
+  {
+    "stacja": "OPOCZNO",
+    "epa": "2171"
+  },
+  {
     "stacja": "OPOCZNO POŁUDNIE",
     "epa": "2172"
   },
@@ -556,8 +1092,20 @@
     "epa": "141"
   },
   {
+    "stacja": "OPOLE WSCHODNIE",
+    "epa": "6319"
+  },
+  {
     "stacja": "OSOWIEC",
     "epa": "1324"
+  },
+  {
+    "stacja": "OSTROŁĘKA",
+    "epa": "142"
+  },
+  {
+    "stacja": "OSTROWIEC ŚWIĘTOKRZYSKI",
+    "epa": "143"
   },
   {
     "stacja": "OSTRÓDA",
@@ -566,6 +1114,10 @@
   {
     "stacja": "OSTRÓW WIELKOPOLSKI",
     "epa": "145"
+  },
+  {
+    "stacja": "OSTRZESZÓW",
+    "epa": "7338"
   },
   {
     "stacja": "OŚWIĘCIM",
@@ -596,6 +1148,22 @@
     "epa": "6330"
   },
   {
+    "stacja": "PARCZEW",
+    "epa": "1337"
+  },
+  {
+    "stacja": "PASŁĘK",
+    "epa": "149"
+  },
+  {
+    "stacja": "PELPLIN",
+    "epa": "5468"
+  },
+  {
+    "stacja": "PIASECZNO",
+    "epa": "430"
+  },
+  {
     "stacja": "PIECHOWICE",
     "epa": "6339"
   },
@@ -612,6 +1180,14 @@
     "epa": "151"
   },
   {
+    "stacja": "PIŁAWA GÓRNA",
+    "epa": "6349"
+  },
+  {
+    "stacja": "PIONKI ZACHODNIE",
+    "epa": "152"
+  },
+  {
     "stacja": "PIOTRKÓW KUJAWSKI",
     "epa": "5481"
   },
@@ -624,6 +1200,10 @@
     "epa": "436"
   },
   {
+    "stacja": "PIWNICZNA-ZDRÓJ",
+    "epa": "3216"
+  },
+  {
     "stacja": "PLESZEW",
     "epa": "155"
   },
@@ -632,12 +1212,20 @@
     "epa": "156"
   },
   {
+    "stacja": "PŁOTY",
+    "epa": "8276"
+  },
+  {
     "stacja": "PŁYĆWIA",
     "epa": "1350"
   },
   {
     "stacja": "POLANICA-ZDRÓJ",
     "epa": "157"
+  },
+  {
+    "stacja": "PORONIN",
+    "epa": "3225"
   },
   {
     "stacja": "POZNAŃ GŁÓWNY",
@@ -652,36 +1240,116 @@
     "epa": "161"
   },
   {
+    "stacja": "PRUSZCZ GDAŃSKI",
+    "epa": "515"
+  },
+  {
+    "stacja": "PRZEMYŚL GŁÓWNY",
+    "epa": "162"
+  },
+  {
+    "stacja": "PRZEMYŚL ZASANIE",
+    "epa": "3232"
+  },
+  {
+    "stacja": "PRZEWORSK",
+    "epa": "163"
+  },
+  {
+    "stacja": "PRZYSUCHA",
+    "epa": "164"
+  },
+  {
     "stacja": "PSZCZYNA",
     "epa": "165"
+  },
+  {
+    "stacja": "PUCK",
+    "epa": "5507"
   },
   {
     "stacja": "PUŁAWY MIASTO",
     "epa": "166"
   },
   {
+    "stacja": "PYRZOWICE LOTNISKO",
+    "epa": "6659"
+  },
+  {
     "stacja": "RACIBÓRZ",
     "epa": "167"
+  },
+  {
+    "stacja": "RADOM GŁÓWNY",
+    "epa": "169"
   },
   {
     "stacja": "RADOMSKO",
     "epa": "170"
   },
   {
+    "stacja": "RADYMNO",
+    "epa": "3245"
+  },
+  {
+    "stacja": "RADZYŃ PODLASKI",
+    "epa": "1385"
+  },
+  {
     "stacja": "RAWICZ",
     "epa": "171"
+  },
+  {
+    "stacja": "RECZ POMORSKI",
+    "epa": "8306"
+  },
+  {
+    "stacja": "REJOWIEC",
+    "epa": "173"
+  },
+  {
+    "stacja": "ROGOŹNO WIELKOPOLSKIE",
+    "epa": "517"
   },
   {
     "stacja": "ROGÓW",
     "epa": "1393"
   },
   {
+    "stacja": "ROPCZYCE",
+    "epa": "3252"
+  },
+  {
     "stacja": "RUCIANE-NIDA",
     "epa": "435"
   },
   {
+    "stacja": "RUDNIK NAD SANEM",
+    "epa": "2203"
+  },
+  {
+    "stacja": "RUMIA",
+    "epa": "5538"
+  },
+  {
+    "stacja": "RUNOWO POMORSKIE",
+    "epa": "174"
+  },
+  {
     "stacja": "RYBNIK",
     "epa": "175"
+  },
+  {
+    "stacja": "RYDUŁTOWY",
+    "epa": "4298"
+  },
+  {
+    "stacja": "RYPIN",
+    "epa": "5550"
+  },
+  {
+    "stacja": "RYTRO",
+    "epa": "3256"
   },
   {
     "stacja": "RZEPIN",
@@ -692,12 +1360,32 @@
     "epa": "178"
   },
   {
+    "stacja": "RZESZÓW STARONIWA",
+    "epa": "3260"
+  },
+  {
+    "stacja": "SANDOMIERZ",
+    "epa": "179"
+  },
+  {
+    "stacja": "SANOK",
+    "epa": "180"
+  },
+  {
     "stacja": "SARNAKI",
     "epa": "1405"
   },
   {
     "stacja": "SĘDZISŁAW",
     "epa": "6402"
+  },
+  {
+    "stacja": "SĘDZISZÓW",
+    "epa": "2212"
+  },
+  {
+    "stacja": "SĘDZISZÓW MAŁOPOLSKI",
+    "epa": "3266"
   },
   {
     "stacja": "SIEDLCE",
@@ -716,12 +1404,40 @@
     "epa": "184"
   },
   {
+    "stacja": "SKARŻYSKO-KAMIENNA",
+    "epa": "185"
+  },
+  {
+    "stacja": "SKAWINA",
+    "epa": "3274"
+  },
+  {
     "stacja": "SKIERNIEWICE",
     "epa": "186"
   },
   {
+    "stacja": "SKOCZÓW",
+    "epa": "4305"
+  },
+  {
+    "stacja": "SKWIERZYNA",
+    "epa": "519"
+  },
+  {
+    "stacja": "SŁAWNO",
+    "epa": "187"
+  },
+  {
     "stacja": "SŁUPCA",
     "epa": "7457"
+  },
+  {
+    "stacja": "SŁUPSK",
+    "epa": "188"
+  },
+  {
+    "stacja": "SMĘTOWO",
+    "epa": "520"
   },
   {
     "stacja": "SOCHACZEW",
@@ -740,6 +1456,10 @@
     "epa": "190"
   },
   {
+    "stacja": "SOSNOWIEC DAŃDÓWKA",
+    "epa": "4310"
+  },
+  {
     "stacja": "SOSNOWIEC GŁÓWNY",
     "epa": "191"
   },
@@ -748,12 +1468,44 @@
     "epa": "4315"
   },
   {
+    "stacja": "SPAŁA",
+    "epa": "5572"
+  },
+  {
+    "stacja": "SPYCHOWO",
+    "epa": "5582"
+  },
+  {
+    "stacja": "STALOWA WOLA CENTRUM",
+    "epa": "2227"
+  },
+  {
+    "stacja": "STALOWA WOLA ROZWADÓW",
+    "epa": "193"
+  },
+  {
+    "stacja": "STARACHOWICE WSCHODNIE",
+    "epa": "2230"
+  },
+  {
     "stacja": "STARGARD",
     "epa": "198"
   },
   {
+    "stacja": "STAROGARD GDAŃSKI",
+    "epa": "5588"
+  },
+  {
+    "stacja": "STARY SĄCZ",
+    "epa": "194"
+  },
+  {
     "stacja": "STAWIGUDA",
     "epa": "5589"
+  },
+  {
+    "stacja": "STRÓŻE",
+    "epa": "195"
   },
   {
     "stacja": "STRZELCE OPOLSKIE",
@@ -762,6 +1514,30 @@
   {
     "stacja": "STRZELIN",
     "epa": "6436"
+  },
+  {
+    "stacja": "STRZYŻÓW NAD WISŁOKIEM",
+    "epa": "3290"
+  },
+  {
+    "stacja": "SUCHA BESKIDZKA",
+    "epa": "3291"
+  },
+  {
+    "stacja": "SUCHA BESKIDZKA ZAMEK",
+    "epa": "3392"
+  },
+  {
+    "stacja": "SUCHEDNIÓW",
+    "epa": "2245"
+  },
+  {
+    "stacja": "SULECHÓW",
+    "epa": "196"
+  },
+  {
+    "stacja": "SUMINA",
+    "epa": "4326"
   },
   {
     "stacja": "SUWAŁKI",
@@ -776,12 +1552,20 @@
     "epa": "199"
   },
   {
+    "stacja": "SZCZEBRZESZYN",
+    "epa": "6645"
+  },
+  {
     "stacja": "SZCZECIN DĄBIE",
     "epa": "200"
   },
   {
     "stacja": "SZCZECIN GŁÓWNY",
     "epa": "201"
+  },
+  {
+    "stacja": "SZCZECINEK",
+    "epa": "206"
   },
   {
     "stacja": "SZCZYTNA",
@@ -816,6 +1600,10 @@
     "epa": "210"
   },
   {
+    "stacja": "ŚNIADOWO",
+    "epa": "421"
+  },
+  {
     "stacja": "ŚRODA WIELKOPOLSKA",
     "epa": "212"
   },
@@ -824,8 +1612,36 @@
     "epa": "213"
   },
   {
+    "stacja": "ŚWIDNIK MIASTO",
+    "epa": "214"
+  },
+  {
+    "stacja": "ŚWIDWIN",
+    "epa": "8398"
+  },
+  {
     "stacja": "ŚWIEBODZICE",
     "epa": "6462"
+  },
+  {
+    "stacja": "ŚWIEBODZIN",
+    "epa": "215"
+  },
+  {
+    "stacja": "ŚWINOUJŚCIE",
+    "epa": "217"
+  },
+  {
+    "stacja": "TARNOBRZEG",
+    "epa": "2263"
+  },
+  {
+    "stacja": "TARNOWSKIE GÓRY",
+    "epa": "219"
+  },
+  {
+    "stacja": "TARNÓW",
+    "epa": "220"
   },
   {
     "stacja": "TCZEW",
@@ -834,6 +1650,10 @@
   {
     "stacja": "TERESPOL",
     "epa": "222"
+  },
+  {
+    "stacja": "TERESZPOL BIŁGORAJSKI",
+    "epa": "2266"
   },
   {
     "stacja": "TESTOWO",
@@ -852,6 +1672,10 @@
     "epa": "226"
   },
   {
+    "stacja": "TORUŃ MIASTO",
+    "epa": "5650"
+  },
+  {
     "stacja": "TORUŃ WSCHODNI",
     "epa": "227"
   },
@@ -864,8 +1688,20 @@
     "epa": "8409"
   },
   {
+    "stacja": "TRZEBIATÓW",
+    "epa": "8411"
+  },
+  {
     "stacja": "TRZEBINIA",
     "epa": "228"
+  },
+  {
+    "stacja": "TUCHÓW",
+    "epa": "3309"
+  },
+  {
+    "stacja": "TUCZNO KRAJEŃSKIE",
+    "epa": "8414"
   },
   {
     "stacja": "TWARDOGÓRA",
@@ -876,12 +1712,40 @@
     "epa": "230"
   },
   {
+    "stacja": "USTKA",
+    "epa": "232"
+  },
+  {
+    "stacja": "USTRONIE MORSKIE",
+    "epa": "283"
+  },
+  {
+    "stacja": "USTROŃ POLANA",
+    "epa": "4357"
+  },
+  {
+    "stacja": "USTROŃ ZDRÓJ",
+    "epa": "4359"
+  },
+  {
+    "stacja": "WADOWICE",
+    "epa": "3316"
+  },
+  {
     "stacja": "WAŁBRZYCH GŁÓWNY",
     "epa": "241"
   },
   {
     "stacja": "WAŁBRZYCH MIASTO",
     "epa": "6487"
+  },
+  {
+    "stacja": "WAŁCZ",
+    "epa": "8423"
+  },
+  {
+    "stacja": "WARKA",
+    "epa": "2275"
   },
   {
     "stacja": "WARSZAWA CENTRALNA",
@@ -900,6 +1764,14 @@
     "epa": ""
   },
   {
+    "stacja": "WARSZAWA MŁYNÓW",
+    "epa": "1484"
+  },
+  {
+    "stacja": "WARSZAWA SŁUŻEWIEC",
+    "epa": "1500"
+  },
+  {
     "stacja": "WARSZAWA ŚRÓDMIEŚCIE",
     "epa": "1502"
   },
@@ -912,20 +1784,76 @@
     "epa": "404"
   },
   {
+    "stacja": "WAŻNE MŁYNY",
+    "epa": "4361"
+  },
+  {
+    "stacja": "WĄBRZEŹNO",
+    "epa": "5672"
+  },
+  {
+    "stacja": "WEJHEROWO",
+    "epa": "234"
+  },
+  {
+    "stacja": "WERBKOWICE",
+    "epa": "2278"
+  },
+  {
     "stacja": "WĘGLINIEC",
     "epa": "235"
+  },
+  {
+    "stacja": "WIELBARK",
+    "epa": "238"
   },
   {
     "stacja": "WIELEŃ",
     "epa": "8435"
   },
   {
+    "stacja": "WIELUŃ",
+    "epa": "237"
+  },
+  {
+    "stacja": "WIERCHOMLA WIELKA",
+    "epa": "3325"
+  },
+  {
+    "stacja": "WIERUSZÓW MIASTO",
+    "epa": "7533"
+  },
+  {
+    "stacja": "WISŁA GŁĘBCE",
+    "epa": "4369"
+  },
+  {
+    "stacja": "WISŁA UZDROWISKO",
+    "epa": "240"
+  },
+  {
+    "stacja": "WITNICA",
+    "epa": "8440"
+  },
+  {
     "stacja": "WITONIA",
     "epa": "1522"
   },
   {
+    "stacja": "WŁADYSŁAWOWO",
+    "epa": "5694"
+  },
+  {
     "stacja": "WŁOCŁAWEK",
     "epa": "245"
+  },
+  {
+    "stacja": "WŁODAWA",
+    "epa": "2284"
+  },
+  {
+    "stacja": "WŁOSZCZOWA",
+    "epa": "2285"
   },
   {
     "stacja": "WŁOSZCZOWA PÓŁNOC",
@@ -934,6 +1862,10 @@
   {
     "stacja": "WODZISŁAW ŚLĄSKI",
     "epa": "4373"
+  },
+  {
+    "stacja": "WOLBROM",
+    "epa": "4379"
   },
   {
     "stacja": "WOŁOMIN",
@@ -968,8 +1900,48 @@
     "epa": "8447"
   },
   {
+    "stacja": "WYSOKA KAMIEŃSKA",
+    "epa": "526"
+  },
+  {
     "stacja": "ZABRZE",
     "epa": "251"
+  },
+  {
+    "stacja": "ZAGÓRZ",
+    "epa": "252"
+  },
+  {
+    "stacja": "ZAKLIKÓW",
+    "epa": "2300"
+  },
+  {
+    "stacja": "ZAKOPANE",
+    "epa": "253"
+  },
+  {
+    "stacja": "ZAMOŚĆ",
+    "epa": "254"
+  },
+  {
+    "stacja": "ZAMOŚĆ STARÓWKA",
+    "epa": "275"
+  },
+  {
+    "stacja": "ZAMOŚĆ WSCHÓD",
+    "epa": "276"
+  },
+  {
+    "stacja": "ZARSZYN",
+    "epa": "3348"
+  },
+  {
+    "stacja": "ZATOR PARK ROZRYWKI",
+    "epa": "6585"
+  },
+  {
+    "stacja": "ZAWADA",
+    "epa": "257"
   },
   {
     "stacja": "ZAWIERCIE",
@@ -980,12 +1952,28 @@
     "epa": "6543"
   },
   {
+    "stacja": "ZBĄSZYNEK",
+    "epa": "259"
+  },
+  {
+    "stacja": "ZBĄSZYŃ",
+    "epa": "7559"
+  },
+  {
     "stacja": "ZDUŃSKA WOLA",
     "epa": "260"
   },
   {
+    "stacja": "ZDUŃSKA WOLA KARSZNICE",
+    "epa": "261"
+  },
+  {
     "stacja": "ZDZIESZOWICE",
     "epa": "4395"
+  },
+  {
+    "stacja": "ZEBRZYDOWICE",
+    "epa": "262"
   },
   {
     "stacja": "ZGIERZ",
@@ -1004,12 +1992,32 @@
     "epa": "267"
   },
   {
+    "stacja": "ZIELONKA",
+    "epa": "427"
+  },
+  {
     "stacja": "ZIĘBICE",
     "epa": "6550"
   },
   {
+    "stacja": "ZŁOTÓW",
+    "epa": "8456"
+  },
+  {
+    "stacja": "ZWARDOŃ",
+    "epa": "4397"
+  },
+  {
     "stacja": "ZWIERZYN",
     "epa": "8365"
+  },
+  {
+    "stacja": "ZWIERZYNIEC",
+    "epa": "2307"
+  },
+  {
+    "stacja": "ŻEGIESTÓW-ZDRÓJ",
+    "epa": "271"
   },
   {
     "stacja": "ŻMIGRÓD",
@@ -1018,6 +2026,10 @@
   {
     "stacja": "ŻORY",
     "epa": "719"
+  },
+  {
+    "stacja": "ŻYCHLIN",
+    "epa": "1564"
   },
   {
     "stacja": "ŻYRARDÓW",
