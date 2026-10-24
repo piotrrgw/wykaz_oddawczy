@@ -1,4 +1,4 @@
-# 🚂 Generator Wykazu Oddawczego (v4.2)
+# 🚂 Generator Wykazu Oddawczego (v4.3)
 
 Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
@@ -12,6 +12,12 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
 ## 📋 Główne Funkcjonalności
 
 * **Wydruk A4 (Pixel-Perfect):** Automatyczne generowanie arkusza zawierającego "ORYGINAŁ" i "KOPIĘ" na jednej kartce A4 (lub 1 pełna strona przy 25 wierszach), z zachowaniem wymogów formalnych.
+* **Bezpośrednia Integracja z Bazą Pociągów `trasy-ic` (PKP Intercity):**
+    * Aplikacja łączy się bezpośrednio z publicznym API Firestore bazy **trasy-ic** (`pociagi_ic`), pobierając 561 pociągów PKP Intercity z relacjami i nazwami handlowymi.
+    * **Wyszukiwanie i podpowiedzi (Datalist):** W polu *"Do pociągu nr"* pracownik może wpisać numer pociągu (np. `45103`) lub jego nazwę (np. `FLISAK`).
+    * **Inteligentna konwersja nazwy na numer:** Po wybraniu lub wpisaniu nazwy handlowej skrypt automatycznie podmienia ją na numer pociągu (z uwzględnieniem kierunku trasy na podstawie stacji nadania) oraz wyświetla pod polem czytelną podpowiedź: `🚆 FLISAK (KATOWICE ➔ GDYNIA GŁÓWNA)`.
+    * **Panel bazy pociągów (`🚆 Baza pociągów`):** Wygodny modal umożliwiający przeszukiwanie bazy, natychmiastowe pobranie z API `trasy-ic`, import pliku JSON oraz przywracanie domyślnego spisu.
+    * **100% Offline-First:** Plik `pociagi.json` oraz pamięć podręczna `localStorage` i Service Worker gwarantują natychmiastowe działanie bez konieczności stałego dostępu do internetu.
 * **Bezpośrednia Integracja z API AKB-DATA (Kurs90 / EPA):**
     * Aplikacja łączy się bezpośrednio z publicznym API bazy **AKB-DATA** (`public_data/stations_dict`), pobierając 510 aktualnych stacji krajowych z kodami EPA i zapisując je w pamięci podręcznej przeglądarki (`localStorage` + Service Worker).
     * **Automatyczna synchronizacja w tle:** Przy obecności połączenia internetowego aplikacja sama odświeża bazę z API, a w razie braku sieci natychmiast korzysta z pamięci podręcznej (tryb offline-first).

@@ -1,8 +1,9 @@
-const CACHE_NAME = 'wykaz-v4.2-cache';
+const CACHE_NAME = 'wykaz-v4.3-cache';
 const ASSETS = [
   './',
   './index.html',
   './stacje.json',
+  './pociagi.json',
   './favicon.svg',
   './icon-192.png',
   './icon-512.png',

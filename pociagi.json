@@ -1,0 +1,2807 @@
+[
+  {
+    "numer": "1001",
+    "nazwa": "NAREW",
+    "relacja": "ŁÓDŹ FABRYCZNA - BIAŁYSTOK"
+  },
+  {
+    "numer": "1003",
+    "nazwa": "ZAMENHOF",
+    "relacja": "WARSZAWA CENTRALNA - BIAŁYSTOK"
+  },
+  {
+    "numer": "1013",
+    "nazwa": "BOCIAN",
+    "relacja": "WARSZAWA WSCHODNIA - BIAŁYSTOK"
+  },
+  {
+    "numer": "1017",
+    "nazwa": "ŻUBR",
+    "relacja": "WARSZAWA WSCHODNIA - BIAŁYSTOK"
+  },
+  {
+    "numer": "1023",
+    "nazwa": "SKARYNA",
+    "relacja": "WARSZAWA ZACHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1027",
+    "nazwa": "PODLASIE",
+    "relacja": "WARSZAWA WSCHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1031",
+    "nazwa": "RADZIWIŁŁ",
+    "relacja": "WARSZAWA ZACHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1033",
+    "nazwa": "STARZYŃSKI",
+    "relacja": "WARSZAWA ZACHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1037",
+    "nazwa": "NIEMCEWICZ",
+    "relacja": "WARSZAWA ZACHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1051",
+    "nazwa": "KRASZEWSKI",
+    "relacja": "WARSZAWA ZACHODNIA - TERESPOL"
+  },
+  {
+    "numer": "1100",
+    "nazwa": "NAREW",
+    "relacja": "BIAŁYSTOK - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "1102",
+    "nazwa": "ZAMENHOF",
+    "relacja": "BIAŁYSTOK - WARSZAWA CENTRALNA"
+  },
+  {
+    "numer": "1112",
+    "nazwa": "BOCIAN",
+    "relacja": "BIAŁYSTOK - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "1116",
+    "nazwa": "ŻUBR",
+    "relacja": "BIAŁYSTOK - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "1122",
+    "nazwa": "SKARYNA",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1126",
+    "nazwa": "PODLASIE",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1130",
+    "nazwa": "RADZIWIŁŁ",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1134",
+    "nazwa": "STARZYŃSKI",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1136",
+    "nazwa": "NIEMCEWICZ",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1150",
+    "nazwa": "KRASZEWSKI",
+    "relacja": "TERESPOL - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "1213",
+    "nazwa": "CZECHOWICZ",
+    "relacja": "WARSZAWA WSCHODNIA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "1217",
+    "nazwa": "INKA",
+    "relacja": "WARSZAWA WSCHODNIA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "1302",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1304",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1306",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1308",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1312",
+    "nazwa": "MALINOWSKI",
+    "relacja": "WARSZAWA WSCHODNIA - ZAKOPANE"
+  },
+  {
+    "numer": "1320",
+    "nazwa": "KARŁOWICZ",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1322",
+    "nazwa": "KINGA",
+    "relacja": "WARSZAWA CENTRALNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1329",
+    "nazwa": "REYMONT",
+    "relacja": "ŁÓDŹ FABRYCZNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "1330",
+    "nazwa": "SAN",
+    "relacja": "WARSZAWA WSCHODNIA - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "1336",
+    "nazwa": "WITOS",
+    "relacja": "WARSZAWA WSCHODNIA - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "1339",
+    "nazwa": "WISŁOK",
+    "relacja": "WARSZAWA ZACHODNIA - RZESZÓW GŁÓWNY"
+  },
+  {
+    "numer": "1350",
+    "nazwa": "TATRY",
+    "relacja": "WARSZAWA WSCHODNIA - ZAKOPANE"
+  },
+  {
+    "numer": "1400",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "1420",
+    "nazwa": "DASZYŃSKI",
+    "relacja": "BIAŁYSTOK - GLIWICE"
+  },
+  {
+    "numer": "1422",
+    "nazwa": "KORFANTY",
+    "relacja": "BIAŁYSTOK - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "1424",
+    "nazwa": "CHEMIK",
+    "relacja": "PŁOCK - KATOWICE"
+  },
+  {
+    "numer": "1428",
+    "nazwa": "PILECKI",
+    "relacja": "WARSZAWA WSCHODNIA - ŻYWIEC"
+  },
+  {
+    "numer": "1460",
+    "nazwa": "BESKIDY",
+    "relacja": "WARSZAWA WSCHODNIA - WISŁA UZDROWISKO"
+  },
+  {
+    "numer": "1501",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA ZACHODNIA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1503",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA ZACHODNIA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1513",
+    "nazwa": "SŁOWINIEC",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1515",
+    "nazwa": "ŻEGLARZ",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1517",
+    "nazwa": "GENERAŁ KRUSZEWSKI",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1519",
+    "nazwa": "KATAMARAN",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1521",
+    "nazwa": "WARMIA",
+    "relacja": "WARSZAWA ZACHODNIA - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "1523",
+    "nazwa": "MAZURY",
+    "relacja": "ŁÓDŹ FABRYCZNA - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "1529",
+    "nazwa": "KOCIEWIE",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1530",
+    "nazwa": "BRDA",
+    "relacja": "WARSZAWA WSCHODNIA - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "1539",
+    "nazwa": "KUTER",
+    "relacja": "WARSZAWA ZACHODNIA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1547",
+    "nazwa": "MEDUZA",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1553",
+    "nazwa": "LAGUNA",
+    "relacja": "ŁÓDŹ FABRYCZNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "1563",
+    "nazwa": "SIELAWA",
+    "relacja": "WARSZAWA CENTRALNA - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "1600",
+    "nazwa": "PANORAMA",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1602",
+    "nazwa": "ŚLĘŻA",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1604",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1610",
+    "nazwa": "VIADRINA",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1612",
+    "nazwa": "LECH",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1615",
+    "nazwa": "MAMRY",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1619",
+    "nazwa": "NIEGOCIN",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1620",
+    "nazwa": "ASNYK",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1622",
+    "nazwa": "BACZYŃSKI",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1624",
+    "nazwa": "KRASIŃSKI",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1626",
+    "nazwa": "LEŚMIAN",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1628",
+    "nazwa": "MICKIEWICZ",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1630",
+    "nazwa": "NAŁKOWSKA",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1632",
+    "nazwa": "DĄBROWSKA",
+    "relacja": "BIAŁYSTOK - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1638",
+    "nazwa": "ORZESZKOWA",
+    "relacja": "WARSZAWA WSCHODNIA - SZKLARSKA PORĘBA GÓRNA"
+  },
+  {
+    "numer": "1642",
+    "nazwa": "FREDRO",
+    "relacja": "WARSZAWA WSCHODNIA - JELENIA GÓRA"
+  },
+  {
+    "numer": "1644",
+    "nazwa": "ŁUŻYCE",
+    "relacja": "WARSZAWA WSCHODNIA - ZGORZELEC"
+  },
+  {
+    "numer": "1646",
+    "nazwa": "KONOPNICKA",
+    "relacja": "WARSZAWA WSCHODNIA - JELENIA GÓRA"
+  },
+  {
+    "numer": "1648",
+    "nazwa": "OLEŃKA",
+    "relacja": "WARSZAWA WSCHODNIA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1650",
+    "nazwa": "ŚNIEŻKA",
+    "relacja": "WARSZAWA WSCHODNIA - SZKLARSKA PORĘBA GÓRNA"
+  },
+  {
+    "numer": "1652",
+    "nazwa": "PORAZIŃSKA",
+    "relacja": "WARSZAWA CENTRALNA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "1707",
+    "nazwa": "UKIEL",
+    "relacja": "BIAŁYSTOK - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "1710",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "WARSZAWA WSCHODNIA - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "1712",
+    "nazwa": "KILIŃSKI",
+    "relacja": "WARSZAWA WSCHODNIA - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "1760",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "BIAŁYSTOK - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "1800",
+    "nazwa": "CHROBRY",
+    "relacja": "WARSZAWA WSCHODNIA - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1802",
+    "nazwa": "PKP Intercity",
+    "relacja": "WARSZAWA WSCHODNIA - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1804",
+    "nazwa": "BOLESŁAW PRUS",
+    "relacja": "WARSZAWA WSCHODNIA - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1807",
+    "nazwa": "RYBAK",
+    "relacja": "BIAŁYSTOK - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1810",
+    "nazwa": "GAŁCZYŃSKI",
+    "relacja": "WARSZAWA WSCHODNIA - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1812",
+    "nazwa": "PODLASIAK",
+    "relacja": "SUWAŁKI - ŚWINOUJŚCIE"
+  },
+  {
+    "numer": "1815",
+    "nazwa": "POBRZEŻE",
+    "relacja": "ŁÓDŹ FABRYCZNA - KOŁOBRZEG"
+  },
+  {
+    "numer": "1821",
+    "nazwa": "WŁÓKNIARZ",
+    "relacja": "ŁÓDŹ FABRYCZNA - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "1830",
+    "nazwa": "STASZIC",
+    "relacja": "WARSZAWA WSCHODNIA - KOŁOBRZEG"
+  },
+  {
+    "numer": "1857",
+    "nazwa": "PARSĘTA",
+    "relacja": "ŁÓDŹ FABRYCZNA - KOŁOBRZEG"
+  },
+  {
+    "numer": "1900",
+    "nazwa": "ZOSIA",
+    "relacja": "WARSZAWA WSCHODNIA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "1902",
+    "nazwa": "JAGNA",
+    "relacja": "WARSZAWA WSCHODNIA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "1906",
+    "nazwa": "PRZĄŚNICZKA",
+    "relacja": "WARSZAWA WSCHODNIA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "1910",
+    "nazwa": "TUWIM",
+    "relacja": "WARSZAWA WSCHODNIA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "2113",
+    "nazwa": "CZECHOWICZ",
+    "relacja": "LUBLIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "2117",
+    "nazwa": "INKA",
+    "relacja": "LUBLIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "2300",
+    "nazwa": "JAGIEŁŁO",
+    "relacja": "LUBLIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "2302",
+    "nazwa": "JADWIGA",
+    "relacja": "LUBLIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "2304",
+    "nazwa": "MORCINEK",
+    "relacja": "LUBLIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "2306",
+    "nazwa": "SZTYGAR",
+    "relacja": "LUBLIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "2403",
+    "nazwa": "JADWIGA",
+    "relacja": "KIELCE GŁÓWNE - GLIWICE"
+  },
+  {
+    "numer": "2405",
+    "nazwa": "MORCINEK",
+    "relacja": "KIELCE GŁÓWNE - KATOWICE"
+  },
+  {
+    "numer": "2407",
+    "nazwa": "SZTYGAR",
+    "relacja": "KIELCE GŁÓWNE - KATOWICE"
+  },
+  {
+    "numer": "2520",
+    "nazwa": "KOPERNIK",
+    "relacja": "LUBLIN GŁÓWNY - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "2522",
+    "nazwa": "REJEWSKI",
+    "relacja": "LUBLIN GŁÓWNY - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "2524",
+    "nazwa": "KUJAWIAK",
+    "relacja": "LUBLIN GŁÓWNY - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "2526",
+    "nazwa": "KOCHANOWSKI",
+    "relacja": "LUBLIN GŁÓWNY - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "2600",
+    "nazwa": "ŁEMPICKA",
+    "relacja": "LUBLIN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "2602",
+    "nazwa": "BOLKO",
+    "relacja": "LUBLIN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "2606",
+    "nazwa": "STRYJEŃSKA",
+    "relacja": "LUBLIN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "2621",
+    "nazwa": "ŁYSICA",
+    "relacja": "KIELCE GŁÓWNE - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "2700",
+    "nazwa": "STRZELECKI",
+    "relacja": "LUBLIN GŁÓWNY - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "2704",
+    "nazwa": "ZIELONOGÓRZANIN",
+    "relacja": "CHEŁM - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "2706",
+    "nazwa": "WARTA",
+    "relacja": "CHEŁM - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "2802",
+    "nazwa": "GÓRSKI",
+    "relacja": "CHEŁM - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "2820",
+    "nazwa": "KOZIOŁEK",
+    "relacja": "LUBLIN GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3100",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3102",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3104",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3106",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3108",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3112",
+    "nazwa": "MALINOWSKI",
+    "relacja": "ZAKOPANE - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3120",
+    "nazwa": "KARŁOWICZ",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3122",
+    "nazwa": "KINGA",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3124",
+    "nazwa": "ŁOKIETEK",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3128",
+    "nazwa": "REYMONT",
+    "relacja": "KRAKÓW GŁÓWNY - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "3130",
+    "nazwa": "SAN",
+    "relacja": "PRZEMYŚL GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3136",
+    "nazwa": "WITOS",
+    "relacja": "PRZEMYŚL GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3139",
+    "nazwa": "WISŁOK",
+    "relacja": "RZESZÓW GŁÓWNY - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "3150",
+    "nazwa": "TATRY",
+    "relacja": "ZAKOPANE - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "3200",
+    "nazwa": "JAGIEŁŁO",
+    "relacja": "KRAKÓW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "3202",
+    "nazwa": "JADWIGA",
+    "relacja": "KRAKÓW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "3204",
+    "nazwa": "MORCINEK",
+    "relacja": "KRAKÓW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "3206",
+    "nazwa": "SZTYGAR",
+    "relacja": "KRAKÓW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "3401",
+    "nazwa": "ŻYLICA",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3402",
+    "nazwa": "DĘBOWIEC",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3403",
+    "nazwa": "DĘBOWIEC",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3404",
+    "nazwa": "BALTAZAR",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3405",
+    "nazwa": "BALTAZAR",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3407",
+    "nazwa": "BŁATNIA",
+    "relacja": "KRAKÓW GŁÓWNY - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "3502",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3504",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3506",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3508",
+    "nazwa": "PKP Intercity",
+    "relacja": "RZESZÓW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3510",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3522",
+    "nazwa": "NIDA",
+    "relacja": "KRAKÓW GŁÓWNY - GIŻYCKO"
+  },
+  {
+    "numer": "3524",
+    "nazwa": "ŻEROMSKI",
+    "relacja": "KRAKÓW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "3526",
+    "nazwa": "SIENKIEWICZ",
+    "relacja": "KRAKÓW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "3528",
+    "nazwa": "KOLBERG",
+    "relacja": "KRAKÓW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "3530",
+    "nazwa": "KORMORAN",
+    "relacja": "KRAKÓW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "3532",
+    "nazwa": "ORŁOWICZ",
+    "relacja": "KRAKÓW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "3534",
+    "nazwa": "KAZIMIERZ",
+    "relacja": "ZAKOPANE - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "3539",
+    "nazwa": "BYSTRZYCA",
+    "relacja": "RZESZÓW GŁÓWNY - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "3550",
+    "nazwa": "KASZUB",
+    "relacja": "ZAKOPANE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3552",
+    "nazwa": "PKP Intercity",
+    "relacja": "ZAKOPANE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3560",
+    "nazwa": "WITKACY",
+    "relacja": "ZAKOPANE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "3600",
+    "nazwa": "SIEMIRADZKI",
+    "relacja": "PRZEMYŚL GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "3602",
+    "nazwa": "WYSPIAŃSKI",
+    "relacja": "PRZEMYŚL GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "3604",
+    "nazwa": "GROTTGER",
+    "relacja": "PRZEMYŚL GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "3716",
+    "nazwa": "FAŁAT",
+    "relacja": "PRZEMYŚL GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "3718",
+    "nazwa": "MEHOFFER",
+    "relacja": "PRZEMYŚL GŁÓWNY - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "3720",
+    "nazwa": "CEGIELSKI",
+    "relacja": "KRAKÓW GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "3724",
+    "nazwa": "WYBICKI",
+    "relacja": "KRAKÓW GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "3800",
+    "nazwa": "PKP Intercity",
+    "relacja": "KRAKÓW GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "3802",
+    "nazwa": "CHEŁMOŃSKI 132 SAXONIA",
+    "relacja": "KRAKÓW GŁÓWNY - ŚWINOUJŚCIE"
+  },
+  {
+    "numer": "3804",
+    "nazwa": "MALCZEWSKI",
+    "relacja": "KRAKÓW GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "3806",
+    "nazwa": "ZEFIR",
+    "relacja": "PRZEMYŚL GŁÓWNY - USTKA"
+  },
+  {
+    "numer": "3808",
+    "nazwa": "WYCZÓŁKOWSKI 134 VIA REGIA",
+    "relacja": "PRZEMYŚL GŁÓWNY - ŚWINOUJŚCIE"
+  },
+  {
+    "numer": "3810",
+    "nazwa": "KOSSAK",
+    "relacja": "PRZEMYŚL GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "3812",
+    "nazwa": "SZKUNER",
+    "relacja": "PRZEMYŚL GŁÓWNY - USTKA"
+  },
+  {
+    "numer": "3814",
+    "nazwa": "MATEJKO",
+    "relacja": "PRZEMYŚL GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3817",
+    "nazwa": "GWAREK",
+    "relacja": "KRAKÓW GŁÓWNY - USTKA"
+  },
+  {
+    "numer": "3818",
+    "nazwa": "MEHOFFER",
+    "relacja": "PRZEMYŚL GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3820",
+    "nazwa": "BARBAKAN",
+    "relacja": "KRAKÓW GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3822",
+    "nazwa": "SUKIENNICE",
+    "relacja": "KRAKÓW GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3828",
+    "nazwa": "LUBOMIRSKI",
+    "relacja": "KRAKÓW GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "3830",
+    "nazwa": "ŚLĄZAK",
+    "relacja": "PRZEMYŚL GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3835",
+    "nazwa": "ZAMOYSKI",
+    "relacja": "RZESZÓW GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "3837",
+    "nazwa": "NOTEĆ",
+    "relacja": "RZESZÓW GŁÓWNY - PIŁA GŁÓWNA"
+  },
+  {
+    "numer": "4120",
+    "nazwa": "DASZYŃSKI",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - BIAŁYSTOK"
+  },
+  {
+    "numer": "4122",
+    "nazwa": "KORFANTY",
+    "relacja": "GLIWICE - BIAŁYSTOK"
+  },
+  {
+    "numer": "4124",
+    "nazwa": "CHEMIK",
+    "relacja": "KATOWICE - PŁOCK"
+  },
+  {
+    "numer": "4128",
+    "nazwa": "PILECKI",
+    "relacja": "ŻYWIEC - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "4160",
+    "nazwa": "BESKIDY",
+    "relacja": "WISŁA UZDROWISKO - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "4202",
+    "nazwa": "JADWIGA",
+    "relacja": "GLIWICE - KIELCE GŁÓWNE"
+  },
+  {
+    "numer": "4205",
+    "nazwa": "MORCINEK",
+    "relacja": "KATOWICE - KIELCE GŁÓWNE"
+  },
+  {
+    "numer": "4207",
+    "nazwa": "SZTYGAR",
+    "relacja": "KATOWICE - KIELCE GŁÓWNE"
+  },
+  {
+    "numer": "4300",
+    "nazwa": "ŻYLICA",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "4302",
+    "nazwa": "DĘBOWIEC",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "4304",
+    "nazwa": "BALTAZAR",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "4306",
+    "nazwa": "BŁATNIA",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "4500",
+    "nazwa": "PKP Intercity",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4502",
+    "nazwa": "PKP Intercity",
+    "relacja": "GLIWICE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4504",
+    "nazwa": "PKP Intercity",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4506",
+    "nazwa": "PKP Intercity",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4508",
+    "nazwa": "PKP Intercity",
+    "relacja": "GLIWICE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4510",
+    "nazwa": "HEWELIUSZ",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4512",
+    "nazwa": "ARTUS",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4520",
+    "nazwa": "HUTNIK",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4522",
+    "nazwa": "DOKER",
+    "relacja": "KATOWICE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "4524",
+    "nazwa": "SKARBEK",
+    "relacja": "RACIBÓRZ - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "4550",
+    "nazwa": "WYSOCKI",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "5100",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "5102",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "5112",
+    "nazwa": "SŁOWINIEC",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5114",
+    "nazwa": "ŻEGLARZ",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5116",
+    "nazwa": "GENERAŁ KRUSZEWSKI",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5118",
+    "nazwa": "KATAMARAN",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5122",
+    "nazwa": "MAZURY",
+    "relacja": "OLSZTYN GŁÓWNY - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5128",
+    "nazwa": "KOCIEWIE",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5130",
+    "nazwa": "BRDA",
+    "relacja": "BYDGOSZCZ GŁÓWNA - WARSZAWA CENTRALNA"
+  },
+  {
+    "numer": "5132",
+    "nazwa": "ZATOKA",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ KALISKA"
+  },
+  {
+    "numer": "5138",
+    "nazwa": "KUTER",
+    "relacja": "GDYNIA GŁÓWNA - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "5146",
+    "nazwa": "MEDUZA",
+    "relacja": "GDYNIA GŁÓWNA - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "5220",
+    "nazwa": "KOPERNIK",
+    "relacja": "BYDGOSZCZ GŁÓWNA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "5222",
+    "nazwa": "REJEWSKI",
+    "relacja": "BYDGOSZCZ GŁÓWNA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "5224",
+    "nazwa": "KUJAWIAK",
+    "relacja": "BYDGOSZCZ GŁÓWNA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "5226",
+    "nazwa": "KOCHANOWSKI",
+    "relacja": "BYDGOSZCZ GŁÓWNA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "5300",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5302",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5304",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5306",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5308",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - RZESZÓW GŁÓWNY"
+  },
+  {
+    "numer": "5310",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5320",
+    "nazwa": "WARMIA",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5322",
+    "nazwa": "NIDA",
+    "relacja": "GIŻYCKO - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5324",
+    "nazwa": "ŻEROMSKI",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5326",
+    "nazwa": "SIENKIEWICZ",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5328",
+    "nazwa": "KOLBERG",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5330",
+    "nazwa": "KORMORAN",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5332",
+    "nazwa": "ORŁOWICZ",
+    "relacja": "OLSZTYN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "5334",
+    "nazwa": "KAZIMIERZ",
+    "relacja": "BYDGOSZCZ GŁÓWNA - ZAKOPANE"
+  },
+  {
+    "numer": "5338",
+    "nazwa": "BYSTRZYCA",
+    "relacja": "BYDGOSZCZ GŁÓWNA - RZESZÓW GŁÓWNY"
+  },
+  {
+    "numer": "5350",
+    "nazwa": "KASZUB",
+    "relacja": "GDYNIA GŁÓWNA - ZAKOPANE"
+  },
+  {
+    "numer": "5352",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - ZAKOPANE"
+  },
+  {
+    "numer": "5360",
+    "nazwa": "WITKACY",
+    "relacja": "GDYNIA GŁÓWNA - ZAKOPANE"
+  },
+  {
+    "numer": "5400",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - GLIWICE"
+  },
+  {
+    "numer": "5402",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5404",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - GLIWICE"
+  },
+  {
+    "numer": "5406",
+    "nazwa": "PKP Intercity",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5410",
+    "nazwa": "HEWELIUSZ",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5412",
+    "nazwa": "ARTUS",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5420",
+    "nazwa": "HUTNIK",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5422",
+    "nazwa": "DOKER",
+    "relacja": "GDYNIA GŁÓWNA - KATOWICE"
+  },
+  {
+    "numer": "5424",
+    "nazwa": "SKARBEK",
+    "relacja": "OLSZTYN GŁÓWNY - RACIBÓRZ"
+  },
+  {
+    "numer": "5450",
+    "nazwa": "WYSOCKI",
+    "relacja": "GDYNIA GŁÓWNA - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "5500",
+    "nazwa": "POWIŚLE",
+    "relacja": "GDYNIA GŁÓWNA - BYDGOSZCZ GŁÓWNA"
+  },
+  {
+    "numer": "5503",
+    "nazwa": "POWIŚLE",
+    "relacja": "BYDGOSZCZ GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "5600",
+    "nazwa": "LEDNICA",
+    "relacja": "GDYNIA GŁÓWNA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "5604",
+    "nazwa": "MIESZKO",
+    "relacja": "GDYNIA GŁÓWNA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "5608",
+    "nazwa": "POMORZANIN",
+    "relacja": "GDYNIA GŁÓWNA - JELENIA GÓRA"
+  },
+  {
+    "numer": "5621",
+    "nazwa": "SŁOWACKI",
+    "relacja": "OLSZTYN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "5700",
+    "nazwa": "BAŁTYK",
+    "relacja": "GDYNIA GŁÓWNA - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "5702",
+    "nazwa": "DRWĘCA",
+    "relacja": "OLSZTYN GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "5704",
+    "nazwa": "BACHUS",
+    "relacja": "GDYNIA GŁÓWNA - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "5708",
+    "nazwa": "JEZIORAK",
+    "relacja": "OLSZTYN GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "5710",
+    "nazwa": "POJEZIERZE",
+    "relacja": "OLSZTYN GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "5712",
+    "nazwa": "STOCZNIOWIEC",
+    "relacja": "GDYNIA GŁÓWNA - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "5714",
+    "nazwa": "GOPŁO",
+    "relacja": "OLSZTYN GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "6100",
+    "nazwa": "PANORAMA",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6102",
+    "nazwa": "ŚLĘŻA",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6104",
+    "nazwa": "PKP Intercity",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6111",
+    "nazwa": "VIADRINA",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6113",
+    "nazwa": "LECH",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6115",
+    "nazwa": "MAMRY",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6119",
+    "nazwa": "NIEGOCIN",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6121",
+    "nazwa": "ASNYK",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6123",
+    "nazwa": "BACZYŃSKI",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6125",
+    "nazwa": "KRASIŃSKI",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6127",
+    "nazwa": "LEŚMIAN",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6129",
+    "nazwa": "MICKIEWICZ",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6131",
+    "nazwa": "NAŁKOWSKA",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6133",
+    "nazwa": "DĄBROWSKA",
+    "relacja": "WROCŁAW GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "6138",
+    "nazwa": "ORZESZKOWA",
+    "relacja": "SZKLARSKA PORĘBA GÓRNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6142",
+    "nazwa": "FREDRO",
+    "relacja": "JELENIA GÓRA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6144",
+    "nazwa": "ŁUŻYCE",
+    "relacja": "ZGORZELEC - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6146",
+    "nazwa": "KONOPNICKA",
+    "relacja": "JELENIA GÓRA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6148",
+    "nazwa": "OLEŃKA",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6150",
+    "nazwa": "ŚNIEŻKA",
+    "relacja": "SZKLARSKA PORĘBA GÓRNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6153",
+    "nazwa": "PORAZIŃSKA",
+    "relacja": "WROCŁAW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "6200",
+    "nazwa": "ŁEMPICKA",
+    "relacja": "WROCŁAW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "6202",
+    "nazwa": "BOLKO",
+    "relacja": "WROCŁAW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "6206",
+    "nazwa": "STRYJEŃSKA",
+    "relacja": "WROCŁAW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "6220",
+    "nazwa": "ŁYSICA",
+    "relacja": "WROCŁAW GŁÓWNY - KIELCE GŁÓWNE"
+  },
+  {
+    "numer": "6300",
+    "nazwa": "SIEMIRADZKI",
+    "relacja": "WROCŁAW GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "6302",
+    "nazwa": "WYSPIAŃSKI",
+    "relacja": "WROCŁAW GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "6304",
+    "nazwa": "GROTTGER",
+    "relacja": "WROCŁAW GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "6501",
+    "nazwa": "LEDNICA",
+    "relacja": "WROCŁAW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "6505",
+    "nazwa": "MIESZKO",
+    "relacja": "WROCŁAW GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "6508",
+    "nazwa": "POMORZANIN",
+    "relacja": "JELENIA GÓRA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "6521",
+    "nazwa": "SŁOWACKI",
+    "relacja": "WROCŁAW GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "6811",
+    "nazwa": "MERKURY",
+    "relacja": "WROCŁAW GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "6813",
+    "nazwa": "BOSMAN",
+    "relacja": "WROCŁAW GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "7106",
+    "nazwa": "UKIEL",
+    "relacja": "POZNAŃ GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "7111",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "7112",
+    "nazwa": "KILIŃSKI",
+    "relacja": "POZNAŃ GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "7161",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - BIAŁYSTOK"
+  },
+  {
+    "numer": "7201",
+    "nazwa": "STRZELECKI",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "7205",
+    "nazwa": "ZIELONOGÓRZANIN",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - CHEŁM"
+  },
+  {
+    "numer": "7206",
+    "nazwa": "WARTA",
+    "relacja": "POZNAŃ GŁÓWNY - CHEŁM"
+  },
+  {
+    "numer": "7316",
+    "nazwa": "FAŁAT",
+    "relacja": "POZNAŃ GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "7318",
+    "nazwa": "MEHOFFER",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "7320",
+    "nazwa": "CEGIELSKI",
+    "relacja": "POZNAŃ GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "7324",
+    "nazwa": "WYBICKI",
+    "relacja": "POZNAŃ GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "7500",
+    "nazwa": "BAŁTYK",
+    "relacja": "POZNAŃ GŁÓWNY - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "7502",
+    "nazwa": "DRWĘCA",
+    "relacja": "POZNAŃ GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "7505",
+    "nazwa": "BACHUS",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "7508",
+    "nazwa": "JEZIORAK",
+    "relacja": "POZNAŃ GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "7510",
+    "nazwa": "POJEZIERZE",
+    "relacja": "POZNAŃ GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "7513",
+    "nazwa": "STOCZNIOWIEC",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "7514",
+    "nazwa": "GOPŁO",
+    "relacja": "POZNAŃ GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "7701",
+    "nazwa": "GÓRSKI",
+    "relacja": "ZIELONA GÓRA GŁÓWNA - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "7703",
+    "nazwa": "GÓRSKI",
+    "relacja": "POZNAŃ GŁÓWNY - ZIELONA GÓRA GŁÓWNA"
+  },
+  {
+    "numer": "8034",
+    "nazwa": "ZAMOYSKI",
+    "relacja": "KOŁOBRZEG - PIŁA GŁÓWNA"
+  },
+  {
+    "numer": "8100",
+    "nazwa": "CHROBRY",
+    "relacja": "SZCZECIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "8102",
+    "nazwa": "PKP Intercity",
+    "relacja": "SZCZECIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "8104",
+    "nazwa": "BOLESŁAW PRUS",
+    "relacja": "SZCZECIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "8106",
+    "nazwa": "RYBAK",
+    "relacja": "SZCZECIN GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "8110",
+    "nazwa": "GAŁCZYŃSKI",
+    "relacja": "SZCZECIN GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "8112",
+    "nazwa": "PODLASIAK",
+    "relacja": "ŚWINOUJŚCIE - SUWAŁKI"
+  },
+  {
+    "numer": "8114",
+    "nazwa": "POBRZEŻE",
+    "relacja": "KOŁOBRZEG - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "8120",
+    "nazwa": "WŁÓKNIARZ",
+    "relacja": "SZCZECIN GŁÓWNY - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "8130",
+    "nazwa": "STASZIC",
+    "relacja": "KOŁOBRZEG - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "8156",
+    "nazwa": "PARSĘTA",
+    "relacja": "KOŁOBRZEG - ŁÓDŹ FABRYCZNA"
+  },
+  {
+    "numer": "8202",
+    "nazwa": "GÓRSKI",
+    "relacja": "SZCZECIN GŁÓWNY - CHEŁM"
+  },
+  {
+    "numer": "8220",
+    "nazwa": "KOZIOŁEK",
+    "relacja": "SZCZECIN GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "8300",
+    "nazwa": "PKP Intercity",
+    "relacja": "KOŁOBRZEG - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8302",
+    "nazwa": "CHEŁMOŃSKI 133 SAXONIA",
+    "relacja": "ŚWINOUJŚCIE - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8304",
+    "nazwa": "MALCZEWSKI",
+    "relacja": "KOŁOBRZEG - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8306",
+    "nazwa": "ZEFIR",
+    "relacja": "USTKA - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8308",
+    "nazwa": "WYCZÓŁKOWSKI 135 VIA REGIA",
+    "relacja": "ŚWINOUJŚCIE - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8310",
+    "nazwa": "KOSSAK",
+    "relacja": "KOŁOBRZEG - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8312",
+    "nazwa": "SZKUNER",
+    "relacja": "USTKA - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8314",
+    "nazwa": "MATEJKO",
+    "relacja": "SZCZECIN GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8316",
+    "nazwa": "GWAREK",
+    "relacja": "USTKA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8318",
+    "nazwa": "MEHOFFER",
+    "relacja": "SZCZECIN GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8320",
+    "nazwa": "BARBAKAN",
+    "relacja": "SZCZECIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8322",
+    "nazwa": "SUKIENNICE",
+    "relacja": "SZCZECIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8328",
+    "nazwa": "LUBOMIRSKI",
+    "relacja": "KOŁOBRZEG - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "8330",
+    "nazwa": "ŚLĄZAK",
+    "relacja": "SZCZECIN GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "8334",
+    "nazwa": "ZAMOYSKI",
+    "relacja": "SZCZECIN GŁÓWNY - RZESZÓW GŁÓWNY"
+  },
+  {
+    "numer": "8336",
+    "nazwa": "NOTEĆ",
+    "relacja": "PIŁA GŁÓWNA - RZESZÓW GŁÓWNY"
+  },
+  {
+    "numer": "8610",
+    "nazwa": "MERKURY",
+    "relacja": "SZCZECIN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "8612",
+    "nazwa": "BOSMAN",
+    "relacja": "KOŁOBRZEG - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "8835",
+    "nazwa": "ZAMOYSKI",
+    "relacja": "PIŁA GŁÓWNA - KOŁOBRZEG"
+  },
+  {
+    "numer": "9101",
+    "nazwa": "ZOSIA",
+    "relacja": "ŁÓDŹ FABRYCZNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "9103",
+    "nazwa": "JAGNA",
+    "relacja": "ŁÓDŹ FABRYCZNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "9107",
+    "nazwa": "PRZĄŚNICZKA",
+    "relacja": "ŁÓDŹ FABRYCZNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "9111",
+    "nazwa": "TUWIM",
+    "relacja": "ŁÓDŹ FABRYCZNA - WARSZAWA CENTRALNA"
+  },
+  {
+    "numer": "12011",
+    "nazwa": "KYIV EXPRESS",
+    "relacja": "WARSZAWA ZACHODNIA - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "13000",
+    "nazwa": "HAŃCZA",
+    "relacja": "VILNIUS - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "13102",
+    "nazwa": "MARSZAŁEK PIŁSUDSKI",
+    "relacja": "WARSZAWA WSCHODNIA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "14000",
+    "nazwa": "SILESIA",
+    "relacja": "WARSZAWA WSCHODNIA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "14002",
+    "nazwa": "POLONIA",
+    "relacja": "WARSZAWA WSCHODNIA - WIEN HBF"
+  },
+  {
+    "numer": "14004",
+    "nazwa": "BATORY",
+    "relacja": "WARSZAWA WSCHODNIA - BUDAPEST-NYUGATI"
+  },
+  {
+    "numer": "14006",
+    "nazwa": "SILESIA",
+    "relacja": "WARSZAWA WSCHODNIA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "14008",
+    "nazwa": "SILESIA",
+    "relacja": "WARSZAWA WSCHODNIA - BOHUMIN"
+  },
+  {
+    "numer": "14010",
+    "nazwa": "CHOPIN",
+    "relacja": "WARSZAWA WSCHODNIA - MUENCHEN HBF"
+  },
+  {
+    "numer": "14012",
+    "nazwa": "SOBIESKI",
+    "relacja": "WARSZAWA WSCHODNIA - WIEN HBF"
+  },
+  {
+    "numer": "14142",
+    "nazwa": "WISŁA",
+    "relacja": "WARSZAWA WSCHODNIA - WISŁA GŁĘBCE"
+  },
+  {
+    "numer": "15100",
+    "nazwa": "ORZYC",
+    "relacja": "BIAŁYSTOK - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "15102",
+    "nazwa": "OMULEW",
+    "relacja": "BIAŁYSTOK - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "15111",
+    "nazwa": "BIEBRZA",
+    "relacja": "BIAŁYSTOK - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "16170",
+    "nazwa": "KARKONOSZE",
+    "relacja": "WARSZAWA WSCHODNIA - SZKLARSKA PORĘBA GÓRNA"
+  },
+  {
+    "numer": "17000",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17002",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17004",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17006",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17008",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17010",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "17012",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "WARSZAWA WSCHODNIA - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "18000",
+    "nazwa": "WIGRY",
+    "relacja": "VILNIUS - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "18107",
+    "nazwa": "GRYF",
+    "relacja": "BIAŁYSTOK - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "19000",
+    "nazwa": "JAĆWING",
+    "relacja": "VILNIUS - SUWAŁKI"
+  },
+  {
+    "numer": "20101",
+    "nazwa": "BYSTRZYCA",
+    "relacja": "LUBLIN GŁÓWNY - HRUBIESZÓW MIASTO"
+  },
+  {
+    "numer": "21010",
+    "nazwa": "KYIV EXPRESS",
+    "relacja": "KYIV-PASAZHYRSKYI - WARSZAWA ZACHODNIA"
+  },
+  {
+    "numer": "022000",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - CHEŁM"
+  },
+  {
+    "numer": "22003",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - CHEŁM"
+  },
+  {
+    "numer": "22005",
+    "nazwa": "PKP Intercity",
+    "relacja": "KHARKIV-PASAZHYRSKYI - CHEŁM"
+  },
+  {
+    "numer": "22007",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - CHEŁM"
+  },
+  {
+    "numer": "22008",
+    "nazwa": "PKP Intercity",
+    "relacja": "CHEŁM - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "22010",
+    "nazwa": "PKP Intercity",
+    "relacja": "CHEŁM - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "22012",
+    "nazwa": "PKP Intercity",
+    "relacja": "CHEŁM - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "22014",
+    "nazwa": "PKP Intercity",
+    "relacja": "CHEŁM - KHARKIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "22019",
+    "nazwa": "WISŁOK",
+    "relacja": "LUBLIN GŁÓWNY - RAWA RUSKA"
+  },
+  {
+    "numer": "22020",
+    "nazwa": "WISŁOK",
+    "relacja": "RAWA RUSKA - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "22100",
+    "nazwa": "BYSTRZYCA",
+    "relacja": "HRUBIESZÓW MIASTO - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "23109",
+    "nazwa": "SMOK WAWELSKI",
+    "relacja": "LUBLIN GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "23110",
+    "nazwa": "KASZTELAN",
+    "relacja": "HRUBIESZÓW MIASTO - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "23112",
+    "nazwa": "HETMAN",
+    "relacja": "HRUBIESZÓW MIASTO - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "28170",
+    "nazwa": "UZNAM 440 URSA",
+    "relacja": "CHEŁM - ŚWINOUJŚCIE"
+  },
+  {
+    "numer": "30100",
+    "nazwa": "MALINOWSKI",
+    "relacja": "KRAKÓW GŁÓWNY - KRYNICA-ZDRÓJ"
+  },
+  {
+    "numer": "30102",
+    "nazwa": "ZKA 806 BIESZCZADY",
+    "relacja": "ZAGÓRZ - TARNÓW"
+  },
+  {
+    "numer": "30106",
+    "nazwa": "ZKA 804 WETLINA",
+    "relacja": "ZAGÓRZ - TARNÓW"
+  },
+  {
+    "numer": "30111",
+    "nazwa": "WETLINA",
+    "relacja": "KRAKÓW GŁÓWNY - JASŁO FABRYCZNE"
+  },
+  {
+    "numer": "30113",
+    "nazwa": "BIESZCZADY",
+    "relacja": "KRAKÓW GŁÓWNY - JASŁO FABRYCZNE"
+  },
+  {
+    "numer": "30114",
+    "nazwa": "ZKA 807 BIESZCZADY",
+    "relacja": "ZAGÓRZ - JASŁO FABRYCZNE"
+  },
+  {
+    "numer": "30117",
+    "nazwa": "ZKA 809 BIESZCZADY",
+    "relacja": "TARNÓW - ZAGÓRZ"
+  },
+  {
+    "numer": "30119",
+    "nazwa": "ZKA 811 WETLINA",
+    "relacja": "TARNÓW - ZAGÓRZ"
+  },
+  {
+    "numer": "30170",
+    "nazwa": "KARPATY",
+    "relacja": "KRAKÓW GŁÓWNY - KRYNICA-ZDRÓJ"
+  },
+  {
+    "numer": "30171",
+    "nazwa": "KARPATY",
+    "relacja": "KRAKÓW GŁÓWNY - KRYNICA-ZDRÓJ"
+  },
+  {
+    "numer": "30173",
+    "nazwa": "PRZEMYŚLANIN",
+    "relacja": "KRAKÓW GŁÓWNY - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "31000",
+    "nazwa": "HAŃCZA",
+    "relacja": "KRAKÓW GŁÓWNY - VILNIUS"
+  },
+  {
+    "numer": "31102",
+    "nazwa": "MARSZAŁEK PIŁSUDSKI",
+    "relacja": "KRAKÓW GŁÓWNY - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "32109",
+    "nazwa": "SMOK WAWELSKI",
+    "relacja": "KRAKÓW GŁÓWNY - LUBLIN GŁÓWNY"
+  },
+  {
+    "numer": "32111",
+    "nazwa": "KASZTELAN",
+    "relacja": "KRAKÓW GŁÓWNY - HRUBIESZÓW MIASTO"
+  },
+  {
+    "numer": "32113",
+    "nazwa": "HETMAN",
+    "relacja": "KRAKÓW GŁÓWNY - HRUBIESZÓW MIASTO"
+  },
+  {
+    "numer": "33000",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33002",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33004",
+    "nazwa": "PKP Intercity",
+    "relacja": "ZAPORIZHZHIA-1 - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33006",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33010",
+    "nazwa": "PKP Intercity",
+    "relacja": "KHARKIV-PASAZHYRSKYI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33012",
+    "nazwa": "PKP Intercity",
+    "relacja": "KYIV-PASAZHYRSKYI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "33015",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "33017",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - KHARKIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "33021",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "33023",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - ZAPORIZHZHIA-1"
+  },
+  {
+    "numer": "33025",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "33027",
+    "nazwa": "PKP Intercity",
+    "relacja": "PRZEMYŚL GŁÓWNY - KYIV-PASAZHYRSKYI"
+  },
+  {
+    "numer": "33100",
+    "nazwa": "MALINOWSKI",
+    "relacja": "KRYNICA-ZDRÓJ - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "33110",
+    "nazwa": "WETLINA",
+    "relacja": "JASŁO FABRYCZNE - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "33112",
+    "nazwa": "BIESZCZADY",
+    "relacja": "JASŁO FABRYCZNE - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "33165",
+    "nazwa": "ZKA 808 BIESZCZADY",
+    "relacja": "JASŁO FABRYCZNE - ZAGÓRZ"
+  },
+  {
+    "numer": "33167",
+    "nazwa": "ZKA 810 WETLINA",
+    "relacja": "JASŁO FABRYCZNE - ZAGÓRZ"
+  },
+  {
+    "numer": "33168",
+    "nazwa": "ZKA 805 WETLINA",
+    "relacja": "ZAGÓRZ - JASŁO FABRYCZNE"
+  },
+  {
+    "numer": "33170",
+    "nazwa": "KARPATY",
+    "relacja": "KRYNICA-ZDRÓJ - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "33172",
+    "nazwa": "PRZEMYŚLANIN",
+    "relacja": "PRZEMYŚL GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "34002",
+    "nazwa": "PORTA MORAVICA",
+    "relacja": "KRAKÓW GŁÓWNY - GRAZ HAUPTBAHNHOF"
+  },
+  {
+    "numer": "34004",
+    "nazwa": "COMENIUS",
+    "relacja": "KRAKÓW GŁÓWNY - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "34006",
+    "nazwa": "DANUBIUS",
+    "relacja": "KRAKÓW GŁÓWNY - WIEN HBF"
+  },
+  {
+    "numer": "34008",
+    "nazwa": "CRACOVIA",
+    "relacja": "PRZEMYŚL GŁÓWNY - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "34010",
+    "nazwa": "PRATER",
+    "relacja": "KRAKÓW GŁÓWNY - WIEN HBF"
+  },
+  {
+    "numer": "34012",
+    "nazwa": "OLZA",
+    "relacja": "KRAKÓW GŁÓWNY - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "34014",
+    "nazwa": "CARPATIA",
+    "relacja": "PRZEMYŚL GŁÓWNY - MUENCHEN HBF"
+  },
+  {
+    "numer": "35104",
+    "nazwa": "MAŁOPOLSKA",
+    "relacja": "KRYNICA-ZDRÓJ - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "35170",
+    "nazwa": "KARPATY",
+    "relacja": "ZAKOPANE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "36100",
+    "nazwa": "PLANTY",
+    "relacja": "KRAKÓW GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "36102",
+    "nazwa": "SUDETY",
+    "relacja": "KRAKÓW GŁÓWNY - JELENIA GÓRA"
+  },
+  {
+    "numer": "36106",
+    "nazwa": "SZCZELINIEC",
+    "relacja": "KRAKÓW GŁÓWNY - JELENIA GÓRA"
+  },
+  {
+    "numer": "37000",
+    "nazwa": "GALICJA",
+    "relacja": "PRZEMYŚL GŁÓWNY - BERLIN LICHTENBERG"
+  },
+  {
+    "numer": "37002",
+    "nazwa": "WAWEL",
+    "relacja": "PRZEMYŚL GŁÓWNY - BERLIN LICHTENBERG"
+  },
+  {
+    "numer": "37004",
+    "nazwa": "ODRA",
+    "relacja": "KRAKÓW GŁÓWNY - BERLIN LICHTENBERG"
+  },
+  {
+    "numer": "37010",
+    "nazwa": "URSA",
+    "relacja": "PRZEMYŚL GŁÓWNY - BERLIN GESUNDBRUNNEN"
+  },
+  {
+    "numer": "37100",
+    "nazwa": "SPODEK",
+    "relacja": "KRAKÓW GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "37102",
+    "nazwa": "PUŁASKI",
+    "relacja": "KRAKÓW GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "37104",
+    "nazwa": "KOZICA",
+    "relacja": "KRAKÓW GŁÓWNY - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "37150",
+    "nazwa": "HALNY",
+    "relacja": "ZAKOPANE - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "38106",
+    "nazwa": "OSTERWA",
+    "relacja": "ZAKOPANE - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "38170",
+    "nazwa": "USTRONIE",
+    "relacja": "KRAKÓW GŁÓWNY - KOŁOBRZEG"
+  },
+  {
+    "numer": "38172",
+    "nazwa": "PODHALANIN",
+    "relacja": "ZAKOPANE - ŚWINOUJŚCIE"
+  },
+  {
+    "numer": "40001",
+    "nazwa": "MORAVIA",
+    "relacja": "KATOWICE - WIEN HBF"
+  },
+  {
+    "numer": "40142",
+    "nazwa": "NARCIARZ",
+    "relacja": "WISŁA GŁĘBCE - BIELSKO-BIAŁA GŁÓWNA"
+  },
+  {
+    "numer": "41000",
+    "nazwa": "SILESIA",
+    "relacja": "PRAHA HLAVNI NADRAZI - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41002",
+    "nazwa": "POLONIA",
+    "relacja": "WIEN HBF - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41004",
+    "nazwa": "BATORY",
+    "relacja": "BUDAPEST-NYUGATI - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41006",
+    "nazwa": "SILESIA",
+    "relacja": "PRAHA HLAVNI NADRAZI - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41008",
+    "nazwa": "SILESIA",
+    "relacja": "BOHUMIN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41010",
+    "nazwa": "CHOPIN",
+    "relacja": "MUENCHEN HBF - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41012",
+    "nazwa": "SOBIESKI",
+    "relacja": "WIEN HBF - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "41142",
+    "nazwa": "KLIMCZOK",
+    "relacja": "WISŁA UZDROWISKO - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "43002",
+    "nazwa": "PORTA MORAVICA",
+    "relacja": "GRAZ HAUPTBAHNHOF - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "43004",
+    "nazwa": "COMENIUS",
+    "relacja": "PRAHA HLAVNI NADRAZI - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "43006",
+    "nazwa": "DANUBIUS",
+    "relacja": "WIEN HBF - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "43008",
+    "nazwa": "CRACOVIA",
+    "relacja": "PRAHA HLAVNI NADRAZI - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "43010",
+    "nazwa": "PRATER",
+    "relacja": "WIEN HBF - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "43012",
+    "nazwa": "OLZA",
+    "relacja": "PRAHA HLAVNI NADRAZI - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "43014",
+    "nazwa": "CARPATIA",
+    "relacja": "MUENCHEN HBF - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "44000",
+    "nazwa": "MORAVIA",
+    "relacja": "WIEN HBF - KATOWICE"
+  },
+  {
+    "numer": "44142",
+    "nazwa": "CZANTORIA",
+    "relacja": "BIELSKO-BIAŁA GŁÓWNA - WISŁA UZDROWISKO"
+  },
+  {
+    "numer": "45103",
+    "nazwa": "FLISAK",
+    "relacja": "KATOWICE - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "46004",
+    "nazwa": "PORTA MORAVICA",
+    "relacja": "GRAZ HAUPTBAHNHOF - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "47000",
+    "nazwa": "OSSOLIŃSKI",
+    "relacja": "WIEN HBF - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "47101",
+    "nazwa": "ZKA 836 KOZICA",
+    "relacja": "CZĘSTOCHOWA STRADOM - KĘPNO"
+  },
+  {
+    "numer": "50115",
+    "nazwa": "ZKA 826 FLISAK",
+    "relacja": "SIERPC - GRUDZIĄDZ"
+  },
+  {
+    "numer": "50116",
+    "nazwa": "ZKA 827 FLISAK",
+    "relacja": "GRUDZIĄDZ - SIERPC"
+  },
+  {
+    "numer": "51101",
+    "nazwa": "ORZYC",
+    "relacja": "OLSZTYN GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "51103",
+    "nazwa": "OMULEW",
+    "relacja": "OLSZTYN GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "51110",
+    "nazwa": "BIEBRZA",
+    "relacja": "GDYNIA GŁÓWNA - BIAŁYSTOK"
+  },
+  {
+    "numer": "53104",
+    "nazwa": "MAŁOPOLSKA",
+    "relacja": "GDYNIA GŁÓWNA - KRYNICA-ZDRÓJ"
+  },
+  {
+    "numer": "53170",
+    "nazwa": "KARPATY",
+    "relacja": "GDYNIA GŁÓWNA - ZAKOPANE"
+  },
+  {
+    "numer": "54102",
+    "nazwa": "FLISAK",
+    "relacja": "GDYNIA GŁÓWNA - KATOWICE"
+  },
+  {
+    "numer": "56000",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "GDYNIA GŁÓWNA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "56002",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "GDYNIA GŁÓWNA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "56004",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "GDYNIA GŁÓWNA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "56070",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "GDYNIA GŁÓWNA - PRAHA HLAVNI NADRAZI"
+  },
+  {
+    "numer": "57000",
+    "nazwa": "GEDANIA",
+    "relacja": "GDYNIA GŁÓWNA - BERLIN LICHTENBERG"
+  },
+  {
+    "numer": "58101",
+    "nazwa": "ALBATROS",
+    "relacja": "GDAŃSK GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "58103",
+    "nazwa": "ŻUŁAWY",
+    "relacja": "OLSZTYN GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "58105",
+    "nazwa": "BRYZA",
+    "relacja": "OLSZTYN GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "58109",
+    "nazwa": "STAŃCZYK",
+    "relacja": "OLSZTYN GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "58110",
+    "nazwa": "BORY TUCHOLSKIE",
+    "relacja": "GDYNIA GŁÓWNA - KOSTRZYN"
+  },
+  {
+    "numer": "58112",
+    "nazwa": "KRAJNA",
+    "relacja": "GDYNIA GŁÓWNA - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "60003",
+    "nazwa": "SAXONIA",
+    "relacja": "WROCŁAW GŁÓWNY - LEIPZIG HBF"
+  },
+  {
+    "numer": "60009",
+    "nazwa": "VIA REGIA",
+    "relacja": "WROCŁAW GŁÓWNY - LEIPZIG HBF"
+  },
+  {
+    "numer": "60101",
+    "nazwa": "HEWELIUSZ",
+    "relacja": "WROCŁAW GŁÓWNY - JELENIA GÓRA"
+  },
+  {
+    "numer": "60151",
+    "nazwa": "ŚNIEŻKA",
+    "relacja": "WROCŁAW GŁÓWNY - KUDOWA-ZDRÓJ"
+  },
+  {
+    "numer": "61170",
+    "nazwa": "KARKONOSZE",
+    "relacja": "SZKLARSKA PORĘBA GÓRNA - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "63100",
+    "nazwa": "PLANTY",
+    "relacja": "WROCŁAW GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "63102",
+    "nazwa": "SUDETY",
+    "relacja": "JELENIA GÓRA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "63106",
+    "nazwa": "SZCZELINIEC",
+    "relacja": "JELENIA GÓRA - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "64004",
+    "nazwa": "PORTA MORAVICA",
+    "relacja": "WROCŁAW GŁÓWNY - GRAZ HAUPTBAHNHOF"
+  },
+  {
+    "numer": "65000",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "PRAHA HLAVNI NADRAZI - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "65002",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "PRAHA HLAVNI NADRAZI - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "65004",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "PRAHA HLAVNI NADRAZI - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "65070",
+    "nazwa": "BALTIC EXPRESS",
+    "relacja": "PRAHA HLAVNI NADRAZI - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "66002",
+    "nazwa": "SAXONIA",
+    "relacja": "LEIPZIG HBF - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "66008",
+    "nazwa": "VIA REGIA",
+    "relacja": "LEIPZIG HBF - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "66100",
+    "nazwa": "HEWELIUSZ",
+    "relacja": "JELENIA GÓRA - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "66118",
+    "nazwa": "ZKA 823 SUDETY",
+    "relacja": "JAWORZYNA ŚLĄSKA - KAMIENIEC ZĄBKOWICKI"
+  },
+  {
+    "numer": "66137",
+    "nazwa": "ZKA 822 SUDETY",
+    "relacja": "KAMIENIEC ZĄBKOWICKI - JAWORZYNA ŚLĄSKA"
+  },
+  {
+    "numer": "66150",
+    "nazwa": "ŚNIEŻKA",
+    "relacja": "KUDOWA-ZDRÓJ - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "68103",
+    "nazwa": "SWAROŻYC",
+    "relacja": "WROCŁAW GŁÓWNY - SZCZECIN GŁÓWNY"
+  },
+  {
+    "numer": "71000",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71002",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71004",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71006",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71008",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71010",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "71012",
+    "nazwa": "BERLIN-WARSZAWA-EXPRESS",
+    "relacja": "BERLIN GESUNDBRUNNEN - WARSZAWA WSCHODNIA"
+  },
+  {
+    "numer": "73000",
+    "nazwa": "GALICJA",
+    "relacja": "BERLIN GESUNDBRUNNEN - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "73002",
+    "nazwa": "WAWEL",
+    "relacja": "BERLIN GESUNDBRUNNEN - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "73004",
+    "nazwa": "ODRA",
+    "relacja": "BERLIN GESUNDBRUNNEN - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "73010",
+    "nazwa": "URSA",
+    "relacja": "BERLIN GESUNDBRUNNEN - PRZEMYŚL GŁÓWNY"
+  },
+  {
+    "numer": "73100",
+    "nazwa": "SPODEK",
+    "relacja": "POZNAŃ GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "73102",
+    "nazwa": "PUŁASKI",
+    "relacja": "POZNAŃ GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "73104",
+    "nazwa": "KOZICA",
+    "relacja": "POZNAŃ GŁÓWNY - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "73150",
+    "nazwa": "HALNY",
+    "relacja": "POZNAŃ GŁÓWNY - ZAKOPANE"
+  },
+  {
+    "numer": "74000",
+    "nazwa": "OSSOLIŃSKI",
+    "relacja": "POZNAŃ GŁÓWNY - WIEN HBF"
+  },
+  {
+    "numer": "74100",
+    "nazwa": "ZKA 837 KOZICA",
+    "relacja": "KĘPNO - CZĘSTOCHOWA STRADOM"
+  },
+  {
+    "numer": "75000",
+    "nazwa": "GEDANIA",
+    "relacja": "BERLIN GESUNDBRUNNEN - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "78101",
+    "nazwa": "STRZELECKI",
+    "relacja": "ZBĄSZYNEK - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78103",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "ZBĄSZYNEK - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78105",
+    "nazwa": "BOGDANKA",
+    "relacja": "JAROCIN - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78107",
+    "nazwa": "GOPLANA",
+    "relacja": "POZNAŃ GŁÓWNY - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78109",
+    "nazwa": "WIELKOPOLANIN",
+    "relacja": "POZNAŃ GŁÓWNY - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78111",
+    "nazwa": "BAMBERKA",
+    "relacja": "POZNAŃ GŁÓWNY - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78115",
+    "nazwa": "CYBINA",
+    "relacja": "JAROCIN - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78117",
+    "nazwa": "POSNANIA",
+    "relacja": "POZNAŃ GŁÓWNY - GORZÓW WIELKOPOLSKI"
+  },
+  {
+    "numer": "78173",
+    "nazwa": "PRZEMYŚLANIN",
+    "relacja": "POZNAŃ GŁÓWNY - USTKA"
+  },
+  {
+    "numer": "81000",
+    "nazwa": "WIGRY",
+    "relacja": "SZCZECIN GŁÓWNY - VILNIUS"
+  },
+  {
+    "numer": "81106",
+    "nazwa": "GRYF",
+    "relacja": "SZCZECIN GŁÓWNY - BIAŁYSTOK"
+  },
+  {
+    "numer": "82170",
+    "nazwa": "UZNAM",
+    "relacja": "ŚWINOUJŚCIE - CHEŁM"
+  },
+  {
+    "numer": "83106",
+    "nazwa": "OSTERWA",
+    "relacja": "SZCZECIN GŁÓWNY - ZAKOPANE"
+  },
+  {
+    "numer": "83170",
+    "nazwa": "USTRONIE",
+    "relacja": "KOŁOBRZEG - KRAKÓW GŁÓWNY"
+  },
+  {
+    "numer": "83172",
+    "nazwa": "PODHALANIN",
+    "relacja": "ŚWINOUJŚCIE - ZAKOPANE"
+  },
+  {
+    "numer": "85100",
+    "nazwa": "ALBATROS",
+    "relacja": "SZCZECIN GŁÓWNY - GDAŃSK GŁÓWNY"
+  },
+  {
+    "numer": "85102",
+    "nazwa": "ŻUŁAWY",
+    "relacja": "SZCZECIN GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "85104",
+    "nazwa": "BRYZA",
+    "relacja": "SZCZECIN GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "85108",
+    "nazwa": "STAŃCZYK",
+    "relacja": "SZCZECIN GŁÓWNY - OLSZTYN GŁÓWNY"
+  },
+  {
+    "numer": "85110",
+    "nazwa": "BORY TUCHOLSKIE",
+    "relacja": "KOSTRZYN - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "85112",
+    "nazwa": "KRAJNA",
+    "relacja": "GORZÓW WIELKOPOLSKI - GDYNIA GŁÓWNA"
+  },
+  {
+    "numer": "86102",
+    "nazwa": "SWAROŻYC",
+    "relacja": "SZCZECIN GŁÓWNY - WROCŁAW GŁÓWNY"
+  },
+  {
+    "numer": "87100",
+    "nazwa": "STRZELECKI",
+    "relacja": "GORZÓW WIELKOPOLSKI - ZBĄSZYNEK"
+  },
+  {
+    "numer": "87102",
+    "nazwa": "LUBUSZANIN",
+    "relacja": "GORZÓW WIELKOPOLSKI - ZBĄSZYNEK"
+  },
+  {
+    "numer": "87104",
+    "nazwa": "BOGDANKA",
+    "relacja": "GORZÓW WIELKOPOLSKI - JAROCIN"
+  },
+  {
+    "numer": "87106",
+    "nazwa": "GOPLANA",
+    "relacja": "GORZÓW WIELKOPOLSKI - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "87108",
+    "nazwa": "WIELKOPOLANIN",
+    "relacja": "GORZÓW WIELKOPOLSKI - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "87110",
+    "nazwa": "POSNANIA",
+    "relacja": "GORZÓW WIELKOPOLSKI - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "87114",
+    "nazwa": "BAMBERKA",
+    "relacja": "GORZÓW WIELKOPOLSKI - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "87116",
+    "nazwa": "CYBINA",
+    "relacja": "GORZÓW WIELKOPOLSKI - JAROCIN"
+  },
+  {
+    "numer": "87172",
+    "nazwa": "PRZEMYŚLANIN",
+    "relacja": "USTKA - POZNAŃ GŁÓWNY"
+  },
+  {
+    "numer": "91001",
+    "nazwa": "JAĆWING",
+    "relacja": "SUWAŁKI - VILNIUS"
+  }
+]

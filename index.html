@@ -256,7 +256,11 @@
         .btn-hard-reset:hover { background: #fff8f0; border-color: #ff9933; color: #994400; }
         .btn-stations { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; }
         .btn-stations:hover { background: #e0e7ff; color: #312e81; border-color: #a5b4fc; }
+        .btn-trains { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+        .btn-trains:hover { background: #d1fae5; color: #047857; border-color: #6ee7b7; }
         .badge-mini { background: #4f46e5; color: white; border-radius: 10px; padding: 1px 6px; font-size: 11px; font-weight: bold; }
+        .badge-mini-trains { background: #059669; }
+        .train-hint { font-size: 11px; color: #0044cc; font-weight: 600; margin-top: 3px; min-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         /* MODAL BAZY STACJI */
         .modal-overlay {
@@ -473,6 +477,7 @@
 <body>
 
 <datalist id="stations-list"></datalist>
+<datalist id="trains-list"></datalist>
 
 <div class="screen-ui">
     
@@ -491,7 +496,8 @@
                 <div class="dashboard-grid">
                     <div class="input-group-styled">
                         <label class="input-label" for="in_t_to">Do pociągu nr</label>
-                        <input type="text" id="in_t_to" class="input-control" placeholder="np. 181114">
+                        <input type="text" id="in_t_to" class="input-control" placeholder="np. 45103 lub FLISAK" list="trains-list" autocomplete="off" oninput="handleTrainInput(this)" onchange="handleTrainChange(this)" onkeydown="if(event.key === 'Enter' || event.key === 'Tab') handleTrainChange(this)">
+                        <div id="trainHint" class="train-hint"></div>
                     </div>
                     <div class="input-group-styled">
                         <label class="input-label" for="in_d_to">Data</label>
@@ -539,6 +545,9 @@
                 </button>
                 <button type="button" class="btn btn-sm btn-stations" id="btn_stations_modal" onclick="openStationsModal()" title="Zarządzaj słownikiem stacji i bazą kodów EPA">
                     🚉 Baza stacji <span id="stationsCountBadge" class="badge-mini">510</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-trains" id="btn_trains_modal" onclick="openTrainsModal()" title="Zarządzaj bazą pociągów PKP Intercity (trasy-ic)">
+                    🚆 Baza pociągów <span id="trainsCountBadge" class="badge-mini badge-mini-trains">0</span>
                 </button>
                 <button type="button" class="btn btn-hard-reset btn-sm" onclick="hardResetApp()" title="Czyści pamięć podręczną (cache), Service Workera i pobiera najnowszą wersję">
                     🧹 Twardy reset
@@ -630,8 +639,69 @@
         </div>
     </div>
     
+    <!-- MODAL BAZY POCIĄGÓW (TRASY-IC) -->
+    <div id="trainsModal" class="modal-overlay" style="display: none;" onclick="closeTrainsModalOnBackdrop(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">🚆</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 15px; color: #1e293b;">Baza Pociągów PKP Intercity (trasy-ic)</h3>
+                        <div style="font-size: 11px; color: #64748b;" id="trainsModalSubtitle">Załadowano 0 pociągów • Pamięć podręczna / API trasy-ic</div>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeTrainsModal()" aria-label="Zamknij modal">✕</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="stations-tip-box" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
+                    💡 <strong>Inteligentne podpowiedzi pociągów:</strong> W polu <em>"Do pociągu nr"</em> wpisz numer pociągu (np. <code>45103</code>) lub nazwę handlową (np. <code>FLISAK</code>). Aplikacja automatycznie uzupełni numer pociągu i wyświetli jego pełną relację.
+                </div>
+                
+                <div class="stations-actions-toolbar">
+                    <button type="button" class="btn-outline" onclick="syncTrainsFromTrasyIcApi()" title="Pobierz najświeższe dane prosto z bazy API trasy-ic">
+                        ⚡ Pobierz z API trasy-ic
+                    </button>
+                    <button type="button" class="btn-outline" onclick="syncTrainsFromFile()" title="Pobierz plik pociagi.json z serwera">
+                        📁 Plik pociagi.json
+                    </button>
+                    <label class="btn-outline" style="cursor: pointer; margin: 0; display: inline-flex; align-items: center;">
+                        📥 Importuj JSON
+                        <input type="file" id="trainsFileInput" accept=".json" style="display: none;" onchange="importTrainsFromFile(event)">
+                    </label>
+                    <button type="button" class="btn-outline-danger" onclick="restoreDefaultTrains()">
+                        ↩️ Przywróć domyślne
+                    </button>
+                </div>
+                <div id="trainsSyncAlert" style="display: none; margin-bottom: 10px; padding: 8px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;"></div>
+                
+                <div style="margin: 8px 0;">
+                    <input type="text" id="trainsFilterInput" class="input-control" placeholder="🔍 Szukaj pociągu po numerze, nazwie (np. FLISAK) lub relacji..." oninput="filterTrainsList(this.value)">
+                </div>
+                
+                <div class="stations-table-container">
+                    <table class="stations-preview-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Nr</th>
+                                <th style="width: 140px;">Nazwa</th>
+                                <th>Relacja</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainsPreviewBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm" onclick="closeTrainsModal()">Zamknij</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="app-footer">
-        Wersja aplikacji: v4.2<br>
+        Wersja aplikacji: v4.3<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -639,11 +709,18 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.2"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.3"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
     const STATIONS_STORAGE_KEY = 'wykaz_stacje_v4_data';
+    const TRAINS_FILE = 'pociagi.json';
+    const TRAINS_STORAGE_KEY = 'wykaz_pociagi_v1_data';
+    const TRASY_IC_CONFIG = {
+        projectId: "trasy-ic",
+        apiKey: "AIzaSyDjlMaTs-DgqUMGME03OP9oOOZVY855dHU"
+    };
+    const TRASY_IC_API_URL = `https://firestore.googleapis.com/v1/projects/${TRASY_IC_CONFIG.projectId}/databases/(default)/documents/pociagi_ic?key=${TRASY_IC_CONFIG.apiKey}`;
     const FALLBACK_STATIONS = [
         { stacja: "BIAŁYSTOK", epa: "6" },
         { stacja: "BYDGOSZCZ GŁÓWNA", epa: "14" },
@@ -836,6 +913,7 @@
         autoUpdateCheck(); // Odpalenie weryfikacji przy każdym otwarciu apki
         
         loadStations();
+        loadTrains();
         loadFromStorage();
         updateStrikeButtonState();
         updateFormatSwitchUI();
@@ -1314,9 +1392,444 @@
         showStationsAlert("Przywrócono domyślną bazę stacji.", true);
     }
 
+    // ==========================================
+    // BAZA POCIĄGÓW (TRASY-IC)
+    // ==========================================
+    let trainsDatabase = [];
+    const trainsByNumber = new Map();
+    const trainsByName = new Map();
+
+    function setTrainsDatabase(rawList, saveToStorageFlag = false) {
+        if (!Array.isArray(rawList)) return;
+        
+        trainsDatabase = [];
+        trainsByNumber.clear();
+        trainsByName.clear();
+        
+        rawList.forEach(t => {
+            if (!t || !t.numer) return;
+            const trainObj = {
+                numer: String(t.numer).trim(),
+                nazwa: String(t.nazwa || '').trim(),
+                relacja: String(t.relacja || '').trim()
+            };
+            trainsDatabase.push(trainObj);
+            trainsByNumber.set(trainObj.numer, trainObj);
+            
+            if (trainObj.nazwa) {
+                const upperName = trainObj.nazwa.toUpperCase();
+                if (!trainsByName.has(upperName)) {
+                    trainsByName.set(upperName, []);
+                }
+                trainsByName.get(upperName).push(trainObj);
+            }
+        });
+
+        const datalist = document.getElementById('trains-list');
+        if (datalist) {
+            populateTrainsDatalist(datalist, trainsDatabase);
+        }
+        
+        const badge = document.getElementById('trainsCountBadge');
+        if (badge) {
+            badge.innerText = trainsDatabase.length;
+        }
+        const subtitle = document.getElementById('trainsModalSubtitle');
+        if (subtitle) {
+            subtitle.innerText = `Załadowano ${trainsDatabase.length} pociągów • Pamięć podręczna / API trasy-ic`;
+        }
+        
+        // Zaktualizuj podpowiedź dla aktualnie wpisanego pociągu
+        const currentInput = document.getElementById('in_t_to');
+        if (currentInput && currentInput.value) {
+            updateTrainHint(currentInput.value);
+        }
+
+        if (saveToStorageFlag) {
+            try {
+                localStorage.setItem(TRAINS_STORAGE_KEY, JSON.stringify(trainsDatabase));
+            } catch (err) {
+                console.warn("Nie udało się zapisać bazy pociągów do localStorage:", err);
+            }
+        }
+    }
+
+    function populateTrainsDatalist(element, trains) {
+        element.innerHTML = trains.map(t => {
+            const desc = t.nazwa ? `${t.nazwa} (${t.relacja})` : t.relacja;
+            return `<option value="${escapeHtml(t.numer)}">${escapeHtml(desc)}</option>`;
+        }).join('');
+    }
+
+    function lookupTrain(nrOrName) {
+        if (!nrOrName) return null;
+        const str = String(nrOrName).trim();
+        if (!str) return null;
+        
+        if (trainsByNumber.has(str)) return trainsByNumber.get(str);
+        
+        const upper = str.toUpperCase();
+        if (trainsByName.has(upper)) {
+            const matches = trainsByName.get(upper);
+            return matches && matches[0] ? matches[0] : null;
+        }
+        return null;
+    }
+
+    function resolveTrain(raw) {
+        if (!raw) return null;
+        const str = String(raw).trim();
+        if (!str) return null;
+        
+        // 1. Dokładny numer w bazie
+        if (trainsByNumber.has(str)) return trainsByNumber.get(str);
+        
+        // 2. Wyciągnięcie numeru z nawiasu np. "FLISAK (45103)"
+        const matchInParen = str.match(/\((\d+)\)/);
+        if (matchInParen && trainsByNumber.has(matchInParen[1])) {
+            return trainsByNumber.get(matchInParen[1]);
+        }
+        
+        // 3. Numer na początku ciągu, np. "45103 FLISAK" lub "45103 - FLISAK"
+        const matchLeadingNumber = str.match(/^(\d+)/);
+        if (matchLeadingNumber && trainsByNumber.has(matchLeadingNumber[1])) {
+            return trainsByNumber.get(matchLeadingNumber[1]);
+        }
+        
+        // 4. Numer na końcu ciągu
+        const matchTrailingNumber = str.match(/(\d+)$/);
+        if (matchTrailingNumber && trainsByNumber.has(matchTrailingNumber[1])) {
+            return trainsByNumber.get(matchTrailingNumber[1]);
+        }
+
+        // 5. Wpisana sama nazwa handlowa (np. "FLISAK")
+        const cleanUpper = str.replace(/[()]/g, '').trim().toUpperCase();
+        if (trainsByName.has(cleanUpper)) {
+            const matches = trainsByName.get(cleanUpper);
+            if (matches && matches.length > 0) {
+                // Inteligentne dopasowanie kierunku na podstawie stacji nadania w wierszu 0
+                const firstNad = (document.querySelector('.cell-nad')?.value || '').trim().toUpperCase();
+                if (firstNad) {
+                    const directional = matches.find(t => t.relacja.toUpperCase().includes(firstNad));
+                    if (directional) return directional;
+                }
+                return matches[0];
+            }
+        }
+
+        return null;
+    }
+
+    function updateTrainHint(trainOrVal) {
+        const hintEl = document.getElementById('trainHint');
+        if (!hintEl) return;
+        if (!trainOrVal) {
+            hintEl.innerHTML = '';
+            return;
+        }
+        const train = (typeof trainOrVal === 'object' && trainOrVal !== null) ? trainOrVal : resolveTrain(trainOrVal);
+        if (train) {
+            const arrow = '➔';
+            const formattedRelacja = train.relacja ? train.relacja.replace(' - ', ` ${arrow} `) : '';
+            const namePart = train.nazwa ? `<strong>${escapeHtml(train.nazwa)}</strong> ` : '';
+            const routePart = formattedRelacja ? `(${escapeHtml(formattedRelacja)})` : '';
+            hintEl.innerHTML = `🚆 ${namePart}${routePart}`;
+            hintEl.style.color = '#0044cc';
+        } else {
+            const valStr = String(trainOrVal).trim();
+            if (valStr.length > 0) {
+                hintEl.innerHTML = `<span style="color: #64748b; font-weight: normal;">(pociąg spoza bazy IC)</span>`;
+            } else {
+                hintEl.innerHTML = '';
+            }
+        }
+    }
+
+    function handleTrainInput(input) {
+        const val = input.value.trim();
+        if (!val) {
+            updateTrainHint(null);
+            return;
+        }
+        if (trainsByNumber.has(val)) {
+            updateTrainHint(trainsByNumber.get(val));
+            return;
+        }
+        const resolved = resolveTrain(val);
+        if (resolved && val !== resolved.numer && !/^\d+$/.test(val)) {
+            input.value = resolved.numer;
+            updateTrainHint(resolved);
+            saveToStorage();
+            return;
+        }
+        updateTrainHint(val);
+    }
+
+    function handleTrainChange(input) {
+        const val = input.value.trim();
+        if (!val) {
+            updateTrainHint(null);
+            return;
+        }
+        const resolved = resolveTrain(val);
+        if (resolved) {
+            if (input.value !== resolved.numer) {
+                input.value = resolved.numer;
+                saveToStorage();
+            }
+            updateTrainHint(resolved);
+        } else {
+            updateTrainHint(val);
+        }
+    }
+
+    function parseFirestoreTrainsDocs(firestoreResponse) {
+        if (!firestoreResponse || !firestoreResponse.documents) return [];
+        const uniqueMap = new Map();
+        
+        firestoreResponse.documents.forEach(doc => {
+            const dane = doc.fields && doc.fields.dane && doc.fields.dane.arrayValue && doc.fields.dane.arrayValue.values;
+            if (!Array.isArray(dane)) return;
+            
+            dane.forEach(item => {
+                const f = item.mapValue && item.mapValue.fields;
+                if (!f) return;
+                const nr = (f.numer && f.numer.stringValue || '').trim();
+                const nazwa = (f.nazwa && f.nazwa.stringValue || '').trim();
+                const stacjeValues = (f.stacje && f.stacje.arrayValue && f.stacje.arrayValue.values) || [];
+                
+                const stationNames = [];
+                stacjeValues.forEach(s => {
+                    const sn = (s.mapValue && s.mapValue.fields && s.mapValue.fields.nazwa && s.mapValue.fields.nazwa.stringValue || '').trim();
+                    if (sn) stationNames.push(sn);
+                });
+                
+                let relacja = '';
+                if (stationNames.length >= 2) {
+                    relacja = `${stationNames[0]} - ${stationNames[stationNames.length - 1]}`;
+                } else if (stationNames.length === 1) {
+                    relacja = stationNames[0];
+                }
+                
+                if (nr && !uniqueMap.has(nr)) {
+                    uniqueMap.set(nr, { numer: nr, nazwa: nazwa, relacja: relacja });
+                }
+            });
+        });
+        
+        const list = Array.from(uniqueMap.values());
+        list.sort((a, b) => {
+            const numA = parseInt(a.numer, 10);
+            const numB = parseInt(b.numer, 10);
+            if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+            return a.numer.localeCompare(b.numer, 'pl');
+        });
+        return list;
+    }
+
+    async function fetchTrainsFromTrasyIcApi() {
+        const response = await fetch(TRASY_IC_API_URL);
+        if (!response.ok) throw new Error("Błąd API trasy-ic: " + response.status);
+        const data = await response.json();
+        const trains = parseFirestoreTrainsDocs(data);
+        if (trains.length === 0) throw new Error("API trasy-ic zwróciło pustą listę pociągów");
+        return trains;
+    }
+
+    async function loadTrains() {
+        let loaded = false;
+        try {
+            const cached = localStorage.getItem(TRAINS_STORAGE_KEY);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    setTrainsDatabase(parsed, false);
+                    loaded = true;
+                }
+            }
+        } catch (err) {
+            console.warn("Błąd odczytu pociągów z localStorage:", err);
+        }
+
+        if (!loaded) {
+            try {
+                const response = await fetch(TRAINS_FILE + '?v=' + APP_VERSION);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        setTrainsDatabase(data, true);
+                        loaded = true;
+                    }
+                }
+            } catch (err) {
+                console.log("Ładowanie pociagi.json w trybie offline:", err);
+            }
+        }
+
+        if (navigator.onLine) {
+            fetchTrainsFromTrasyIcApi().then(apiTrains => {
+                setTrainsDatabase(apiTrains, true);
+                console.log(`Zaktualizowano bazę pociągów z API trasy-ic (${apiTrains.length} pociągów).`);
+            }).catch(err => {
+                console.log("Pobieranie pociągów w tle z API trasy-ic pominięte (użyto pamięci podręcznej):", err);
+            });
+        }
+    }
+
+    function openTrainsModal() {
+        const modal = document.getElementById('trainsModal');
+        if (!modal) return;
+        modal.style.display = 'flex';
+        
+        const filterInput = document.getElementById('trainsFilterInput');
+        if (filterInput) filterInput.value = '';
+        renderTrainsPreview(trainsDatabase);
+    }
+
+    function closeTrainsModal() {
+        const modal = document.getElementById('trainsModal');
+        if (!modal) return;
+        modal.style.display = 'none';
+        hideTrainsAlert();
+    }
+
+    function closeTrainsModalOnBackdrop(e) {
+        if (e.target && e.target.id === 'trainsModal') {
+            closeTrainsModal();
+        }
+    }
+
+    function showTrainsAlert(msg, isSuccess = true) {
+        const alertBox = document.getElementById('trainsSyncAlert');
+        if (!alertBox) return;
+        alertBox.style.display = 'block';
+        alertBox.style.background = isSuccess ? '#ecfdf5' : '#fef2f2';
+        alertBox.style.color = isSuccess ? '#065f46' : '#991b1b';
+        alertBox.style.border = isSuccess ? '1px solid #a7f3d0' : '1px solid #fecaca';
+        alertBox.innerText = msg;
+    }
+
+    function hideTrainsAlert() {
+        const alertBox = document.getElementById('trainsSyncAlert');
+        if (alertBox) alertBox.style.display = 'none';
+    }
+
+    function filterTrainsList(query) {
+        const q = (query || '').trim().toLowerCase();
+        if (!q) {
+            renderTrainsPreview(trainsDatabase);
+            return;
+        }
+        const filtered = trainsDatabase.filter(t => {
+            return (t.numer && t.numer.toLowerCase().includes(q)) ||
+                   (t.nazwa && t.nazwa.toLowerCase().includes(q)) ||
+                   (t.relacja && t.relacja.toLowerCase().includes(q));
+        });
+        renderTrainsPreview(filtered);
+    }
+
+    function renderTrainsPreview(list) {
+        const tbody = document.getElementById('trainsPreviewBody');
+        if (!tbody) return;
+        if (!list || list.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:15px; color:#888;">Brak pociągów spełniających kryteria wyszukiwania</td></tr>';
+            return;
+        }
+        const displayList = list.slice(0, 150);
+        tbody.innerHTML = displayList.map(t => `
+            <tr>
+                <td style="font-weight: bold; color: #0044cc;">${escapeHtml(t.numer)}</td>
+                <td style="font-weight: 600; color: #1e293b;">${escapeHtml(t.nazwa || '—')}</td>
+                <td style="font-size: 11px; color: #475569;">${escapeHtml(t.relacja || '—')}</td>
+            </tr>
+        `).join('') + (list.length > 150 ? `<tr><td colspan="3" style="text-align:center; color:#888; font-size:11px; padding:6px;">... i jeszcze ${list.length - 150} pociągów (użyj wyszukiwarki)</td></tr>` : '');
+    }
+
+    async function syncTrainsFromTrasyIcApi() {
+        showTrainsAlert("Trwa pobieranie aktualnej bazy pociągów prosto z API trasy-ic...", true);
+        try {
+            const trains = await fetchTrainsFromTrasyIcApi();
+            setTrainsDatabase(trains, true);
+            renderTrainsPreview(trainsDatabase);
+            showTrainsAlert(`✅ Pomyślnie pobrano ${trains.length} pociągów prosto z API trasy-ic!`, true);
+        } catch (err) {
+            console.error("Błąd synchronizacji z API trasy-ic:", err);
+            showTrainsAlert("❌ Błąd synchronizacji: nie udało się pobrać danych z API trasy-ic (sprawdź połączenie z internetem).", false);
+        }
+    }
+
+    async function syncTrainsFromFile() {
+        showTrainsAlert("Trwa pobieranie pliku pociagi.json z serwera...", true);
+        try {
+            const resp = await fetch(TRAINS_FILE + '?nocache=' + Date.now(), { cache: 'no-store' });
+            if (!resp.ok) throw new Error("Status: " + resp.status);
+            const data = await resp.json();
+            if (Array.isArray(data) && data.length > 0) {
+                setTrainsDatabase(data, true);
+                renderTrainsPreview(trainsDatabase);
+                showTrainsAlert(`✅ Pomyślnie zsynchronizowano bazę: ${data.length} pociągów!`, true);
+            } else {
+                throw new Error("Pobrane dane są nieprawidłowe");
+            }
+        } catch (err) {
+            console.error("Błąd synchronizacji pociągów:", err);
+            showTrainsAlert("❌ Błąd synchronizacji: nie udało się pobrać pliku pociagi.json (sprawdź połączenie sieciowe).", false);
+        }
+    }
+
+    function importTrainsFromFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const parsed = JSON.parse(e.target.result);
+                let list = [];
+                if (Array.isArray(parsed)) {
+                    list = parsed.filter(t => t && t.numer);
+                } else if (parsed && parsed.trains && Array.isArray(parsed.trains)) {
+                    list = parsed.trains.filter(t => t && t.numer);
+                } else {
+                    throw new Error("Nierozpoznany format pliku JSON");
+                }
+
+                if (list.length === 0) {
+                    throw new Error("Plik nie zawiera danych pociągów");
+                }
+
+                setTrainsDatabase(list, true);
+                renderTrainsPreview(trainsDatabase);
+                showTrainsAlert(`✅ Zaimportowano ${trainsDatabase.length} pociągów z pliku ${file.name}!`, true);
+            } catch (err) {
+                console.error("Błąd importu pliku pociągów:", err);
+                showTrainsAlert("❌ Błąd importu: " + err.message, false);
+            }
+            event.target.value = '';
+        };
+        reader.readAsText(file);
+    }
+
+    async function restoreDefaultTrains() {
+        if (!confirm("Czy na pewno chcesz przywrócić domyślną bazę pociągów?")) return;
+        localStorage.removeItem(TRAINS_STORAGE_KEY);
+        try {
+            const resp = await fetch(TRAINS_FILE + '?v=' + APP_VERSION);
+            if (resp.ok) {
+                const data = await resp.json();
+                setTrainsDatabase(data, true);
+            }
+        } catch (err) {
+            console.warn("Błąd przywracania domyślnej bazy pociągów:", err);
+        }
+        renderTrainsPreview(trainsDatabase);
+        showTrainsAlert("Przywrócono domyślną bazę pociągów.", true);
+    }
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeStationsModal();
+            closeTrainsModal();
         }
     });
 
@@ -1441,6 +1954,7 @@
         }
         
         document.getElementById('in_t_to').value = data.trainTo || '';
+        updateTrainHint(data.trainTo || '');
         document.getElementById('in_d_to').value = data.dateTo || new Date().toISOString().split('T')[0];
         document.getElementById('in_handed_by').value = data.handedBy || '';
         document.getElementById('in_book_num').value = data.bookNum || '';
