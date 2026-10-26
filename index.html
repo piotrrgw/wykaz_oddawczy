@@ -17,7 +17,7 @@
   }
 </script>
     <meta charset="UTF-8">
-    <title>Wykaz Oddawczy v4.5.1</title>
+    <title>Wykaz Oddawczy v4.6</title>
     <style>
         /* --- STYLE OGÓLNE --- */
         :root {
@@ -270,8 +270,11 @@
         .btn-stations:hover { background: #e0e7ff; color: #312e81; border-color: #a5b4fc; }
         .btn-trains { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
         .btn-trains:hover { background: #d1fae5; color: #047857; border-color: #6ee7b7; }
+        .btn-history { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+        .btn-history:hover { background: #fef3c7; color: #78350f; border-color: #fcd34d; }
         .badge-mini { background: #4f46e5; color: white; border-radius: 10px; padding: 1px 6px; font-size: 11px; font-weight: bold; }
         .badge-mini-trains { background: #059669; }
+        .badge-mini-history { background: #d97706; }
         .train-hint {
             font-size: 11px;
             color: #0044cc;
@@ -351,6 +354,35 @@
             display: inline-block; font-family: monospace; font-weight: bold;
             background: #e2e8f0; color: #0f172a; padding: 2px 6px; border-radius: 4px;
             font-size: 11px;
+        }
+
+        /* MODAL HISTORII */
+        .modal-content-lg {
+            max-width: 920px;
+        }
+        .history-table {
+            width: 100%; border-collapse: collapse; font-size: 12px;
+        }
+        .history-table th {
+            position: sticky; top: 0; background: #f8fafc; border-bottom: 2px solid #e2e8f0;
+            padding: 9px 10px; text-align: left; font-weight: 700; color: #334155;
+            white-space: nowrap; z-index: 2;
+        }
+        .history-table td {
+            padding: 8px 10px; border-bottom: 1px solid #f1f5f9; color: #1e293b; vertical-align: middle;
+        }
+        .history-table tr:hover td { background: #fbfcfe; }
+        .history-badge-pos {
+            background: #e0f2fe; color: #0369a1; padding: 2px 7px; border-radius: 12px; font-weight: bold; font-size: 11px; white-space: nowrap;
+        }
+        .history-badge-train {
+            background: #ecfdf5; color: #047857; padding: 2px 7px; border-radius: 12px; font-weight: bold; font-size: 11px; white-space: nowrap;
+        }
+        .history-actions {
+            display: flex; gap: 4px; align-items: center; justify-content: flex-end; white-space: nowrap;
+        }
+        .history-detail-panel {
+            background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 11px;
         }
         
         #saveStatus { font-size: 11px; color: green; opacity: 0; transition: opacity 0.5s; font-weight: bold; white-space: nowrap; }
@@ -572,6 +604,9 @@
                 <button type="button" id="btn_toggle_strike" class="btn btn-sm btn-strike-on" onclick="toggleStrikeEmpty()" title="Przekreślanie pustych wierszy: WŁĄCZONE (kliknij, aby wyłączyć)">
                     ✍️ Przekreślanie: WŁ
                 </button>
+                <button type="button" class="btn btn-sm btn-history" id="btn_history_modal" onclick="openHistoryModal()" title="Historia wydruków i automatyczne kopie zapasowe">
+                    📜 Historia <span id="historyCountBadge" class="badge-mini badge-mini-history">0</span>
+                </button>
                 <button type="button" class="btn btn-sm btn-stations" id="btn_stations_modal" onclick="openStationsModal()" title="Zarządzaj słownikiem stacji i bazą kodów EPA">
                     🚉 Stacje <span id="stationsCountBadge" class="badge-mini">510</span>
                 </button>
@@ -729,8 +764,64 @@
         </div>
     </div>
     
+    <!-- MODAL HISTORII WYDRUKÓW (KOPII ZAPASOWYCH) -->
+    <div id="historyModal" class="modal-overlay" style="display: none;" onclick="closeHistoryModalOnBackdrop(event)">
+        <div class="modal-content modal-content-lg" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">📜</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 15px; color: #1e293b;">Historia Wydruków i Automatyczne Kopie Zapasowe</h3>
+                        <div style="font-size: 11px; color: #64748b;" id="historyModalSubtitle">Zapisano 0 wydruków w pamięci podręcznej</div>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeHistoryModal()" aria-label="Zamknij modal historii">✕</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="stations-tip-box" style="background: #fffbeb; border-color: #fde68a; color: #92400e;">
+                    💡 <strong>Automatyczna kopia zapasowa:</strong> Każde kliknięcie przycisku <em>"DRUKUJ DOKUMENTY"</em> samoczynnie zapisuje pełną migawkę formularza (datę, godzinę, relację, kasjera, nr korespondencyjny i pozycje przesyłek). Możesz w każdej chwili podejrzeć szczegóły, wczytać stary wykaz z powrotem do formularza lub wydrukować go ponownie.
+                </div>
+                
+                <div class="stations-actions-toolbar">
+                    <button type="button" class="btn-outline" onclick="exportHistoryToJson()" title="Pobierz kopię zapasową całej historii w formacie JSON">
+                        💾 Pobierz kopię (JSON)
+                    </button>
+                    <button type="button" class="btn-outline-danger" onclick="clearAllHistory()" title="Usuwa wszystkie wpisy z historii wydruków">
+                        🗑️ Wyczyść historię
+                    </button>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <input type="text" id="historyFilterInput" class="input-control" placeholder="🔍 Szukaj w historii (kasjer, pociąg, nr koresp., data, stacja)..." oninput="filterHistoryList(this.value)">
+                </div>
+                
+                <div class="stations-table-container" style="max-height: 420px;">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 140px;">Data i godzina</th>
+                                <th style="width: 100px;">Pociąg</th>
+                                <th style="width: 85px;">Pozycje</th>
+                                <th>Kasjer (Zdał)</th>
+                                <th style="width: 130px;">Nr koresp.</th>
+                                <th style="width: 190px; text-align: right;">Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyPreviewBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm" onclick="closeHistoryModal()">Zamknij</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="app-footer">
-        Wersja aplikacji: v4.5.1<br>
+        Wersja aplikacji: v4.6<br>
         Współautorzy: Gemini, Piotr M 🚂, Thundo
     </div>
 </div>
@@ -738,13 +829,16 @@
 <div id="printOutput" class="print-area"></div>
 
 <script>
-    const APP_VERSION = "v4.5.1"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
+    const APP_VERSION = "v4.6"; // Oznaczenie aktualnej wersji dla mechanizmu aktualizacji
     let currentRowCount = 10;
     const STORAGE_KEY = 'wykaz_oddawczy_v2_data';
     const STATIONS_FILE = 'stacje.json';
     const STATIONS_STORAGE_KEY = 'wykaz_stacje_v4_data';
     const TRAINS_FILE = 'pociagi.json';
     const TRAINS_STORAGE_KEY = 'wykaz_pociagi_v1_data';
+    const HISTORY_STORAGE_KEY = 'wykaz_historia_wydrukow_v1';
+    const MAX_HISTORY_ITEMS = 100;
+    let historyDatabase = [];
     const TRASY_IC_CONFIG = {
         projectId: "trasy-ic",
         apiKey: "AIzaSyDjlMaTs-DgqUMGME03OP9oOOZVY855dHU"
@@ -943,6 +1037,7 @@
         
         loadStations();
         loadTrains();
+        loadHistory();
         loadFromStorage();
         updateStrikeButtonState();
         updateFormatSwitchUI();
@@ -1937,10 +2032,317 @@
         showTrainsAlert("Przywrócono domyślną bazę pociągów.", true);
     }
 
+    // ==========================================
+    // MODUŁ HISTORII WYDRUKÓW I KOPII ZAPASOWYCH
+    // ==========================================
+
+    function getPolishDateTime() {
+        const now = new Date();
+        const dateStr = new Intl.DateTimeFormat('pl-PL', {
+            timeZone: 'Europe/Warsaw',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        }).format(now);
+        
+        const timeStr = new Intl.DateTimeFormat('pl-PL', {
+            timeZone: 'Europe/Warsaw',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        }).format(now);
+        
+        return { date: dateStr, time: timeStr, timestamp: now.getTime() };
+    }
+
+    function loadHistory() {
+        try {
+            const raw = localStorage.getItem(HISTORY_STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) {
+                    historyDatabase = parsed;
+                }
+            }
+        } catch (e) {
+            console.warn("Błąd odczytu historii wydruków:", e);
+            historyDatabase = [];
+        }
+        updateHistoryCountBadge();
+    }
+
+    function saveHistoryToStorage() {
+        try {
+            localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(historyDatabase));
+        } catch (e) {
+            console.warn("Błąd zapisu historii wydruków do localStorage:", e);
+        }
+    }
+
+    function updateHistoryCountBadge() {
+        const badge = document.getElementById('historyCountBadge');
+        if (badge) {
+            badge.innerText = historyDatabase.length;
+        }
+        const subtitle = document.getElementById('historyModalSubtitle');
+        if (subtitle) {
+            subtitle.innerText = `Zapisano ${historyDatabase.length} wydruków w pamięci podręcznej`;
+        }
+    }
+
+    function addPrintToHistory(data, copiesInput) {
+        try {
+            const dateTime = getPolishDateTime();
+            
+            const filledRows = (data.rows || []).filter(r => 
+                (r.nad && r.nad.trim() !== '') || 
+                (r.prz && r.prz.trim() !== '') || 
+                (r.nr && r.nr.trim() !== '') || 
+                (r.rodz && r.rodz.trim() !== '') || 
+                (r.szt && r.szt.trim() !== '')
+            );
+            
+            const historyEntry = {
+                id: Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+                date: dateTime.date,
+                time: dateTime.time,
+                timestamp: dateTime.timestamp,
+                trainTo: data.trainTo || '',
+                dateTo: data.dateTo || '',
+                handedBy: data.handedBy || '',
+                bookNum: data.bookNum || '',
+                posCount: filledRows.length,
+                totalRows: data.rows ? data.rows.length : 10,
+                copies: copiesInput,
+                duplexFix: data.duplexFix,
+                strikeEmpty: data.strikeEmpty,
+                rows: JSON.parse(JSON.stringify(data.rows || []))
+            };
+            
+            historyDatabase.unshift(historyEntry);
+            
+            if (historyDatabase.length > MAX_HISTORY_ITEMS) {
+                historyDatabase = historyDatabase.slice(0, MAX_HISTORY_ITEMS);
+            }
+            
+            saveHistoryToStorage();
+            updateHistoryCountBadge();
+        } catch (err) {
+            console.warn("Nie udało się zapisać wydruku do historii:", err);
+        }
+    }
+
+    function openHistoryModal() {
+        renderHistoryPreview(historyDatabase);
+        updateHistoryCountBadge();
+        const input = document.getElementById('historyFilterInput');
+        if (input) input.value = '';
+        const modal = document.getElementById('historyModal');
+        if (modal) modal.style.display = 'flex';
+    }
+
+    function closeHistoryModal() {
+        const modal = document.getElementById('historyModal');
+        if (modal) modal.style.display = 'none';
+    }
+
+    function closeHistoryModalOnBackdrop(event) {
+        if (event.target === document.getElementById('historyModal')) {
+            closeHistoryModal();
+        }
+    }
+
+    function renderHistoryPreview(list) {
+        const tbody = document.getElementById('historyPreviewBody');
+        if (!tbody) return;
+        
+        if (!list || list.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 36px 15px; color: #64748b;">
+                        <span style="font-size: 28px; display: block; margin-bottom: 8px;">📭</span>
+                        <div style="font-weight: 600; color: #334155;">Brak zapisanych wydruków w historii</div>
+                        <div style="font-size: 11px; margin-top: 4px;">Każde kliknięcie przycisku "DRUKUJ DOKUMENTY" utworzy tutaj automatyczną kopię zapasową.</div>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        let html = '';
+        list.forEach(item => {
+            const trainBadge = item.trainTo ? `<span class="history-badge-train">🚆 ${escapeHtml(item.trainTo)}</span>` : '<span style="color:#94a3b8;">—</span>';
+            const bookNumText = item.bookNum ? escapeHtml(item.bookNum) : '<span style="color:#94a3b8;">—</span>';
+            const cashierText = item.handedBy ? escapeHtml(item.handedBy) : '<span style="color:#94a3b8;">—</span>';
+            const posBadge = `<span class="history-badge-pos" title="${item.totalRows > 10 ? 'Arkusz A4 (25 pozycji)' : 'Arkusz A5 (10 pozycji)'}">${item.posCount} poz.</span>`;
+            
+            html += `
+                <tr id="history-row-${item.id}">
+                    <td>
+                        <div style="font-weight: 600; color: #0f172a;">${escapeHtml(item.date)}</div>
+                        <div style="font-size: 11px; color: #64748b;">godz. ${escapeHtml(item.time)}</div>
+                    </td>
+                    <td>${trainBadge}</td>
+                    <td>${posBadge}</td>
+                    <td style="font-weight: 500;">${cashierText}</td>
+                    <td><code style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${bookNumText}</code></td>
+                    <td>
+                        <div class="history-actions">
+                            <button type="button" class="btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="toggleHistoryDetails('${item.id}')" title="Podgląd pozycji tego wydruku">
+                                👁️
+                            </button>
+                            <button type="button" class="btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="loadPrintFromHistory('${item.id}')" title="Wczytaj ten wykaz z powrotem do formularza">
+                                📥 Wczytaj
+                            </button>
+                            <button type="button" class="btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="reprintFromHistory('${item.id}')" title="Wydrukuj ten wykaz ponownie">
+                                🖨️
+                            </button>
+                            <button type="button" class="btn-outline-danger" style="padding: 4px 8px; font-size: 11px;" onclick="deletePrintFromHistory('${item.id}')" title="Usuń ten wpis z historii">
+                                ✕
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="history-details-${item.id}" style="display: none; background: #f8fafc;">
+                    <td colspan="6" style="padding: 10px 14px;">
+                        <div class="history-detail-panel">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                                <strong>Szczegóły wykazu (${item.totalRows > 10 ? 'Format A4 - 25 pozycji' : 'Format A5 - 10 pozycji'}, ${item.copies || 3} kopie):</strong>
+                                <span style="color: #64748b;">Data dokumentu: <strong>${escapeHtml(item.dateTo || '—')}</strong></span>
+                            </div>
+                            <table style="width: 100%; border-collapse: collapse; font-size: 11px; background: white; border: 1px solid #e2e8f0; border-radius: 4px;">
+                                <thead>
+                                    <tr style="background: #f1f5f9; text-align: left; color: #475569;">
+                                        <th style="padding: 4px 8px; width: 28px;">Lp</th>
+                                        <th style="padding: 4px 8px;">Stacja nadania</th>
+                                        <th style="padding: 4px 8px;">Stacja przeznaczenia</th>
+                                        <th style="padding: 4px 8px;">Rodzaj</th>
+                                        <th style="padding: 4px 8px;">Nr</th>
+                                        <th style="padding: 4px 8px; width: 40px;">Szt</th>
+                                        <th style="padding: 4px 8px; width: 50px;">Masa</th>
+                                        <th style="padding: 4px 8px;">Uwagi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${(item.rows || []).filter(r => (r.nad && r.nad.trim()) || (r.prz && r.prz.trim()) || (r.nr && r.nr.trim())).map((r, idx) => `
+                                        <tr style="border-top: 1px solid #f1f5f9;">
+                                            <td style="padding: 4px 8px; font-weight: bold; color: #64748b;">${idx + 1}</td>
+                                            <td style="padding: 4px 8px; font-weight: 500;">${escapeHtml(r.nad)}</td>
+                                            <td style="padding: 4px 8px; font-weight: 500;">${escapeHtml(r.prz)}</td>
+                                            <td style="padding: 4px 8px;">${escapeHtml(r.rodz)}</td>
+                                            <td style="padding: 4px 8px;">${escapeHtml(r.nr)}</td>
+                                            <td style="padding: 4px 8px;">${escapeHtml(r.szt)}</td>
+                                            <td style="padding: 4px 8px;">${escapeHtml(r.masa)}</td>
+                                            <td style="padding: 4px 8px; color: #64748b;">${escapeHtml(r.uwagi)}</td>
+                                        </tr>
+                                    `).join('') || '<tr><td colspan="8" style="padding: 8px; text-align: center; color: #94a3b8;">Brak wypełnionych pozycji w tym dokumencie.</td></tr>'}
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = html;
+    }
+
+    function toggleHistoryDetails(id) {
+        const row = document.getElementById(`history-details-${id}`);
+        if (!row) return;
+        row.style.display = (row.style.display === 'none' || !row.style.display) ? 'table-row' : 'none';
+    }
+
+    function filterHistoryList(query) {
+        if (!query || !query.trim()) {
+            renderHistoryPreview(historyDatabase);
+            return;
+        }
+        const q = query.toLowerCase().trim();
+        const filtered = historyDatabase.filter(item => {
+            if ((item.date || '').toLowerCase().includes(q)) return true;
+            if ((item.time || '').toLowerCase().includes(q)) return true;
+            if ((item.handedBy || '').toLowerCase().includes(q)) return true;
+            if ((item.trainTo || '').toLowerCase().includes(q)) return true;
+            if ((item.bookNum || '').toLowerCase().includes(q)) return true;
+            if (item.rows && item.rows.some(r => 
+                (r.nad && r.nad.toLowerCase().includes(q)) || 
+                (r.prz && r.prz.toLowerCase().includes(q)) ||
+                (r.nr && r.nr.toLowerCase().includes(q))
+            )) return true;
+            return false;
+        });
+        renderHistoryPreview(filtered);
+    }
+
+    function loadPrintFromHistory(id) {
+        const item = historyDatabase.find(h => h.id === id);
+        if (!item) return;
+        
+        if (!confirm("Czy na pewno chcesz wczytać ten wykaz do formularza?\n\nBieżące dane w polach zostaną zastąpione danymi z wybranego wydruku.")) {
+            return;
+        }
+        
+        currentRowCount = (item.rows && item.rows.length > 10) ? 25 : 10;
+        renderInputTable();
+        loadFromStoragePopulateOnly(item);
+        
+        strikeEmptyRows = (item.strikeEmpty !== undefined) ? item.strikeEmpty : true;
+        updateStrikeButtonState();
+        updateFormatSwitchUI();
+        
+        saveToStorage();
+        closeHistoryModal();
+        
+        const status = document.getElementById('saveStatus');
+        if (status) {
+            status.innerText = "Wczytano z historii ✔";
+            status.style.color = "#0044cc";
+            status.style.opacity = '1';
+            clearTimeout(saveStatusTimer);
+            saveStatusTimer = setTimeout(() => { status.style.opacity = '0'; }, 3000);
+        }
+    }
+
+    function deletePrintFromHistory(id) {
+        if (!confirm("Czy na pewno chcesz usunąć ten wpis z historii?")) return;
+        historyDatabase = historyDatabase.filter(h => h.id !== id);
+        saveHistoryToStorage();
+        renderHistoryPreview(historyDatabase);
+        updateHistoryCountBadge();
+    }
+
+    function clearAllHistory() {
+        if (historyDatabase.length === 0) return;
+        if (!confirm("Czy na pewno chcesz wyczyścić całą historię wydruków? Wszystkie zapisane kopie zapasowe zostaną usunięte.")) return;
+        historyDatabase = [];
+        saveHistoryToStorage();
+        renderHistoryPreview(historyDatabase);
+        updateHistoryCountBadge();
+    }
+
+    function exportHistoryToJson() {
+        if (!historyDatabase || historyDatabase.length === 0) {
+            alert("Historia wydruków jest pusta.");
+            return;
+        }
+        const jsonStr = JSON.stringify(historyDatabase, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `wykaz_oddawczy_historia_${getTodayDateString()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeStationsModal();
             closeTrainsModal();
+            closeHistoryModal();
         }
     });
 
@@ -2284,21 +2686,12 @@
         `;
     }
 
-    function generatePrint() {
-        if (document.activeElement) {
-            handleStationFieldEvent(document.activeElement);
-        }
-        saveToStorage(); 
-
-        const data = collectData();
+    function renderPrintPages(data, copiesInput, fixDuplex) {
         const container = document.getElementById('printOutput');
         container.innerHTML = '';
         
-        const copiesInput = parseInt(document.getElementById('in_copies').value) || 0;
-        const totalForms = 1 + copiesInput;
-        const isFullPage = data.rows.length > 10; 
-        const fixDuplex = document.getElementById('in_duplex').checked; 
-        
+        const totalForms = 1 + (parseInt(copiesInput) || 0);
+        const isFullPage = data.rows && data.rows.length > 10; 
         let generatedCount = 0;
         
         if (isFullPage) {
@@ -2348,7 +2741,33 @@
                 }
             }
         }
+    }
+
+    function reprintFromHistory(id) {
+        const item = historyDatabase.find(h => h.id === id);
+        if (!item) return;
         
+        const copiesInput = (item.copies !== undefined) ? parseInt(item.copies) : 3;
+        const fixDuplex = (item.duplexFix !== undefined) ? item.duplexFix : true;
+        
+        renderPrintPages(item, copiesInput, fixDuplex);
+        window.print();
+    }
+
+    function generatePrint() {
+        if (document.activeElement) {
+            handleStationFieldEvent(document.activeElement);
+        }
+        saveToStorage(); 
+
+        const data = collectData();
+        const copiesInput = parseInt(document.getElementById('in_copies').value) || 0;
+        const fixDuplex = document.getElementById('in_duplex').checked; 
+        
+        // Automatyczny zapis kopii zapasowej do historii wydruków
+        addPrintToHistory(data, copiesInput);
+        
+        renderPrintPages(data, copiesInput, fixDuplex);
         window.print();
     }
 </script>

@@ -1,4 +1,4 @@
-# 🚂 Generator Wykazu Oddawczego (v4.5.1)
+# 🚂 Generator Wykazu Oddawczego (v4.6)
 
 Profesjonalna aplikacja webowa typu *Single-Page Application* (SPA) / PWA służąca do szybkiego generowania, edycji i drukowania dokumentów "Wykaz Oddawczy" stosowanych w przewozach kolejowych.
 
@@ -12,6 +12,13 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
 ## 📋 Główne Funkcjonalności
 
 * **Wydruk A4 (Pixel-Perfect):** Automatyczne generowanie arkusza zawierającego "ORYGINAŁ" i "KOPIĘ" na jednej kartce A4 (lub 1 pełna strona przy 25 wierszach), z zachowaniem wymogów formalnych.
+* **Automatyczna Historia Wydruków i Kopie Zapasowe (`📜 Historia`) (Nowość v4.6):**
+    * **Automatyczny backup przy drukowaniu:** Każde naciśnięcie przycisku **DRUKUJ DOKUMENTY** samoczynnie zapisuje w lokalnej historii pełną migawkę dokumentu (data wydruku, dokładna godzina wydruku w strefie polskiej, numer pociągu, ilość pozycji, imię i nazwisko kasjera, numer korespondencyjny oraz kompletną listę przesyłek).
+    * **Panel historii (`📜 Historia`):** Dedykowany, czytelny panel zaprojektowany na komputery stacjonarne, prezentujący listę wykonanych wydruków.
+    * **Błyskawiczne wczytywanie (`📥 Wczytaj`):** Załadowanie dowolnego archiwalnego wykazu z powrotem do aktywnego formularza na ekranie.
+    * **Bezpośredni przedruk (`🖨️`):** Natychmiastowe wygenerowanie wydruku historycznego bez nadpisywania tego, co kasjer aktualnie wpisuje w polach.
+    * **Rozwijany podgląd pozycji (`👁️`):** Podgląd wszystkich wpisów przesyłek (stacje, rodzaj, numery, sztuki, masa, uwagi) bez opuszczania panelu.
+    * **Filtrowanie i eksport:** Wbudowana wyszukiwarka (po nazwisku kasjera, numerze pociągu, numerze z książki, stacji czy dacie) oraz możliwość pobrania kopii zapasowej historii w pliku JSON.
 * **Bezpośrednia Integracja z Bazą Pociągów `trasy-ic` (PKP Intercity):**
     * Aplikacja łączy się bezpośrednio z publicznym API Firestore bazy **trasy-ic** (`pociagi_ic`), pobierając 561 pociągów PKP Intercity z relacjami i nazwami handlowymi.
     * **Wyszukiwanie i podpowiedzi (Datalist):** W polu *"Do pociągu nr"* pracownik może wpisać numer pociągu (np. `1814`, `1815`), podwójny numer trasy (np. `1814/5`) lub nazwę handlową (np. `POBRZEŻE`, `FLISAK`).
@@ -21,9 +28,9 @@ Narzędzie automatyzuje proces wypełniania formularza, zapamiętuje dane i przy
     * **Inteligentna konwersja nazwy na numer:** Po wpisaniu nazwy handlowej skrypt automatycznie podmienia ją na numer pociągu (z uwzględnieniem kierunku trasy na podstawie stacji nadania) oraz wyświetla pod polem czytelną podpowiedź: `🚆 POBRZEŻE (ŁÓDŹ FABRYCZNA ➔ KOŁOBRZEG)`.
     * **Panel bazy pociągów (`🚆 Pociągi`):** Wygodny modal umożliwiający przeszukiwanie bazy, natychmiastowe pobranie z API `trasy-ic`, import pliku JSON oraz przywracanie domyślnego spisu.
     * **100% Offline-First:** Plik `pociagi.json` oraz pamięć podręczna `localStorage` i Service Worker gwarantują natychmiastowe działanie bez konieczności stałego dostępu do internetu.
-* **Uporządkowany, dopracowany i w pełni responsywny UX (v4.5.1):**
+* **Uporządkowany, dopracowany i w pełni responsywny UX:**
     * **Usprawniony Pasek Akcji (`.action-bar`):** Zabezpieczony przed przepełnieniem (flex-wrap i elastyczne dopasowanie) – przycisk `DRUKUJ DOKUMENTY` oraz sekcja kopii nigdy nie uciekają poza obrys karty, nawet na mniejszych ekranach, laptopach czy tabletach.
-    * **Kompaktowe Przyciski Narzędziowe:** Zoptymalizowane etykiety (`✍️ Przekreślanie: WŁ`, `🚉 Stacje 510`, `🚆 Pociągi 561`, `🧹 Reset`) z zachowaniem pełnych opisów w dymkach pomocniczych (tooltip).
+    * **Kompaktowe Przyciski Narzędziowe:** Zoptymalizowane etykiety (`✍️ Przekreślanie: WŁ`, `📜 Historia`, `🚉 Stacje 510`, `🚆 Pociągi 561`, `🧹 Reset`) z zachowaniem pełnych opisów w dymkach pomocniczych (tooltip).
     * **Pole "Nr z książki koresp.":** Wyposażone w intuicyjny placeholder `Wprowadź numer...`, zachowujące pełną swobodę wpisywania dowolnych formatów (spacje, ukośniki, myślniki, kropki).
     * Karty danych nagłówkowych o idealnie równej wysokości z estetycznym wyrównaniem pól.
     * Pasek akcji umieszczony stabilnie pod tabelą (brak uciążliwego pływania po wierszach i zasłaniania rubryk).
